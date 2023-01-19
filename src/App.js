@@ -18,9 +18,14 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import "./App.css";
+import YouTubePlayer from "./YouTubePlayer.js";
 
 function App() {
-  return <div>Hello World!</div>;
+  return (
+    <div>
+      <YouTubePlayer />
+    </div>
+  );
 }
 
 export default App;
