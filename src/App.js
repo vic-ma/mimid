@@ -18,12 +18,15 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import "./App.css";
+import Grid from "@mui/material/Unstable_Grid2";
 import YouTubePlayer from "./YouTubePlayer.js";
 
 function App() {
   return (
     <div className="App">
-      <YouTubePlayer />
+      <Grid container spacing={2}>
+        <YouTubePlayer />
+      </Grid>
     </div>
   );
 }

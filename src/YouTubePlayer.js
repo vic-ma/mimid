@@ -24,7 +24,7 @@ function YouTubePlayer() {
       src="https://www.youtube.com/embed/M7lc1UVf-VE"
       frameborder="0"
       enablejsapi="1"
-      title="The embedded YouTube video player for Musician's Remote"
+      title="YouTube player"
     ></iframe>
   );
 }
