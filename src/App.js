@@ -17,28 +17,10 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <div>Hello World!</div>;
 }
 
 export default App;
