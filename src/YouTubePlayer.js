@@ -1,5 +1,5 @@
 /*
-Copyright 2022 Victor Ma
+Copyright 2023 Victor Ma
 
 This file is part of Musician's Remote.
 
@@ -20,10 +20,11 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 function YouTubePlayer() {
   return (
     <iframe
-      id="youtube-player"
-      src="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1"
+      className="youtube-player"
+      src="https://www.youtube.com/embed/M7lc1UVf-VE"
       frameborder="0"
-      title="YouTube embedded video player"
+      enablejsapi="1"
+      title="The embedded YouTube video player for Musician's Remote"
     ></iframe>
   );
 }

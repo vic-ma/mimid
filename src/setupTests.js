@@ -1,5 +1,5 @@
 /*
-Copyright 2022 Victor Ma
+Copyright 2023 Victor Ma
 
 This file is part of Musician's Remote.
 
@@ -21,4 +21,4 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";

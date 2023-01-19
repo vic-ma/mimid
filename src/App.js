@@ -1,5 +1,5 @@
 /*
-Copyright 2022 Victor Ma
+Copyright 2023 Victor Ma
 
 This file is part of Musician's Remote.
 
@@ -22,7 +22,7 @@ import YouTubePlayer from "./YouTubePlayer.js";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <YouTubePlayer />
     </div>
   );
