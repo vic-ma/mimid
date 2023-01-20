@@ -18,24 +18,19 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import "./App.css";
-import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Unstable_Grid2";
+import URLBar from "./URLBar.js";
 import YouTubePlayer from "./YouTubePlayer.js";
 import Paper from "@mui/material/Paper";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
+    <div id="App">
       {/* FIXME: Only used to simulate mobile device */}
       <Grid container xs={4} spacing={2}>
         <Grid container xs={4} columns={4}>
           <Grid xs={4}>
-            <TextField
-              label="YouTube URL"
-              size="small"
-              variant="outlined"
-              fullWidth
-            />
+            <URLBar />
           </Grid>
           <Grid xs={4}>
             <YouTubePlayer />
@@ -84,5 +79,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

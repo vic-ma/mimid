@@ -17,6 +17,15 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-#App {
-  margin: 10px;
+import TextField from "@mui/material/TextField";
+
+export default function URLBar() {
+  return (
+    <TextField
+      label="YouTube video URL"
+      size="small"
+      variant="outlined"
+      fullWidth
+    />
+  );
 }
