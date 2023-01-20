@@ -30,7 +30,12 @@ function App() {
       <Grid container xs={4} spacing={2}>
         <Grid container xs={4} columns={4}>
           <Grid xs={4}>
-            <TextField />
+            <TextField
+              label="YouTube URL"
+              size="small"
+              variant="outlined"
+              fullWidth
+            />
           </Grid>
           <Grid xs={4}>
             <YouTubePlayer />
