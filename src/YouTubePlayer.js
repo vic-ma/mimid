@@ -17,15 +17,15 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./YouTubePlayer.css";
+import "./YouTubePlayer.scss";
 
 // See: https://jameshfisher.com/2017/08/30/how-do-i-make-a-full-width-iframe/
 
 export default function YouTubePlayer({ className }) {
   return (
-    <div id="youtube-player-div" className={className}>
+    <div className={"youtube-player-div " + className}>
       <iframe
-        id="youtube-player"
+        className="youtube-player-iframe"
         src="https://www.youtube.com/embed/M7lc1UVf-VE"
         frameborder="0"
         enablejsapi="1"
