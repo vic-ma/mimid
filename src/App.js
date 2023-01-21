@@ -24,16 +24,5 @@ import YouTubePlayer from "./YouTubePlayer.js";
 import Controls from "./Controls.js";
 
 export default function App() {
-  return (
-    <div id="App">
-      {/* FIXME: Only used to simulate mobile device */}
-      <Grid container xs={4} spacing={2}>
-        <Grid container xs={4} columns={4}>
-          <URLBar />
-          <YouTubePlayer />
-          <Controls />
-        </Grid>
-      </Grid>
-    </div>
-  );
+  return <div id="App"></div>;
 }

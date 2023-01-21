@@ -17,24 +17,6 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Grid from "@mui/material/Unstable_Grid2";
-import Paper from "@mui/material/Paper";
-
 export default function JumpControls() {
-  return (
-    <>
-      <Grid xs={1}>
-        <Paper>Back long</Paper>
-      </Grid>
-      <Grid xs={1}>
-        <Paper>Back short</Paper>
-      </Grid>
-      <Grid xs={1}>
-        <Paper>Forward short</Paper>
-      </Grid>
-      <Grid xs={1}>
-        <Paper>Forward long</Paper>
-      </Grid>
-    </>
-  );
+  return <></>;
 }

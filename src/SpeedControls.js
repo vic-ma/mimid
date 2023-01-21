@@ -17,24 +17,6 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Grid from "@mui/material/Unstable_Grid2";
-import Paper from "@mui/material/Paper";
-
 export default function SpeedControls() {
-  return (
-    <Grid container xs={1} columns={4} direction="column">
-      <Grid>
-        <Paper>Speed 1</Paper>
-      </Grid>
-      <Grid>
-        <Paper>Speed 2</Paper>
-      </Grid>
-      <Grid>
-        <Paper>Speed 3</Paper>
-      </Grid>
-      <Grid>
-        <Paper>Speed 4</Paper>
-      </Grid>
-    </Grid>
-  );
+  return <></>;
 }

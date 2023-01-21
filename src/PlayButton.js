@@ -17,15 +17,6 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Grid from "@mui/material/Unstable_Grid2";
-import Paper from "@mui/material/Paper";
-
 export default function PlayButton() {
-  return (
-    <Grid container xs={2} columns={4} direction="column">
-      <Grid>
-        <Paper>Play</Paper>
-      </Grid>
-    </Grid>
-  );
+  return <></>;
 }
