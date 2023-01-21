@@ -17,6 +17,46 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-#App {
-  margin: 10px;
+.App {
+  display: grid;
+  gap: 1vw;
+  margin: 1vw;
+}
+
+@media (orientation: landscape) {
+  .App {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      ". UrlBar ."
+      ". YouTubePlayer ."
+      ". Controls .";
+  }
+  .UrlBar {
+    grid-area: UrlBar;
+  }
+  .YouTubePlayer {
+    grid-area: YouTubePlayer;
+  }
+  .Controls {
+    grid-area: Controls;
+  }
+}
+
+@media (orientation: portrait) and (min-aspect-ratio: 10 / 15) {
+  .App {
+    grid-template-columns: 10vw 1fr 10vw;
+    grid-template-areas:
+      ". UrlBar ."
+      ". YouTubePlayer ."
+      ". Controls .";
+  }
+  .UrlBar {
+    grid-area: UrlBar;
+  }
+  .YouTubePlayer {
+    grid-area: YouTubePlayer;
+  }
+  .Controls {
+    grid-area: Controls;
+  }
 }

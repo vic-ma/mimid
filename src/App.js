@@ -18,11 +18,23 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import "./App.css";
-import Grid from "@mui/material/Unstable_Grid2";
 import URLBar from "./URLBar.js";
 import YouTubePlayer from "./YouTubePlayer.js";
 import Controls from "./Controls.js";
 
+/* TODO
+ * All: lock zoom
+ * Phone: lock orientation to portrait
+ * Catered padding for more aspect ratios
+ * SASS
+ */
+
 export default function App() {
-  return <div id="App"></div>;
+  return (
+    <div className="App">
+      <URLBar className="UrlBar" />
+      <YouTubePlayer className="YouTubePlayer" />
+      <Controls className="Controls" />
+    </div>
+  );
 }
