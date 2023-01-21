@@ -17,6 +17,6 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-export default function PlayButton() {
+export default function PlayButton({ className }) {
   return <></>;
 }

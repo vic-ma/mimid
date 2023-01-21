@@ -19,9 +19,10 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import TextField from "@mui/material/TextField";
 
-export default function URLBar() {
+export default function URLBar({ className }) {
   return (
     <TextField
+      className={className}
       label="YouTube video URL"
       size="small"
       variant="outlined"
