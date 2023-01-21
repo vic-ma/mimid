@@ -17,17 +17,47 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-.App {
-  display: grid;
-  gap: 1vw;
-  margin: 1vw;
-  width: 100vw;
-  height: 100vh;
+$xs-breakpoint: 0px;
+$sm-breakpoint: 600px;
+$md-breakpoint: 900px;
+$lg-breakpoint: 1200px;
+$xl-breakpoint: 1536px;
+
+$xs-gap: 4vw;
+$sm-gap: 4vw;
+$md-gap: 1vw;
+
+@mixin set-app($gap) {
+  .App {
+    display: grid;
+    gap: $gap;
+    height: 100vh;
+    margin-left: $gap;
+    margin-right: $gap;
+    grid-template-rows: 1fr repeat(3, auto) 1fr;
+    grid-template-areas:
+      ".            "
+      "UrlBar       "
+      "YouTubePlayer"
+      "Controls     "
+      ".            ";
+  }
+}
+
+@media (min-width: $xs-breakpoint) {
+  @include set-app($xs-gap);
+}
+
+@media (min-width: $sm-breakpoint) {
+  @include set-app($sm-gap);
+}
+
+@media (min-width: $md-breakpoint) {
+  @include set-app($md-gap);
 }
 
 @media (orientation: landscape) {
   .App {
-    grid-template-rows: 1fr repeat(3, auto) 1fr;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
       ". .              ."
@@ -36,13 +66,14 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
       ". Controls       ."
       ". .              .";
   }
-  .UrlBar {
-    grid-area: UrlBar;
-  }
-  .YouTubePlayer {
-    grid-area: YouTubePlayer;
-  }
-  .Controls {
-    grid-area: Controls;
-  }
+}
+
+.UrlBar {
+  grid-area: UrlBar;
+}
+.YouTubePlayer {
+  grid-area: YouTubePlayer;
+}
+.Controls {
+  grid-area: Controls;
 }

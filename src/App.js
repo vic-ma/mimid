@@ -25,8 +25,7 @@ import Controls from "./Controls.js";
 /* TODO
  * All: lock zoom
  * Phone: lock orientation to portrait
- * Catered padding for more aspect ratios
- * SASS
+ * Targeted padding for more aspect ratios
  */
 
 export default function App() {
