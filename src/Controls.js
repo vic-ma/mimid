@@ -17,18 +17,18 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Grid from "@mui/material/Unstable_Grid2";
-import TextField from "@mui/material/TextField";
+import LoopControls from "./LoopControls";
+import PlayButton from "./PlayButton";
+import SpeedControls from "./SpeedControls";
+import JumpControls from "./JumpControls";
 
-export default function URLBar() {
+export default function Controls() {
   return (
-    <Grid xs={4}>
-      <TextField
-        label="YouTube video URL"
-        size="small"
-        variant="outlined"
-        fullWidth
-      />
-    </Grid>
+    <>
+      <LoopControls />
+      <PlayButton />
+      <SpeedControls />
+      <JumpControls />
+    </>
   );
 }

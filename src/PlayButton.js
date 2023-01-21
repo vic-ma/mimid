@@ -18,17 +18,14 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Grid from "@mui/material/Unstable_Grid2";
-import TextField from "@mui/material/TextField";
+import Paper from "@mui/material/Paper";
 
-export default function URLBar() {
+export default function PlayButton() {
   return (
-    <Grid xs={4}>
-      <TextField
-        label="YouTube video URL"
-        size="small"
-        variant="outlined"
-        fullWidth
-      />
+    <Grid container xs={2} columns={4} direction="column">
+      <Grid>
+        <Paper>Play</Paper>
+      </Grid>
     </Grid>
   );
 }

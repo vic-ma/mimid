@@ -21,7 +21,7 @@ import "./App.css";
 import Grid from "@mui/material/Unstable_Grid2";
 import URLBar from "./URLBar.js";
 import YouTubePlayer from "./YouTubePlayer.js";
-import Paper from "@mui/material/Paper";
+import Controls from "./Controls.js";
 
 export default function App() {
   return (
@@ -29,51 +29,9 @@ export default function App() {
       {/* FIXME: Only used to simulate mobile device */}
       <Grid container xs={4} spacing={2}>
         <Grid container xs={4} columns={4}>
-          <Grid xs={4}>
-            <URLBar />
-          </Grid>
-          <Grid xs={4}>
-            <YouTubePlayer />
-          </Grid>
-          <Grid container xs={1} columns={4} direction="column">
-            <Grid>
-              <Paper>Loop 1</Paper>
-            </Grid>
-            <Grid>
-              <Paper>Loop 2</Paper>
-            </Grid>
-          </Grid>
-          <Grid container xs={2} columns={4} direction="column">
-            <Grid>
-              <Paper>Play</Paper>
-            </Grid>
-          </Grid>
-          <Grid container xs={1} columns={4} direction="column">
-            <Grid>
-              <Paper>Speed 1</Paper>
-            </Grid>
-            <Grid>
-              <Paper>Speed 2</Paper>
-            </Grid>
-            <Grid>
-              <Paper>Speed 3</Paper>
-            </Grid>
-            <Grid>
-              <Paper>Speed 4</Paper>
-            </Grid>
-          </Grid>
-          <Grid xs={1}>
-            <Paper>Back long</Paper>
-          </Grid>
-          <Grid xs={1}>
-            <Paper>Back short</Paper>
-          </Grid>
-          <Grid xs={1}>
-            <Paper>Forward short</Paper>
-          </Grid>
-          <Grid xs={1}>
-            <Paper>Forward long</Paper>
-          </Grid>
+          <URLBar />
+          <YouTubePlayer />
+          <Controls />
         </Grid>
       </Grid>
     </div>

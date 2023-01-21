@@ -17,20 +17,23 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+import Grid from "@mui/material/Unstable_Grid2";
 import "./YouTubePlayer.css";
 
 // See: https://jameshfisher.com/2017/08/30/how-do-i-make-a-full-width-iframe/
 
 export default function YouTubePlayer() {
   return (
-    <div id="youtube-player-div">
-      <iframe
-        id="youtube-player"
-        src="https://www.youtube.com/embed/M7lc1UVf-VE"
-        frameborder="0"
-        enablejsapi="1"
-        title="YouTube player"
-      ></iframe>
-    </div>
+    <Grid xs={4}>
+      <div id="youtube-player-div">
+        <iframe
+          id="youtube-player"
+          src="https://www.youtube.com/embed/M7lc1UVf-VE"
+          frameborder="0"
+          enablejsapi="1"
+          title="YouTube player"
+        ></iframe>
+      </div>
+    </Grid>
   );
 }
