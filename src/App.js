@@ -31,9 +31,9 @@ import Controls from "./Controls.js";
 export default function App() {
   return (
     <div className="App">
-      <URLBar className="UrlBar" />
-      <YouTubePlayer className="YouTubePlayer" />
-      <Controls className="Controls" />
+      <URLBar />
+      <YouTubePlayer />
+      <Controls />
     </div>
   );
 }

@@ -22,13 +22,13 @@ import PlayButton from "./PlayButton";
 import SpeedControls from "./SpeedControls";
 import JumpControls from "./JumpControls";
 
-export default function Controls({ className }) {
+export default function Controls() {
   return (
-    <>
+    <div className="Controls">
       <LoopControls />
       <PlayButton />
       <SpeedControls />
       <JumpControls />
-    </>
+    </div>
   );
 }

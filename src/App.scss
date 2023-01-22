@@ -37,7 +37,7 @@ $md-gap: 1vw;
     grid-template-rows: 1fr repeat(3, auto) 1fr;
     grid-template-areas:
       ".            "
-      "UrlBar       "
+      "URLBar       "
       "YouTubePlayer"
       "Controls     "
       ".            ";
@@ -61,15 +61,15 @@ $md-gap: 1vw;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
       ". .              ."
-      ". UrlBar         ."
+      ". URLBar         ."
       ". YouTubePlayer  ."
       ". Controls       ."
       ". .              .";
   }
 }
 
-.UrlBar {
-  grid-area: UrlBar;
+.URLBar {
+  grid-area: URLBar;
 }
 .YouTubePlayer {
   grid-area: YouTubePlayer;
