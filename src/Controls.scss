@@ -19,8 +19,18 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 @use "Breakpoints.scss";
 
-@mixin set-controls($gap) {
-  .Controls {
+.Controls {
+  position: relative;
+  padding-top: 100%;
+}
+
+@mixin set-controls-grid($gap) {
+  .controls-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: grid;
     gap: $gap;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -35,15 +45,15 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 }
 
 @media (min-width: Breakpoints.$xs-breakpoint) {
-  @include set-controls(Breakpoints.$xs-gap);
+  @include set-controls-grid(Breakpoints.$xs-gap);
 }
 
 @media (min-width: Breakpoints.$sm-breakpoint) {
-  @include set-controls(Breakpoints.$sm-gap);
+  @include set-controls-grid(Breakpoints.$sm-gap);
 }
 
 @media (min-width: Breakpoints.$md-breakpoint) {
-  @include set-controls(Breakpoints.$md-gap);
+  @include set-controls-grid(Breakpoints.$md-gap);
 }
 
 .LoopControls {
