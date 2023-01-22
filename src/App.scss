@@ -17,15 +17,7 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-$xs-breakpoint: 0px;
-$sm-breakpoint: 600px;
-$md-breakpoint: 900px;
-$lg-breakpoint: 1200px;
-$xl-breakpoint: 1536px;
-
-$xs-gap: 4vw;
-$sm-gap: 4vw;
-$md-gap: 1vw;
+@use "./Breakpoints.scss";
 
 @mixin set-app($gap) {
   .App {
@@ -44,16 +36,16 @@ $md-gap: 1vw;
   }
 }
 
-@media (min-width: $xs-breakpoint) {
-  @include set-app($xs-gap);
+@media (min-width: Breakpoints.$xs-breakpoint) {
+  @include set-app(Breakpoints.$xs-gap);
 }
 
-@media (min-width: $sm-breakpoint) {
-  @include set-app($sm-gap);
+@media (min-width: Breakpoints.$sm-breakpoint) {
+  @include set-app(Breakpoints.$sm-gap);
 }
 
-@media (min-width: $md-breakpoint) {
-  @include set-app($md-gap);
+@media (min-width: Breakpoints.$md-breakpoint) {
+  @include set-app(Breakpoints.$md-gap);
 }
 
 @media (orientation: landscape) {

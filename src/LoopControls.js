@@ -18,5 +18,5 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default function LoopControls({ className }) {
-  return <></>;
+  return <button className="LoopControls">LoopControls</button>;
 }

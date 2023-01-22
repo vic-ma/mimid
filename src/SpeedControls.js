@@ -18,5 +18,5 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default function SpeedControls({ className }) {
-  return <></>;
+  return <button className="SpeedControls">SpeedControls</button>;
 }

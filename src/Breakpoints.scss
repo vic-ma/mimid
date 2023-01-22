@@ -17,6 +17,12 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-export default function PlayButton({ className }) {
-  return <button className="PlayButton">PlayButton</button>;
-}
+$xs-breakpoint: 0px;
+$sm-breakpoint: 600px;
+$md-breakpoint: 900px;
+$lg-breakpoint: 1200px;
+$xl-breakpoint: 1536px;
+
+$xs-gap: 4vw;
+$sm-gap: 4vw;
+$md-gap: 1vw;

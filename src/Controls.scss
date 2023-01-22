@@ -16,3 +16,48 @@ more details.
 You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
+
+@use "Breakpoints.scss";
+
+@mixin set-controls($gap) {
+  .Controls {
+    display: grid;
+    gap: $gap;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "LoopControls PlayButton   PlayButton   SpeedControls"
+      "LoopControls PlayButton   PlayButton   SpeedControls"
+      "LoopControls PlayButton   PlayButton   SpeedControls"
+      "LoopControls PlayButton   PlayButton   SpeedControls"
+      "JumpControls JumpControls JumpControls JumpControls ";
+  }
+}
+
+@media (min-width: Breakpoints.$xs-breakpoint) {
+  @include set-controls(Breakpoints.$xs-gap);
+}
+
+@media (min-width: Breakpoints.$sm-breakpoint) {
+  @include set-controls(Breakpoints.$sm-gap);
+}
+
+@media (min-width: Breakpoints.$md-breakpoint) {
+  @include set-controls(Breakpoints.$md-gap);
+}
+
+.LoopControls {
+  grid-area: LoopControls;
+}
+
+.PlayButton {
+  grid-area: PlayButton;
+}
+
+.SpeedControls {
+  grid-area: SpeedControls;
+}
+
+.JumpControls {
+  grid-area: JumpControls;
+}

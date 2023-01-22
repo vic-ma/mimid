@@ -18,6 +18,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import "./App.scss";
+
 import URLBar from "./URLBar.js";
 import YouTubePlayer from "./YouTubePlayer.js";
 import Controls from "./Controls.js";
