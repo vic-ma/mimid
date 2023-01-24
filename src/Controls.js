@@ -20,7 +20,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import "./Controls.scss";
 
 import LoopControls from "./LoopControls";
-import PlayButton from "./PlayButton";
+import PlayButton from "./buttons/PlayButton";
 import SpeedControls from "./SpeedControls";
 import JumpControls from "./JumpControls";
 

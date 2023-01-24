@@ -17,39 +17,39 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-@use "./Breakpoints.scss";
+@use "./breakpoints.scss";
 
-@mixin set-app($gap) {
-  .App {
-    display: grid;
-    gap: $gap;
-    height: 100vh;
-    margin-left: $gap;
-    margin-right: $gap;
-    grid-template-rows: 1fr repeat(3, auto) 1fr;
-    grid-template-areas:
-      ".            "
-      "URLBar       "
-      "YouTubePlayer"
-      "Controls     "
-      ".            ";
+.App {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 1fr repeat(3, auto) 1fr;
+  grid-template-areas:
+    ".            "
+    "URLBar       "
+    "YouTubePlayer"
+    "Controls     "
+    ".            ";
+}
+
+@mixin set-app-margins($breakpoint, $gap) {
+  @media (min-width: $breakpoint) {
+    .App {
+      margin-left: $gap;
+      margin-right: $gap;
+    }
   }
 }
 
-@media (min-width: Breakpoints.$xs-breakpoint) {
-  @include set-app(Breakpoints.$xs-gap);
-}
-
-@media (min-width: Breakpoints.$sm-breakpoint) {
-  @include set-app(Breakpoints.$sm-gap);
-}
-
-@media (min-width: Breakpoints.$md-breakpoint) {
-  @include set-app(Breakpoints.$md-gap);
-}
+@include set-app-margins(breakpoints.$xs-breakpoint, breakpoints.$xs-gap);
+@include set-app-margins(breakpoints.$sm-breakpoint, breakpoints.$sm-gap);
+@include set-app-margins(breakpoints.$md-breakpoint, breakpoints.$md-gap);
+@include set-app-margins(breakpoints.$lg-breakpoint, breakpoints.$lg-gap);
+@include set-app-margins(breakpoints.$xl-breakpoint, breakpoints.$xl-gap);
 
 @media (orientation: landscape) {
   .App {
+    margin-left: 0px;
+    margin-right: 0px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
       ". .              ."

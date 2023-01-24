@@ -17,38 +17,6 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-.Controls {
-  position: relative;
-  padding-top: 75%;
-}
-
-.controls-grid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-areas:
-    "LoopControls PlayButton   PlayButton   SpeedControls"
-    "LoopControls PlayButton   PlayButton   SpeedControls"
-    "JumpControls JumpControls JumpControls JumpControls ";
-}
-
-.LoopControls {
-  grid-area: LoopControls;
-}
-
-.PlayButton {
-  grid-area: PlayButton;
-}
-
-.SpeedControls {
-  grid-area: SpeedControls;
-}
-
-.JumpControls {
-  grid-area: JumpControls;
+export default function LoopStartButton({ className }) {
+  return <button>LoopStartButton</button>;
 }
