@@ -34,13 +34,13 @@ export default function Controls() {
         <LoopEndButton />
         <LoopDeleteButton />
         <PlayButton />
-        <SpeedButton speed={25} />
-        <SpeedButton speed={50} />
-        <SpeedButton speed={100} />
-        <SkipButton duration={-5} />
-        <SkipButton duration={-1} />
-        <SkipButton duration={1} />
-        <SkipButton duration={5} />
+        <SpeedButton className="SpeedButton1" speed={25} />
+        <SpeedButton className="SpeedButton2" speed={50} />
+        <SpeedButton className="SpeedButton3" speed={100} />
+        <SkipButton className="SkipButtonBackwardLong" amount={-5} />
+        <SkipButton className="SkipButtonBackwardShort" amount={-1} />
+        <SkipButton className="SkipButtonForwardShort" amount={1} />
+        <SkipButton className="SkipButtonForwardLong" amount={5} />
       </div>
     </div>
   );

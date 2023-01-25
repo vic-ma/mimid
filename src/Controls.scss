@@ -32,10 +32,10 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
-    "LSB  PB   PB   SB25"
-    "LEB  PB   PB   SB50"
-    "LDB  PB   PB   SB100"
-    "SBB5 SBB1 SBF1 SBF5";
+    "LSB  PB   PB   SB1 "
+    "LEB  PB   PB   SB2 "
+    "LDB  PB   PB   SB3 "
+    "SBBL SBBS SBFS SBFL";
 }
 
 .LoopStartButton {
@@ -54,30 +54,30 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
   grid-area: PB;
 }
 
-.SpeedButton25 {
-  grid-area: SB25;
+.SpeedButton1 {
+  grid-area: SB1;
 }
 
-.SpeedButton50 {
-  grid-area: SB50;
+.SpeedButton2 {
+  grid-area: SB2;
 }
 
-.SpeedButton100 {
-  grid-area: SB100;
+.SpeedButton3 {
+  grid-area: SB3;
 }
 
-.SkipButtonBackward5 {
-  grid-area: SBB5;
+.SkipButtonBackwardLong {
+  grid-area: SBBL;
 }
 
-.SkipButtonBackward1 {
-  grid-area: SBB1;
+.SkipButtonBackwardShort {
+  grid-area: SBBS;
 }
 
-.SkipButtonForward1 {
-  grid-area: SBF1;
+.SkipButtonForwardShort {
+  grid-area: SBFS;
 }
 
-.SkipButtonForward5 {
-  grid-area: SBF5;
+.SkipButtonForwardLong {
+  grid-area: SBFL;
 }

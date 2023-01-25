@@ -17,13 +17,6 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-export default function SkipButton({ duration }) {
-  var className;
-  if (duration >= 0) {
-    className = "SkipButtonForward" + duration;
-  } else {
-    className = "SkipButtonBackward" + -duration;
-  }
-
-  return <button className={className}>SkipButton</button>;
+export default function SkipButton({ className, amount }) {
+  return <button className={className}>{"Skip " + amount}</button>;
 }
