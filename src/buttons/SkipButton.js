@@ -17,6 +17,12 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+import { Button } from "@mui/material";
+
 export default function SkipButton({ className, amount }) {
-  return <button className={className}>{"Skip " + amount}</button>;
+  return (
+    <Button className={className} variant="contained">
+      {"Skip " + amount}
+    </Button>
+  );
 }

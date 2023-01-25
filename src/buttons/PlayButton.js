@@ -17,6 +17,12 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+import { Button } from "@mui/material";
+
 export default function PlayButton() {
-  return <button className="PlayButton">PB</button>;
+  return (
+    <Button className="PlayButton" variant="contained">
+      PB
+    </Button>
+  );
 }

@@ -17,6 +17,12 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+import { Button } from "@mui/material";
+
 export default function LoopDeleteButton() {
-  return <button className="LoopDeleteButton">LDB</button>;
+  return (
+    <Button className="LoopDeleteButton" variant="contained">
+      LDB
+    </Button>
+  );
 }

@@ -17,6 +17,12 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+import { Button } from "@mui/material";
+
 export default function SpeedButton({ className, speed }) {
-  return <button className={className}>{"SB" + speed}</button>;
+  return (
+    <Button className={className} variant="contained">
+      {"SB" + speed}
+    </Button>
+  );
 }
