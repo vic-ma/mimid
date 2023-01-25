@@ -18,5 +18,5 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default function LoopDeleteButton() {
-  return <button>LoopDeleteButton</button>;
+  return <button className="LoopDeleteButton">LDB</button>;
 }

@@ -18,5 +18,5 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default function PlayButton() {
-  return <button className="PlayButton">PlayButton</button>;
+  return <button className="PlayButton">PB</button>;
 }

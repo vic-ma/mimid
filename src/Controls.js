@@ -19,10 +19,29 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import "./Controls.scss";
 
+import LoopStartButton from "./buttons/LoopStartButton.js";
+import LoopEndButton from "./buttons/LoopEndButton.js";
+import LoopDeleteButton from "./buttons/LoopDeleteButton.js";
+import PlayButton from "./buttons/PlayButton.js";
+import SpeedButton from "./buttons/SpeedButton.js";
+import SkipButton from "./buttons/SkipButton.js";
+
 export default function Controls() {
   return (
     <div className="Controls">
-      <div className="controls-grid"></div>
+      <div className="controls-grid">
+        <LoopStartButton />
+        <LoopEndButton />
+        <LoopDeleteButton />
+        <PlayButton />
+        <SpeedButton speed={25} />
+        <SpeedButton speed={50} />
+        <SpeedButton speed={100} />
+        <SkipButton duration={-5} />
+        <SkipButton duration={-1} />
+        <SkipButton duration={1} />
+        <SkipButton duration={5} />
+      </div>
     </div>
   );
 }

@@ -18,5 +18,5 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default function LoopStartButton() {
-  return <button>LoopStartButton</button>;
+  return <button className="LoopStartButton">LSB</button>;
 }

@@ -18,5 +18,5 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default function LoopEndButton() {
-  return <button>LoopEndButton</button>;
+  return <button className="LoopEndButton">LEB</button>;
 }

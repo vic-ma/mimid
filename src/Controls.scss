@@ -30,25 +30,54 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
   height: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
-    "LoopControls PlayButton   PlayButton   SpeedControls"
-    "LoopControls PlayButton   PlayButton   SpeedControls"
-    "JumpControls JumpControls JumpControls JumpControls ";
+    "LSB  PB   PB   SB25"
+    "LEB  PB   PB   SB50"
+    "LDB  PB   PB   SB100"
+    "SBB5 SBB1 SBF1 SBF5";
 }
 
-.LoopControls {
-  grid-area: LoopControls;
+.LoopStartButton {
+  grid-area: LSB;
+}
+
+.LoopEndButton {
+  grid-area: LEB;
+}
+
+.LoopDeleteButton {
+  grid-area: LDB;
 }
 
 .PlayButton {
-  grid-area: PlayButton;
+  grid-area: PB;
 }
 
-.SpeedControls {
-  grid-area: SpeedControls;
+.SpeedButton25 {
+  grid-area: SB25;
 }
 
-.JumpControls {
-  grid-area: JumpControls;
+.SpeedButton50 {
+  grid-area: SB50;
+}
+
+.SpeedButton100 {
+  grid-area: SB100;
+}
+
+.SkipButtonBackward5 {
+  grid-area: SBB5;
+}
+
+.SkipButtonBackward1 {
+  grid-area: SBB1;
+}
+
+.SkipButtonForward1 {
+  grid-area: SBF1;
+}
+
+.SkipButtonForward5 {
+  grid-area: SBF5;
 }
