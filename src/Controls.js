@@ -19,20 +19,10 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import "./Controls.scss";
 
-import LoopControls from "./LoopControls";
-import PlayButton from "./buttons/PlayButton";
-import SpeedControls from "./SpeedControls";
-import JumpControls from "./JumpControls";
-
 export default function Controls() {
   return (
     <div className="Controls">
-      <div className="controls-grid">
-        <LoopControls />
-        <PlayButton />
-        <SpeedControls />
-        <JumpControls />
-      </div>
+      <div className="controls-grid"></div>
     </div>
   );
 }
