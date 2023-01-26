@@ -33,12 +33,12 @@ import { useState } from "react";
  */
 
 export default function App() {
-  const [YouTubePlayerSrc, setYouTubePlayerSrc] = useState("");
-  const [URLBarError, setURLBarError] = useState(false);
+  const [videoURL, setVideoURL] = useState("");
+  const [errorURLBar, setErrorURLBar] = useState(false);
   return (
     <div className="App">
-      <URLBar onChange={URLBarOnChange} error={URLBarError} />
-      <YouTubePlayer src={YouTubePlayerSrc} />
+      <URLBar onChange={URLBarOnChange} error={errorURLBar} />
+      <YouTubePlayer src={videoURL} />
       <Controls />
     </div>
   );
@@ -48,14 +48,14 @@ export default function App() {
     const url = event.target.value;
     const id = getVideoIDFromURL(url);
     if (id !== null) {
-      setURLBarError(false);
-      setYouTubePlayerSrc(getEmbedURLFromVideoID(id));
+      setErrorURLBar(false);
+      setVideoURL(getEmbedURLFromVideoID(id));
     } else if (url === "") {
-      setURLBarError(false);
-      setYouTubePlayerSrc("");
+      setErrorURLBar(false);
+      setVideoURL("");
     } else {
-      setURLBarError(true);
-      setYouTubePlayerSrc("");
+      setErrorURLBar(true);
+      setVideoURL("");
     }
   }
 
