@@ -21,7 +21,8 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 @mixin set-grid-gap($breakpoint, $gap) {
   @media (min-width: $breakpoint) {
-    div {
+    .App,
+    .controls-grid {
       gap: $gap;
     }
   }

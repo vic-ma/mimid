@@ -21,13 +21,13 @@ import "./YouTubePlayer.scss";
 
 // See: https://jameshfisher.com/2017/08/30/how-do-i-make-a-full-width-iframe/
 
-export default function YouTubePlayer() {
+export default function YouTubePlayer({ src }) {
   return (
     <div className="YouTubePlayer">
       <div className="youtube-player-div">
         <iframe
           className="youtube-player-iframe"
-          src="https://www.youtube.com/embed/M7lc1UVf-VE"
+          src={src}
           frameborder="0"
           enablejsapi="1"
           title="YouTube player"

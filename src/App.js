@@ -24,6 +24,8 @@ import URLBar from "./URLBar.js";
 import YouTubePlayer from "./YouTubePlayer.js";
 import Controls from "./Controls.js";
 
+import { useState } from "react";
+
 /* TODO
  * All: lock zoom
  * Phone: lock orientation to portrait
@@ -31,11 +33,41 @@ import Controls from "./Controls.js";
  */
 
 export default function App() {
+  const [YouTubePlayerSrc, setYouTubePlayerSrc] = useState("");
+  const [URLBarError, setURLBarError] = useState(false);
   return (
     <div className="App">
-      <URLBar />
-      <YouTubePlayer />
+      <URLBar onChange={URLBarOnChange} error={URLBarError} />
+      <YouTubePlayer src={YouTubePlayerSrc} />
       <Controls />
     </div>
   );
+
+  // transformation, verification
+  function URLBarOnChange(event) {
+    const url = event.target.value;
+    const id = getVideoIDFromURL(url);
+    if (id !== null) {
+      setURLBarError(false);
+      setYouTubePlayerSrc(getEmbedURLFromVideoID(id));
+    } else if (url === "") {
+      setURLBarError(false);
+      setYouTubePlayerSrc("");
+    } else {
+      setURLBarError(true);
+      setYouTubePlayerSrc("");
+    }
+  }
+
+  // https://stackoverflow.com/a/27728417
+  function getVideoIDFromURL(url) {
+    const regex =
+      /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|&v(?:i)?=))([^#&?]*).*/;
+    const match = url.match(regex);
+    return match !== null ? match[1] : null;
+  }
+
+  function getEmbedURLFromVideoID(id) {
+    return "https://www.youtube.com/embed/" + id;
+  }
 }
