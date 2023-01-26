@@ -28,7 +28,6 @@ export default function YouTubePlayer({ src }) {
         <iframe
           className="youtube-player-iframe"
           src={src}
-          frameborder="0"
           enablejsapi="1"
           title="YouTube player"
         ></iframe>
