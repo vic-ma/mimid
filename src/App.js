@@ -24,7 +24,10 @@ import URLBar from "./URLBar.js";
 import YouTubePlayer from "./YouTubePlayer.js";
 import Controls from "./Controls.js";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useEffect } from "react";
+
+/* global isYouTubeIframeAPIReady, YT */
 
 /* TODO
  * All: lock zoom
@@ -33,29 +36,48 @@ import { useState } from "react";
  */
 
 export default function App() {
-  const [videoURL, setVideoURL] = useState("");
+  const [embedURL, setEmbedURL] = useState("");
   const [errorURLBar, setErrorURLBar] = useState(false);
+  const playerRef = useRef(null);
+
+  /* Trying to create a YT.Player on an iframe without a YouTube src will make
+   * that iframe unable to be controlled with the YouTube API forever, even if
+   * a valid YouTube src is added later on.
+   *
+   * Creating a YT.Player on an iframe with a YouTube src will make that iframe
+   * controllable with the YouTube API forever, even if the src becomes
+   * invalid and then valid again.
+   */
+  useEffect(() => {
+    if (
+      playerRef.current === null &&
+      isYouTubeIframeAPIReady &&
+      embedURL !== ""
+    ) {
+      playerRef.current = new YT.Player("youtube-player-iframe");
+    }
+  }, [embedURL]);
+
   return (
     <div className="App">
       <URLBar onChange={URLBarOnChange} error={errorURLBar} />
-      <YouTubePlayer src={videoURL} />
+      <YouTubePlayer src={embedURL} />
       <Controls />
     </div>
   );
 
-  // transformation, verification
   function URLBarOnChange(event) {
     const url = event.target.value;
     const id = getVideoIDFromURL(url);
     if (id !== null) {
       setErrorURLBar(false);
-      setVideoURL(getEmbedURLFromVideoID(id));
+      setEmbedURL(getEmbedURLFromVideoID(id));
     } else if (url === "") {
       setErrorURLBar(false);
-      setVideoURL("");
+      setEmbedURL("");
     } else {
       setErrorURLBar(true);
-      setVideoURL("");
+      setEmbedURL("");
     }
   }
 
@@ -67,7 +89,8 @@ export default function App() {
     return match !== null ? match[1] : null;
   }
 
+  // TODO: other options
   function getEmbedURLFromVideoID(id) {
-    return "https://www.youtube.com/embed/" + id;
+    return "https://www.youtube.com/embed/" + id + "?enablejsapi=1";
   }
 }

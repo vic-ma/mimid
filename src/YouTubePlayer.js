@@ -26,9 +26,9 @@ export default function YouTubePlayer({ src }) {
     <div className="YouTubePlayer">
       <div className="youtube-player-div">
         <iframe
+          id="youtube-player-iframe"
           className="youtube-player-iframe"
           src={src}
-          enablejsapi="1"
           title="YouTube player"
         ></iframe>
       </div>
