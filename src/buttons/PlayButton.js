@@ -19,9 +19,9 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import { Button } from "@mui/material";
 
-export default function PlayButton() {
+export default function PlayButton({ onClick }) {
   return (
-    <Button className="PlayButton" variant="contained">
+    <Button className="PlayButton" onClick={onClick} variant="contained">
       PB
     </Button>
   );

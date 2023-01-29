@@ -60,13 +60,13 @@ export default function App() {
 
   return (
     <div className="App">
-      <URLBar onChange={URLBarOnChange} error={errorURLBar} />
+      <URLBar onChange={handleChangeURLBar} error={errorURLBar} />
       <YouTubePlayer src={embedURL} />
       <Controls />
     </div>
   );
 
-  function URLBarOnChange(event) {
+  function handleChangeURLBar(event) {
     const url = event.target.value;
     const id = getVideoIDFromURL(url);
     if (id !== null) {
@@ -81,16 +81,18 @@ export default function App() {
     }
   }
 
-  // https://stackoverflow.com/a/27728417
-  function getVideoIDFromURL(url) {
-    const regex =
-      /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|&v(?:i)?=))([^#&?]*).*/;
-    const match = url.match(regex);
-    return match !== null ? match[1] : null;
-  }
+  function handleClickPlayButton() {}
+}
 
-  // TODO: other options
-  function getEmbedURLFromVideoID(id) {
-    return "https://www.youtube.com/embed/" + id + "?enablejsapi=1";
-  }
+// https://stackoverflow.com/a/27728417
+function getVideoIDFromURL(url) {
+  const regex =
+    /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|&v(?:i)?=))([^#&?]*).*/;
+  const match = url.match(regex);
+  return match !== null ? match[1] : null;
+}
+
+// TODO: other options
+function getEmbedURLFromVideoID(id) {
+  return "https://www.youtube.com/embed/" + id + "?enablejsapi=1";
 }
