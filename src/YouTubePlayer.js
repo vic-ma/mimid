@@ -24,14 +24,12 @@ import "./YouTubePlayer.scss";
 export default function YouTubePlayer({ src }) {
   return (
     <div className="YouTubePlayer">
-      <div className="youtube-player-div">
-        <iframe
-          id="youtube-player-iframe"
-          className="youtube-player-iframe"
-          src={src}
-          title="YouTube player"
-        ></iframe>
-      </div>
+      <iframe
+        id="youtube-player-iframe"
+        className="youtube-player-iframe"
+        src={src}
+        title="YouTube player"
+      ></iframe>
     </div>
   );
 }
