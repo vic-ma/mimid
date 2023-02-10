@@ -27,7 +27,8 @@ export default function YouTubePlayer({ src }) {
       <iframe
         id="youtube-player-iframe"
         className="youtube-player-iframe"
-        src={src}
+        src="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1"
+        // src={src}
         title="YouTube player"
       ></iframe>
     </div>

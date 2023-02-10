@@ -27,9 +27,14 @@
     <title>React App</title>
     <script async src="https://www.youtube.com/iframe_api"></script>
     <script>
-      var isYouTubeIframeAPIReady = false;
+      /* This function has to be defined here. It can't be defined in some
+       * external module, since then it would have to be imported into a module
+       * here (<script type="module">), which would make it not visible to the
+       * YouTube IFrame API script.
+       */
+
       function onYouTubeIframeAPIReady() {
-        isYouTubeIframeAPIReady = true;
+        window.isYouTubeIframeAPIReady = true;
       }
     </script>
   </head>
