@@ -17,12 +17,18 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+import playerAPIConnector from "../playerAPIConnector";
+
 import { Button } from "@mui/material";
 
 export default function SpeedButton({ className, speed }) {
   return (
-    <Button className={className} variant="contained">
-      {"SB" + speed}
+    <Button className={className} onClick={onClick} variant="contained">
+      {speed + "x"}
     </Button>
   );
+
+  function onClick() {
+    console.log(playerAPIConnector.playerAPI.setPlaybackRate(speed));
+  }
 }
