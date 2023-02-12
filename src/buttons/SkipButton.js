@@ -17,12 +17,19 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+import playerAPIConnector from "../playerAPIConnector";
+
 import { Button } from "@mui/material";
 
 export default function SkipButton({ className, amount }) {
   return (
-    <Button className={className} variant="contained">
+    <Button className={className} onClick={onClick} variant="contained">
       {"Skip " + amount}
     </Button>
   );
+
+  function onClick() {
+    const currentTime = playerAPIConnector.playerAPI.getCurrentTime();
+    playerAPIConnector.playerAPI.seekTo(currentTime + amount, true);
+  }
 }
