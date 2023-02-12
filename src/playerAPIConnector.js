@@ -36,6 +36,22 @@ const playerAPIConnector = {
     const intervalID = setInterval(() => {
       if (window.isYouTubeIframeAPIReady === true) {
         this.playerAPI = new window.YT.Player(playerElementID);
+
+        this.ENDED = window.YT.PlayerState.ENDED;
+        this.PLAYING = window.YT.PlayerState.PLAYING;
+        this.PAUSED = window.YT.PlayerState.PAUSED;
+        this.BUFFERING = window.YT.PlayerState.BUFFERING;
+        this.CUED = window.YT.PlayerState.CUED;
+
+        clearInterval(intervalID);
+      }
+    });
+  },
+
+  addEventListener: function (event, listener) {
+    const intervalID = setInterval(() => {
+      if (this.playerAPI !== null) {
+        this.playerAPI.addEventListener(event, listener);
         clearInterval(intervalID);
       }
     });

@@ -18,11 +18,34 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import { Button } from "@mui/material";
+import playerAPIConnector from "../playerAPIConnector";
 
-export default function PlayButton({ onClick }) {
+import { useState } from "react";
+import { useEffect } from "react";
+
+export default function PlayButton() {
+  useEffect(
+    () => playerAPIConnector.addEventListener("onStateChange", onStateChange),
+    []
+  );
+
+  const [playerState, setPlayerState] = useState("Unset");
+
   return (
     <Button className="PlayButton" onClick={onClick} variant="contained">
-      PB
+      {playerState.toString()}
     </Button>
   );
+
+  function onClick() {
+    if (playerState === playerAPIConnector.PAUSED) {
+      playerAPIConnector.playerAPI.playVideo();
+    } else {
+      playerAPIConnector.playerAPI.pauseVideo();
+    }
+  }
+
+  function onStateChange(event) {
+    setPlayerState(event.data);
+  }
 }
