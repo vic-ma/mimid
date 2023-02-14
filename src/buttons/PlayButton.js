@@ -46,6 +46,7 @@ export default function PlayButton() {
   }
 
   function onStateChange(event) {
+    console.log("EVENT HANDLER CALLED");
     setPlayerState(event.data);
   }
 }

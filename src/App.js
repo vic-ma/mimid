@@ -25,6 +25,7 @@ import YouTubePlayer from "./YouTubePlayer.js";
 import Controls from "./Controls.js";
 
 import { useState } from "react";
+import playerAPIConnector from "./playerAPIConnector";
 
 /* TODO
  * All: lock zoom
@@ -33,13 +34,12 @@ import { useState } from "react";
  */
 
 export default function App() {
-  const [embedURL, setEmbedURL] = useState("");
   const [errorURLBar, setErrorURLBar] = useState(false);
 
   return (
     <div className="App">
       <URLBar onChange={handleChangeURLBar} error={errorURLBar} />
-      <YouTubePlayer src={embedURL} />
+      <YouTubePlayer />
       <Controls />
     </div>
   );
@@ -49,13 +49,11 @@ export default function App() {
     const id = getVideoIDFromURL(url);
     if (id !== null) {
       setErrorURLBar(false);
-      setEmbedURL(getEmbedURLFromVideoID(id));
+      playerAPIConnector.playerAPI.loadVideoById(id);
     } else if (url === "") {
       setErrorURLBar(false);
-      setEmbedURL("");
     } else {
       setErrorURLBar(true);
-      setEmbedURL("");
     }
   }
 }
@@ -66,9 +64,4 @@ function getVideoIDFromURL(url) {
     /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|&v(?:i)?=))([^#&?]*).*/;
   const match = url.match(regex);
   return match !== null ? match[1] : null;
-}
-
-// TODO: other options
-function getEmbedURLFromVideoID(id) {
-  return "https://www.youtube.com/embed/" + id + "?enablejsapi=1";
 }

@@ -35,7 +35,11 @@ const playerAPIConnector = {
   connect: function (playerElementID) {
     const intervalID = setInterval(() => {
       if (window.isYouTubeIframeAPIReady === true) {
-        this.playerAPI = new window.YT.Player(playerElementID);
+        this.playerAPI = new window.YT.Player(playerElementID, {
+          videoId: "dQw4w9WgXcQ",
+        });
+
+        window.player = this.playerAPI; //TODO: REMOVE; FOR DEVELOPMENT USE ONLY
 
         this.ENDED = window.YT.PlayerState.ENDED;
         this.PLAYING = window.YT.PlayerState.PLAYING;

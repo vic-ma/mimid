@@ -30,7 +30,7 @@ root.render(
     <App />
   </React.StrictMode>
 );
-playerAPIConnector.connect("youtube-player-iframe");
+playerAPIConnector.connect("youtube-player-inner-div");
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
