@@ -20,6 +20,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import "./YouTubePlayer.scss";
 
 // See: https://jameshfisher.com/2017/08/30/how-do-i-make-a-full-width-iframe/
+//      https://css-tricks.com/aspect-ratio-boxes/
 
 export default function YouTubePlayer() {
   return (

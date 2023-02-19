@@ -17,9 +17,12 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+// Using the same trick as with the YouTube player, to set an aspect ratio
+// minmax
+// Maybe change aspect ratio to make the squares a square
 .Controls {
   position: relative;
-  padding-top: 65%;
+  padding-top: 70%;
 }
 
 .controls-grid {
@@ -30,11 +33,10 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
   height: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-template-areas:
-    "LSB  PB   PB   SB1 "
-    "LEB  PB   PB   SB2 "
-    "LDB  PB   PB   SB3 "
+    "PB   PB   PB   PB  "
+    "LSB  LSB  SB1  SB1 "
     "SBBL SBBS SBFS SBFL";
 }
 

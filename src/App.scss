@@ -19,6 +19,8 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 @use "./breakpoints.scss";
 
+// Maybe a way to do all this without using Grid?
+
 .App {
   display: grid;
   height: 100vh;
