@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/musicians-remote/static/css/main.a32e650c.css",
-    "main.js": "/musicians-remote/static/js/main.667cf419.js",
+    "main.css": "/musicians-remote/static/css/main.a54fdd47.css",
+    "main.js": "/musicians-remote/static/js/main.dfabee46.js",
     "static/js/787.976b0f97.chunk.js": "/musicians-remote/static/js/787.976b0f97.chunk.js",
     "index.html": "/musicians-remote/index.html",
-    "main.a32e650c.css.map": "/musicians-remote/static/css/main.a32e650c.css.map",
-    "main.667cf419.js.map": "/musicians-remote/static/js/main.667cf419.js.map",
+    "main.a54fdd47.css.map": "/musicians-remote/static/css/main.a54fdd47.css.map",
+    "main.dfabee46.js.map": "/musicians-remote/static/js/main.dfabee46.js.map",
     "787.976b0f97.chunk.js.map": "/musicians-remote/static/js/787.976b0f97.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a32e650c.css",
-    "static/js/main.667cf419.js"
+    "static/css/main.a54fdd47.css",
+    "static/js/main.dfabee46.js"
   ]
 }
