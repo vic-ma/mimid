@@ -27,7 +27,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
  */
 
 // TODO: Some sort of error handling if polling for API ready takes too long
-// Maybe rename to "createPlayer" and just .player or something
+// TODO: Maybe rename to "createPlayer" and just .player or something
 
 const playerAPIConnector = {
   playerAPI: null,
@@ -35,7 +35,7 @@ const playerAPIConnector = {
   // Maybe pass in player parameters here?
   connect: function (playerElementID) {
     const intervalID = setInterval(() => {
-      if (window.isYouTubeIframeAPIReady === true) {
+      if (window.isYouTubeIframeAPIReady) {
         this.playerAPI = new window.YT.Player(playerElementID, {
           videoId: "Q7jhLV22VUk",
         });

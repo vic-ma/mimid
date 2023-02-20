@@ -25,19 +25,20 @@ import { useEffect } from "react";
 
 export default function PlayButton() {
   useEffect(
-    () => playerAPIConnector.addEventListener("onStateChange", onStateChange),
+    () =>
+      playerAPIConnector.addEventListener("onStateChange", handleStateChange),
     []
   );
 
   const [playerState, setPlayerState] = useState("Unset");
 
   return (
-    <Button className="PlayButton" onClick={onClick} variant="contained">
+    <Button className="PlayButton" onClick={handleClick} variant="contained">
       {playerState.toString()}
     </Button>
   );
 
-  function onClick() {
+  function handleClick() {
     if (playerState === playerAPIConnector.PAUSED) {
       playerAPIConnector.playerAPI.playVideo();
     } else {
@@ -45,8 +46,7 @@ export default function PlayButton() {
     }
   }
 
-  function onStateChange(event) {
-    console.log("EVENT HANDLER CALLED");
+  function handleStateChange(event) {
     setPlayerState(event.data);
   }
 }

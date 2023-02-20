@@ -19,10 +19,10 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import { Button } from "@mui/material";
 
-export default function LoopDeleteButton() {
+export default function LoopStartButton() {
   return (
-    <Button className="LoopDeleteButton" variant="contained">
-      LDB
+    <Button className="LoopButton" variant="contained">
+      LOOP
     </Button>
   );
 }

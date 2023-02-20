@@ -21,14 +21,35 @@ import playerAPIConnector from "../playerAPIConnector";
 
 import { Button } from "@mui/material";
 
-export default function SpeedButton({ className, speed }) {
+import { useState } from "react";
+import { useEffect } from "react";
+
+// The current state vs. next state problem could make this button confusing
+// Maybe use some light-up mechanic? Maybe with a snail / tortoise?
+export default function SpeedButton({ className, altSpeed }) {
+  useEffect(
+    () =>
+      playerAPIConnector.addEventListener(
+        "onPlaybackRateChange",
+        handlePlaybackRateChange
+      ),
+    [] // eslint-disable-line
+  );
+
+  const [currentSpeed, setCurrentSpeed] = useState(1);
   return (
-    <Button className={className} onClick={onClick} variant="contained">
-      {speed + "x"}
+    <Button className={className} onClick={handleClick} variant="contained">
+      {currentSpeed + "X"}
     </Button>
   );
 
-  function onClick() {
-    console.log(playerAPIConnector.playerAPI.setPlaybackRate(speed));
+  function handleClick() {
+    const newSpeed = currentSpeed === 1 ? altSpeed : 1;
+    playerAPIConnector.playerAPI.setPlaybackRate(newSpeed);
+    setCurrentSpeed(newSpeed);
+  }
+
+  function handlePlaybackRateChange(event) {
+    setCurrentSpeed(event.data === 1 ? 1 : event.data);
   }
 }
