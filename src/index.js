@@ -19,7 +19,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "./index.scss";
 import App from "./App";
 import playerAPIConnector from "./playerAPIConnector";
 import reportWebVitals from "./reportWebVitals";
