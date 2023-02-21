@@ -32,7 +32,9 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 const playerAPIConnector = {
   playerAPI: null,
 
-  // Maybe pass in player parameters here?
+  STANDARD_DELAY: 100,
+
+  // Maybe pass in player parameters / event listeners here?
   connect: function (playerElementID) {
     const intervalID = setInterval(() => {
       if (window.isYouTubeIframeAPIReady) {
@@ -42,6 +44,7 @@ const playerAPIConnector = {
 
         window.player = this.playerAPI; //TODO: REMOVE; FOR DEVELOPMENT USE ONLY
 
+        this.UNSTARTED = window.YT.PlayerState.UNSTARTED;
         this.ENDED = window.YT.PlayerState.ENDED;
         this.PLAYING = window.YT.PlayerState.PLAYING;
         this.PAUSED = window.YT.PlayerState.PAUSED;
@@ -50,7 +53,7 @@ const playerAPIConnector = {
 
         clearInterval(intervalID);
       }
-    });
+    }, this.STANDARD_DELAY);
   },
 
   addEventListener: function (event, listener) {
@@ -59,7 +62,7 @@ const playerAPIConnector = {
         this.playerAPI.addEventListener(event, listener);
         clearInterval(intervalID);
       }
-    });
+    }, this.STANDARD_DELAY);
   },
 };
 

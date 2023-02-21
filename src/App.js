@@ -56,12 +56,12 @@ export default function App() {
       setErrorURLBar(true);
     }
   }
-}
 
-// https://stackoverflow.com/a/27728417
-function getVideoIDFromURL(url) {
-  const regex =
-    /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|&v(?:i)?=))([^#&?]*).*/;
-  const match = url.match(regex);
-  return match !== null ? match[1] : null;
+  // https://stackoverflow.com/a/27728417
+  function getVideoIDFromURL(url) {
+    const regex =
+      /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|&v(?:i)?=))([^#&?]*).*/;
+    const match = url.match(regex);
+    return match !== null ? match[1] : null;
+  }
 }
