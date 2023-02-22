@@ -17,9 +17,10 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-// Using the same trick as with the YouTube player, to set an aspect ratio
-// minmax
-// Maybe change aspect ratio to make the squares a square
+@use "./breakpoints.scss";
+
+// TODO: minmax
+// TODO: Maybe change aspect ratio to make the squares a square
 .Controls {
   position: relative;
   padding-top: 70%;
@@ -67,3 +68,17 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 .SkipButtonForwardLong {
   grid-area: FL;
 }
+
+@mixin set-breakpoint-gap($breakpoint, $gap) {
+  @media (min-width: $breakpoint) {
+    .controls-grid {
+      gap: $gap;
+    }
+  }
+}
+
+@include set-breakpoint-gap(breakpoints.$xs-breakpoint, breakpoints.$xs-gap);
+@include set-breakpoint-gap(breakpoints.$sm-breakpoint, breakpoints.$sm-gap);
+@include set-breakpoint-gap(breakpoints.$md-breakpoint, breakpoints.$md-gap);
+@include set-breakpoint-gap(breakpoints.$lg-breakpoint, breakpoints.$lg-gap);
+@include set-breakpoint-gap(breakpoints.$xl-breakpoint, breakpoints.$xl-gap);

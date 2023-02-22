@@ -21,6 +21,7 @@ import playerAPIConnector from "../playerAPIConnector";
 
 import { Button } from "@mui/material";
 
+// TODO: Change paused behaviour
 export default function SkipButton({ className, amount }) {
   return (
     <Button className={className} onClick={onClick} variant="contained">

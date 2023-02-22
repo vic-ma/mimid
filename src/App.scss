@@ -19,55 +19,28 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 @use "./breakpoints.scss";
 
-// Maybe a way to do all this without using Grid?
+// TODO: Use flex-shrink to ensure settings is always visible
 
 .App {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
-  grid-template-rows: 1fr repeat(3, auto) 1fr;
-  grid-template-areas:
-    ".            "
-    "URLBar       "
-    "YouTubePlayer"
-    "Controls     "
-    ".            ";
+  width: min(100vw, 50vh);
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-@mixin set-app-margins($breakpoint, $gap) {
+@mixin set-breakpoint-gap($breakpoint, $gap) {
   @media (min-width: $breakpoint) {
     .App {
-      margin-left: $gap;
-      margin-right: $gap;
+      gap: $gap;
+      margin-top: $gap;
     }
   }
 }
 
-@include set-app-margins(breakpoints.$xs-breakpoint, breakpoints.$xs-gap);
-@include set-app-margins(breakpoints.$sm-breakpoint, breakpoints.$sm-gap);
-@include set-app-margins(breakpoints.$md-breakpoint, breakpoints.$md-gap);
-@include set-app-margins(breakpoints.$lg-breakpoint, breakpoints.$lg-gap);
-@include set-app-margins(breakpoints.$xl-breakpoint, breakpoints.$xl-gap);
-
-@media (orientation: landscape) {
-  .App {
-    margin-left: 0px;
-    margin-right: 0px;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas:
-      ". .              ."
-      ". URLBar         ."
-      ". YouTubePlayer  ."
-      ". Controls       ."
-      ". .              .";
-  }
-}
-
-.URLBar {
-  grid-area: URLBar;
-}
-.YouTubePlayer {
-  grid-area: YouTubePlayer;
-}
-.Controls {
-  grid-area: Controls;
-}
+@include set-breakpoint-gap(breakpoints.$xs-breakpoint, breakpoints.$xs-gap);
+@include set-breakpoint-gap(breakpoints.$sm-breakpoint, breakpoints.$sm-gap);
+@include set-breakpoint-gap(breakpoints.$md-breakpoint, breakpoints.$md-gap);
+@include set-breakpoint-gap(breakpoints.$lg-breakpoint, breakpoints.$lg-gap);
+@include set-breakpoint-gap(breakpoints.$xl-breakpoint, breakpoints.$xl-gap);
