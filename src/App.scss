@@ -23,18 +23,23 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 .App {
   display: flex;
+  justify-content: center;
+}
+
+.app-inner {
+  display: flex;
   flex-direction: column;
   height: 100vh;
   width: min(100vw, 50vh);
-  margin: 0 auto;
   overflow: hidden;
 }
 
 @mixin set-breakpoint-gap($breakpoint, $gap) {
   @media (min-width: $breakpoint) {
-    .App {
+    .app-inner {
       gap: $gap;
-      margin-top: $gap;
+      margin: $gap;
+      margin-bottom: 0;
     }
   }
 }

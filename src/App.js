@@ -38,9 +38,11 @@ export default function App() {
 
   return (
     <div className="App">
-      <URLBar onChange={handleChangeURLBar} error={errorURLBar} />
-      <YouTubePlayer />
-      <Controls />
+      <div className="app-inner">
+        <URLBar onChange={handleChangeURLBar} error={errorURLBar} />
+        <YouTubePlayer />
+        <Controls />
+      </div>
     </div>
   );
 
