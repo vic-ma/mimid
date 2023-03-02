@@ -24,9 +24,9 @@ import URLBar from "./URLBar.js";
 import YouTubePlayer from "./YouTubePlayer.js";
 import Controls from "./Controls.js";
 import Footer from "./Footer";
+import playerAPIConnector from "./playerAPIConnector";
 
 import { useState } from "react";
-import playerAPIConnector from "./playerAPIConnector";
 
 /* TODO
  * All: lock zoom

@@ -17,20 +17,31 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import playerAPIConnector from "../playerAPIConnector";
+import "./SettingsAppBar.scss";
 
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
-// TODO: Change paused behaviour
-export default function SkipButton({ className, amount }) {
+export default function SettingsAppBar({ onClose }) {
   return (
-    <Button className={className} onClick={onClick} variant="contained">
-      {"Skip " + amount}
-    </Button>
+    <AppBar>
+      <Toolbar className="settings-toolbar">
+        <IconButton
+          className="settings-toolbar-close"
+          edge="start"
+          color="inherit"
+          onClick={onClose}
+          aria-label="Close"
+        >
+          <CloseIcon />
+        </IconButton>
+        <Typography>Settings</Typography>
+        <Button color="inherit">test</Button>
+      </Toolbar>
+    </AppBar>
   );
-
-  function onClick() {
-    const currentTime = playerAPIConnector.playerAPI.getCurrentTime();
-    playerAPIConnector.playerAPI.seekTo(currentTime + amount, true);
-  }
 }

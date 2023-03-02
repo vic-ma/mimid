@@ -27,10 +27,10 @@ import { useState } from "react";
 export default function Footer() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   return (
-    <div className="Footer">
+    <footer className="Footer">
       <SettingsButton onClick={handleSettingsButtonClick} />
       <Settings open={settingsOpen} onClose={handleSettingsClose} />
-    </div>
+    </footer>
   );
 
   function handleSettingsButtonClick() {

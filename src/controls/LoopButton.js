@@ -19,7 +19,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import playerAPIConnector from "../playerAPIConnector";
 
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
 
 import { useState } from "react";
 import { useRef } from "react";
