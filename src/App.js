@@ -23,6 +23,7 @@ import "./App.scss";
 import URLBar from "./URLBar.js";
 import YouTubePlayer from "./YouTubePlayer.js";
 import Controls from "./Controls.js";
+import Footer from "./Footer";
 
 import { useState } from "react";
 import playerAPIConnector from "./playerAPIConnector";
@@ -42,6 +43,7 @@ export default function App() {
         <URLBar onChange={handleChangeURLBar} error={errorURLBar} />
         <YouTubePlayer />
         <Controls />
+        <Footer />
       </div>
     </div>
   );

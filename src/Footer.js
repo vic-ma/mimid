@@ -17,25 +17,14 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./Controls.scss";
+import "./Footer.scss";
 
-import LoopButton from "./controls/LoopButton.js";
-import PlayButton from "./controls/PlayButton.js";
-import SpeedButton from "./controls/SpeedButton.js";
-import SkipButton from "./controls/SkipButton.js";
+import SettingsButton from "./footer/SettingsButton";
 
-export default function Controls() {
+export default function Footer() {
   return (
-    <div className="Controls">
-      <div className="controls-grid">
-        <LoopButton />
-        <PlayButton />
-        <SpeedButton className="SpeedButton" altSpeed={0.5} />
-        <SkipButton className="SkipButtonBackwardLong" amount={-5} />
-        <SkipButton className="SkipButtonBackwardShort" amount={-1} />
-        <SkipButton className="SkipButtonForwardShort" amount={1} />
-        <SkipButton className="SkipButtonForwardLong" amount={5} />
-      </div>
+    <div className="Footer">
+      <SettingsButton />
     </div>
   );
 }

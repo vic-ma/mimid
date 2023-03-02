@@ -25,7 +25,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 
-// Add event listener for video change
+// TODO: handle skipping when paused
 export default function LoopButton() {
   useEffect(
     () =>
