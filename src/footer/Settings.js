@@ -17,12 +17,23 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import { Button } from "@mui/material";
+import React from "react";
+import { Dialog } from "@mui/material";
+import { Slide } from "@mui/material";
 
-export default function SettingsButton({ onClick }) {
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+export default function Settings({ open, onClose }) {
   return (
-    <Button className="SettingsButton" onClick={onClick} variant="text">
-      Settings
-    </Button>
+    <Dialog
+      fullScreen
+      open={open}
+      onClose={onClose}
+      TransitionComponent={Transition}
+    >
+      test
+    </Dialog>
   );
 }

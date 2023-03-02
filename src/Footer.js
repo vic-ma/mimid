@@ -20,11 +20,24 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import "./Footer.scss";
 
 import SettingsButton from "./footer/SettingsButton";
+import Settings from "./footer/Settings";
+
+import { useState } from "react";
 
 export default function Footer() {
+  const [settingsOpen, setSettingsOpen] = useState(false);
   return (
     <div className="Footer">
-      <SettingsButton />
+      <SettingsButton onClick={handleSettingsButtonClick} />
+      <Settings open={settingsOpen} onClose={handleSettingsClose} />
     </div>
   );
+
+  function handleSettingsButtonClick() {
+    setSettingsOpen(true);
+  }
+
+  function handleSettingsClose() {
+    setSettingsOpen(false);
+  }
 }
