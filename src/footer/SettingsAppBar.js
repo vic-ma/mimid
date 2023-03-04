@@ -39,8 +39,11 @@ export default function SettingsAppBar({ onClose }) {
         >
           <CloseIcon />
         </IconButton>
-        <Typography>Settings</Typography>
-        <Button color="inherit">test</Button>
+        <Typography className="settings-toolbar-title" variant="h6">
+          Settings
+        </Typography>
+        <Button color="inherit">Default</Button>
+        <Button color="inherit">Save</Button>
       </Toolbar>
     </AppBar>
   );

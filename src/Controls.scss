@@ -22,6 +22,10 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 // TODO: minmax
 // TODO: Maybe change aspect ratio to make the squares a square
 .Controls {
+  flex-grow: 1;
+}
+
+.controls-outer-div {
   position: relative;
   padding-top: 70%;
 }

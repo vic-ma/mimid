@@ -23,6 +23,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 .App {
   display: flex;
+  height: 100vh;
   justify-content: center;
   overflow: hidden;
   touch-action: none;
@@ -39,8 +40,6 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
     .app-inner {
       gap: $gap;
       margin: $gap;
-      margin-top: $gap;
-      margin-bottom: 0;
     }
   }
 }
