@@ -17,25 +17,7 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./SpeedButtonSetting.scss";
-
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Slider from "@mui/material/Slider";
-
-export default function SpeedButtonSetting() {
-  return (
-    <ListItem className="SpeedButtonSetting">
-      <ListItemText primary="Slow Speed" />
-      <Slider
-        className="SpeedButtonSettingSlider"
-        valueLabelDisplay="auto"
-        marks
-        min={0}
-        max={1}
-        step={0.05}
-        aria-label="Speed button setting slider"
-      />
-    </ListItem>
-  );
+.SpeedButtonSettingSlider {
+  margin-right: 2vw;
+  flex-basis: 50%;
 }

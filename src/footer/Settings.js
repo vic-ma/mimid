@@ -17,7 +17,10 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+import "./Settings.scss";
+
 import SettingsAppBar from "./SettingsAppBar";
+import SpeedButtonSetting from "./SpeedButtonSetting";
 
 import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
@@ -35,6 +38,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function Settings({ open, onClose }) {
   return (
     <Dialog
+      className="Settings"
       fullScreen
       disableRestoreFocus
       open={open}
@@ -43,12 +47,10 @@ export default function Settings({ open, onClose }) {
     >
       <SettingsAppBar onClose={onClose} />
       <List>
-        <ListItem>
-          <ListItemText primary="Foo" secondary="Bar" />
-        </ListItem>
+        <SpeedButtonSetting />
         <Divider />
         <ListItem>
-          <ListItemText primary="Foo" secondary="Bar" />
+          <ListItemText primary="Baz" secondary="Biz" />
         </ListItem>
       </List>
     </Dialog>
