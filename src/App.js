@@ -22,8 +22,8 @@ import "./App.scss";
 
 import URLBar from "./URLBar.js";
 import YouTubePlayer from "./YouTubePlayer.js";
-import Controls from "./Controls.js";
-import Footer from "./Footer";
+import Controls from "./controls/Controls.js";
+import Footer from "./footer/Footer.js";
 import playerAPIConnector from "./playerAPIConnector";
 
 import { useState } from "react";

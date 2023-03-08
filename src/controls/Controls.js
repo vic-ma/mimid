@@ -19,10 +19,10 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import "./Controls.scss";
 
-import LoopButton from "./controls/LoopButton.js";
-import PlayButton from "./controls/PlayButton.js";
-import SpeedButton from "./controls/SpeedButton.js";
-import SkipButton from "./controls/SkipButton.js";
+import LoopButton from "./LoopButton.js";
+import PlayButton from "./PlayButton.js";
+import SpeedButton from "./SpeedButton.js";
+import SkipButton from "./SkipButton.js";
 
 export default function Controls() {
   return (
