@@ -31,7 +31,7 @@ export default function Controls() {
         <div className="controls-grid">
           <LoopButton />
           <PlayButton />
-          <SpeedButton className="SpeedButton" altSpeed={0.5} />
+          <SpeedButton altSpeed={0.5} />
           <SkipButton className="SkipButtonBackwardLong" amount={-5} />
           <SkipButton className="SkipButtonBackwardShort" amount={-1} />
           <SkipButton className="SkipButtonForwardShort" amount={1} />

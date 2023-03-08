@@ -26,7 +26,7 @@ import { useEffect } from "react";
 
 // The current state vs. next state problem could make this button confusing
 // Maybe use some light-up mechanic? Maybe with a snail / tortoise?
-export default function SpeedButton({ className, altSpeed }) {
+export default function SpeedButton({ altSpeed }) {
   useEffect(
     () =>
       playerAPIConnector.addEventListener(
@@ -38,7 +38,7 @@ export default function SpeedButton({ className, altSpeed }) {
 
   const [currentSpeed, setCurrentSpeed] = useState(1);
   return (
-    <Button className={className} onClick={handleClick} variant="contained">
+    <Button className="SpeedButton" onClick={handleClick} variant="contained">
       {currentSpeed + "X"}
     </Button>
   );
