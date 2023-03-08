@@ -28,7 +28,7 @@ import Typography from "@mui/material/Typography";
 
 export default function SettingsAppBar({ onClose }) {
   return (
-    <AppBar>
+    <AppBar className="SettingsAppBar">
       <Toolbar className="settings-toolbar">
         <IconButton
           className="settings-toolbar-close"

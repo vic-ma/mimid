@@ -21,6 +21,10 @@ import SettingsAppBar from "./SettingsAppBar";
 
 import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
 
 import React from "react";
 
@@ -38,6 +42,15 @@ export default function Settings({ open, onClose }) {
       TransitionComponent={Transition}
     >
       <SettingsAppBar onClose={onClose} />
+      <List>
+        <ListItem>
+          <ListItemText primary="Foo" secondary="Bar" />
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <ListItemText primary="Foo" secondary="Bar" />
+        </ListItem>
+      </List>
     </Dialog>
   );
 }
