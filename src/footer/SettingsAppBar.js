@@ -29,9 +29,8 @@ import Typography from "@mui/material/Typography";
 export default function SettingsAppBar({ onClose }) {
   return (
     <AppBar className="SettingsAppBar">
-      <Toolbar className="settings-toolbar">
+      <Toolbar>
         <IconButton
-          className="settings-toolbar-close"
           edge="start"
           color="inherit"
           onClick={onClose}
@@ -39,7 +38,7 @@ export default function SettingsAppBar({ onClose }) {
         >
           <CloseIcon />
         </IconButton>
-        <Typography className="settings-toolbar-title" variant="h6">
+        <Typography className="SettingsToolbarTitle" variant="h6">
           Settings
         </Typography>
         <Button color="inherit">Default</Button>
