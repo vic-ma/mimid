@@ -23,8 +23,8 @@ import "./App.scss";
 import URLBar from "./URLBar.js";
 import YouTubePlayer from "./YouTubePlayer.js";
 import Controls from "./controls/Controls.js";
-import Footer from "./footer/Footer.js";
-import playerAPIConnector from "./playerAPIConnector";
+import Footer from "./Footer.js";
+import playerAPIConnector from "./playerAPIConnector.js";
 
 import { useState } from "react";
 

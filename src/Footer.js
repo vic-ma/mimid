@@ -19,8 +19,8 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import "./Footer.scss";
 
-import SettingsButton from "./SettingsButton";
-import Settings from "./Settings";
+import SettingsButton from "./SettingsButton.js";
+import Settings from "./settings/Settings.js";
 
 import { useState } from "react";
 

@@ -17,25 +17,24 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./SpeedButtonSetting.scss";
+import Dialog from "@mui/material/Dialog";
+import Slide from "@mui/material/Slide";
 
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Slider from "@mui/material/Slider";
+import React from "react";
 
-export default function SpeedButtonSetting() {
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+export default function Settings({ open, onClose }) {
   return (
-    <ListItem className="SpeedButtonSetting">
-      <ListItemText primary="Slow Speed" />
-      <Slider
-        className="SpeedButtonSettingSlider"
-        valueLabelDisplay="auto"
-        marks
-        min={0}
-        max={1}
-        step={0.05}
-        aria-label="Speed button setting slider"
-      />
-    </ListItem>
+    <Dialog
+      className="Settings"
+      fullScreen
+      disableRestoreFocus
+      open={open}
+      onClose={onClose}
+      TransitionComponent={Transition}
+    ></Dialog>
   );
 }
