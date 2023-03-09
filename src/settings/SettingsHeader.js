@@ -17,34 +17,21 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./Settings.scss";
+import "./SettingsHeader.scss";
 
-import SettingsHeader from "./SettingsHeader";
-import SpeedButtonSetting from "./SpeedButtonSetting";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
-import Dialog from "@mui/material/Dialog";
-import Slide from "@mui/material/Slide";
-
-import React from "react";
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
-
-export default function Settings({ open, onClose }) {
+export default function SettingsHeader({ onClose }) {
   return (
-    <Dialog
-      className="Settings"
-      fullScreen
-      disableRestoreFocus
-      open={open}
-      onClose={onClose}
-      TransitionComponent={Transition}
-    >
-      <div className="settings-inner-div">
-        <SettingsHeader onClose={onClose} />
-        <SpeedButtonSetting />
-      </div>
-    </Dialog>
+    <header className="SettingsHeader">
+      <Button variant="text" onClick={onClose}>
+        Close
+      </Button>
+      <Typography variant="h6">Settings</Typography>
+      <Button variant="text">Default</Button>
+      <Button variant="text">Discard</Button>
+      <Button variant="text">Save</Button>
+    </header>
   );
 }
