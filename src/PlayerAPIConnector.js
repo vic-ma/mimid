@@ -29,7 +29,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 // TODO: Some sort of error handling if polling for API ready takes too long
 // TODO: Maybe rename to "createPlayer" and just .player or something
 
-const playerAPIConnector = {
+const PlayerAPIConnector = {
   playerAPI: null,
 
   STANDARD_DELAY: 100,
@@ -66,4 +66,4 @@ const playerAPIConnector = {
   },
 };
 
-export default playerAPIConnector;
+export default PlayerAPIConnector;

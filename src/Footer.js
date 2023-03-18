@@ -21,6 +21,7 @@ import "./Footer.scss";
 
 import SettingsButton from "./SettingsButton.js";
 import Settings from "./settings/Settings.js";
+import SettingsIntegration from "./settings/SettingsIntegration.js";
 
 import { useState } from "react";
 
@@ -38,6 +39,7 @@ export default function Footer() {
   }
 
   function handleSettingsClose() {
+    SettingsIntegration.saveUnsavedChanges();
     setSettingsOpen(false);
   }
 }

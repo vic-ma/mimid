@@ -19,6 +19,8 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import "./SlowSpeedSettingSlider.scss";
 
+import SettingsIntegration from "./SettingsIntegration.js";
+
 import Slider from "@mui/material/Slider";
 
 export default function SlowSpeedSettingSlider() {
@@ -26,11 +28,16 @@ export default function SlowSpeedSettingSlider() {
     <Slider
       className="SlowSpeedSettingSlider"
       aria-label="Slow speed"
-      min={0.1}
-      max={0.9}
+      onChange={handleChange}
+      min={0.25}
+      max={0.95}
       step={0.05}
       marks={true}
       valueLabelDisplay="auto"
     ></Slider>
   );
+
+  function handleChange(event, value) {
+    SettingsIntegration.addUnsavedChange("slow-speed", value);
+  }
 }

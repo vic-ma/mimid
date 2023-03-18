@@ -21,7 +21,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
 import App from "./App";
-import PlayerAPIConnector from "./PlayerAPIConnector";
+import PlayerAPIConnector from "./PlayerAPIConnector.js";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

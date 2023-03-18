@@ -17,7 +17,8 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import PlayerAPIConnector from "../PlayerAPIConnector";
+import SettingsIntegration from "../settings/SettingsIntegration.js";
+import PlayerAPIConnector from "../PlayerAPIConnector.js";
 
 import Button from "@mui/material/Button";
 
@@ -26,17 +27,22 @@ import { useEffect } from "react";
 
 // The current state vs. next state problem could make this button confusing
 // Maybe use some light-up mechanic? Maybe with a snail / tortoise?
-export default function SpeedButton({ altSpeed }) {
-  useEffect(
-    () =>
-      PlayerAPIConnector.addEventListener(
-        "onPlaybackRateChange",
-        handlePlaybackRateChange
-      ),
-    [] // eslint-disable-line
-  );
+export default function SpeedButton() {
+  const SETTING_NAME = "slow-speed";
+  const DEFAULT_SPEED = 0.5;
+  useEffect(() => {
+    SettingsIntegration.addSettingListenerFloat(SETTING_NAME, setSlowSpeed);
+    PlayerAPIConnector.addEventListener(
+      "onPlaybackRateChange",
+      handlePlaybackRateChange
+    );
+  }, []);
 
+  const [slowSpeed, setSlowSpeed] = useState(
+    SettingsIntegration.getFloatSettingOrDefault(SETTING_NAME, DEFAULT_SPEED)
+  );
   const [currentSpeed, setCurrentSpeed] = useState(1);
+
   return (
     <Button className="SpeedButton" onClick={handleClick} variant="contained">
       {currentSpeed + "X"}
@@ -44,8 +50,8 @@ export default function SpeedButton({ altSpeed }) {
   );
 
   function handleClick() {
-    const newSpeed = currentSpeed === 1 ? altSpeed : 1;
-    PlayerAPIConnector.PlayerAPI.setPlaybackRate(newSpeed);
+    const newSpeed = currentSpeed === 1 ? slowSpeed : 1;
+    PlayerAPIConnector.playerAPI.setPlaybackRate(newSpeed);
     setCurrentSpeed(newSpeed);
   }
 

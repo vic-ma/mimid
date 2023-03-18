@@ -53,7 +53,7 @@ export default function App() {
     const id = getVideoIDFromURL(url);
     if (id !== null) {
       setErrorURLBar(false);
-      PlayerAPIConnector.PlayerAPI.loadVideoById(id);
+      PlayerAPIConnector.playerAPI.loadVideoById(id);
     } else if (url === "") {
       setErrorURLBar(false);
     } else {

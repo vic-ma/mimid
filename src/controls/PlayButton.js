@@ -18,7 +18,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import Button from "@mui/material/Button";
-import PlayerAPIConnector from "../PlayerAPIConnector";
+import PlayerAPIConnector from "../PlayerAPIConnector.js";
 
 import { useState } from "react";
 import { useEffect } from "react";
@@ -40,9 +40,9 @@ export default function PlayButton() {
 
   function handleClick() {
     if (playerState === PlayerAPIConnector.PAUSED) {
-      PlayerAPIConnector.PlayerAPI.playVideo();
+      PlayerAPIConnector.playerAPI.playVideo();
     } else {
-      PlayerAPIConnector.PlayerAPI.pauseVideo();
+      PlayerAPIConnector.playerAPI.pauseVideo();
     }
   }
 

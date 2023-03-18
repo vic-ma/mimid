@@ -17,7 +17,7 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import PlayerAPIConnector from "../PlayerAPIConnector";
+import PlayerAPIConnector from "../PlayerAPIConnector.js";
 
 import Button from "@mui/material/Button";
 
@@ -30,7 +30,7 @@ export default function LoopButton() {
   useEffect(
     () =>
       PlayerAPIConnector.addEventListener("onStateChange", handleStateChange),
-    []
+    [] //eslint-disable-line
   );
 
   const stages = {
@@ -54,19 +54,19 @@ export default function LoopButton() {
   function handleClick() {
     switch (currentStage) {
       case stages.SET_START:
-        startTime.current = PlayerAPIConnector.PlayerAPI.getCurrentTime();
+        startTime.current = PlayerAPIConnector.playerAPI.getCurrentTime();
         break;
       case stages.SET_END:
-        endTime.current = PlayerAPIConnector.PlayerAPI.getCurrentTime();
+        endTime.current = PlayerAPIConnector.playerAPI.getCurrentTime();
         maybeSwapStartAndEnd();
         intervalID.current = setInterval(() => {
-          const currentTime = PlayerAPIConnector.PlayerAPI.getCurrentTime();
+          const currentTime = PlayerAPIConnector.playerAPI.getCurrentTime();
           if (
             currentTime < startTime.current ||
             currentTime > endTime.current
           ) {
-            PlayerAPIConnector.PlayerAPI.seekTo(startTime.current, true);
-            PlayerAPIConnector.PlayerAPI.playVideo();
+            PlayerAPIConnector.playerAPI.seekTo(startTime.current, true);
+            PlayerAPIConnector.playerAPI.playVideo();
           }
         }, PlayerAPIConnector.STANDARD_DELAY);
         break;

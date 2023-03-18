@@ -17,7 +17,7 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import PlayerAPIConnector from "../PlayerAPIConnector";
+import PlayerAPIConnector from "../PlayerAPIConnector.js";
 
 import Button from "@mui/material/Button";
 
@@ -30,7 +30,7 @@ export default function SkipButton({ className, amount }) {
   );
 
   function onClick() {
-    const currentTime = PlayerAPIConnector.PlayerAPI.getCurrentTime();
-    PlayerAPIConnector.PlayerAPI.seekTo(currentTime + amount, true);
+    const currentTime = PlayerAPIConnector.playerAPI.getCurrentTime();
+    PlayerAPIConnector.playerAPI.seekTo(currentTime + amount, true);
   }
 }
