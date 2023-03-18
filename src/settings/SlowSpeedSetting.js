@@ -17,14 +17,18 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./SpeedButtonSetting.scss";
+import "./SlowSpeedSetting.scss";
 
 import Typography from "@mui/material/Typography";
+import SlowSpeedSettingSlider from "./SlowSpeedSettingSlider";
 
 export default function SpeedButtonSetting() {
   return (
-    <div>
-      <Typography>Speed</Typography>
+    <div className="SlowSpeedSetting">
+      <Typography className="SlowSpeedSettingLabel" variant="h6">
+        Slow Speed
+      </Typography>
+      <SlowSpeedSettingSlider></SlowSpeedSettingSlider>
     </div>
   );
 }

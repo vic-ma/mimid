@@ -17,21 +17,10 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./SettingsHeader.scss";
+.SlowSpeedSetting {
+  display: flex;
+}
 
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-
-export default function SettingsHeader({ onClose }) {
-  return (
-    <header className="SettingsHeader">
-      <Button variant="text" onClick={onClose}>
-        Close
-      </Button>
-      <Typography variant="h5">Settings</Typography>
-      <Button variant="text">Reset</Button>
-      <Button variant="text">Discard</Button>
-      <Button variant="text">Save</Button>
-    </header>
-  );
+.SlowSpeedSettingLabel {
+  flex-grow: 1;
 }

@@ -17,34 +17,20 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./Settings.scss";
+import "./SlowSpeedSettingSlider.scss";
 
-import SettingsHeader from "./SettingsHeader";
-import SlowSpeedSetting from "./SlowSpeedSetting";
+import Slider from "@mui/material/Slider";
 
-import Dialog from "@mui/material/Dialog";
-import Slide from "@mui/material/Slide";
-
-import React from "react";
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
-
-export default function Settings({ open, onClose }) {
+export default function SlowSpeedSettingSlider() {
   return (
-    <Dialog
-      className="Settings"
-      fullScreen
-      disableRestoreFocus
-      open={open}
-      onClose={onClose}
-      TransitionComponent={Transition}
-    >
-      <div className="settings-inner-div">
-        <SettingsHeader onClose={onClose} />
-        <SlowSpeedSetting />
-      </div>
-    </Dialog>
+    <Slider
+      className="SlowSpeedSettingSlider"
+      aria-label="Slow speed"
+      min={0.1}
+      max={0.9}
+      step={0.05}
+      marks={true}
+      valueLabelDisplay="auto"
+    ></Slider>
   );
 }
