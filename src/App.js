@@ -24,7 +24,7 @@ import URLBar from "./URLBar.js";
 import YouTubePlayer from "./YouTubePlayer.js";
 import Controls from "./controls/Controls.js";
 import Footer from "./Footer.js";
-import playerAPIConnector from "./playerAPIConnector.js";
+import PlayerAPIConnector from "./PlayerAPIConnector.js";
 
 import { useState } from "react";
 
@@ -53,7 +53,7 @@ export default function App() {
     const id = getVideoIDFromURL(url);
     if (id !== null) {
       setErrorURLBar(false);
-      playerAPIConnector.playerAPI.loadVideoById(id);
+      PlayerAPIConnector.PlayerAPI.loadVideoById(id);
     } else if (url === "") {
       setErrorURLBar(false);
     } else {

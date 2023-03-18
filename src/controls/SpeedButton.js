@@ -17,7 +17,7 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import playerAPIConnector from "../playerAPIConnector";
+import PlayerAPIConnector from "../PlayerAPIConnector";
 
 import Button from "@mui/material/Button";
 
@@ -29,7 +29,7 @@ import { useEffect } from "react";
 export default function SpeedButton({ altSpeed }) {
   useEffect(
     () =>
-      playerAPIConnector.addEventListener(
+      PlayerAPIConnector.addEventListener(
         "onPlaybackRateChange",
         handlePlaybackRateChange
       ),
@@ -45,7 +45,7 @@ export default function SpeedButton({ altSpeed }) {
 
   function handleClick() {
     const newSpeed = currentSpeed === 1 ? altSpeed : 1;
-    playerAPIConnector.playerAPI.setPlaybackRate(newSpeed);
+    PlayerAPIConnector.PlayerAPI.setPlaybackRate(newSpeed);
     setCurrentSpeed(newSpeed);
   }
 

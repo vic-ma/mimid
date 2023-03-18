@@ -17,7 +17,7 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import playerAPIConnector from "../playerAPIConnector";
+import PlayerAPIConnector from "../PlayerAPIConnector";
 
 import Button from "@mui/material/Button";
 
@@ -29,7 +29,7 @@ import { useEffect } from "react";
 export default function LoopButton() {
   useEffect(
     () =>
-      playerAPIConnector.addEventListener("onStateChange", handleStateChange),
+      PlayerAPIConnector.addEventListener("onStateChange", handleStateChange),
     []
   );
 
@@ -54,21 +54,21 @@ export default function LoopButton() {
   function handleClick() {
     switch (currentStage) {
       case stages.SET_START:
-        startTime.current = playerAPIConnector.playerAPI.getCurrentTime();
+        startTime.current = PlayerAPIConnector.PlayerAPI.getCurrentTime();
         break;
       case stages.SET_END:
-        endTime.current = playerAPIConnector.playerAPI.getCurrentTime();
+        endTime.current = PlayerAPIConnector.PlayerAPI.getCurrentTime();
         maybeSwapStartAndEnd();
         intervalID.current = setInterval(() => {
-          const currentTime = playerAPIConnector.playerAPI.getCurrentTime();
+          const currentTime = PlayerAPIConnector.PlayerAPI.getCurrentTime();
           if (
             currentTime < startTime.current ||
             currentTime > endTime.current
           ) {
-            playerAPIConnector.playerAPI.seekTo(startTime.current, true);
-            playerAPIConnector.playerAPI.playVideo();
+            PlayerAPIConnector.PlayerAPI.seekTo(startTime.current, true);
+            PlayerAPIConnector.PlayerAPI.playVideo();
           }
-        }, playerAPIConnector.STANDARD_DELAY);
+        }, PlayerAPIConnector.STANDARD_DELAY);
         break;
       case stages.DELETE:
         deleteLoop();
@@ -100,7 +100,7 @@ export default function LoopButton() {
   }
 
   function handleStateChange(event) {
-    if (event.data === playerAPIConnector.UNSTARTED) {
+    if (event.data === PlayerAPIConnector.UNSTARTED) {
       deleteLoop();
       setCurrentStage(stages.SET_START);
     }

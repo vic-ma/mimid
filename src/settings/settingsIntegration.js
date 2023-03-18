@@ -17,21 +17,6 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./SettingsHeader.scss";
+const SettingsIntegration = {};
 
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-
-export default function SettingsHeader({ onClose }) {
-  return (
-    <header className="SettingsHeader">
-      <Button variant="text" onClick={onClose}>
-        X
-      </Button>
-      <Typography className="SettingsHeaderLabel" variant="h5">
-        Settings
-      </Typography>
-      <Button variant="text">Reset</Button>
-    </header>
-  );
-}
+export default SettingsIntegration;
