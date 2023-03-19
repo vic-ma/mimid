@@ -22,23 +22,24 @@ import { defaultsMap } from "./constants";
 const SettingsIntegration = {
   unsavedChanges: new Map(),
 
-  getFloatSetting: function (settingName) {
+  getSetting: function (settingName, typeConverter) {
     return window.localStorage.getItem(settingName) !== null
-      ? parseFloat(window.localStorage.getItem(settingName))
+      ? typeConverter(window.localStorage.getItem(settingName))
       : defaultsMap.get(settingName);
   },
 
-  addFloatSettingListener: function (settingName, stateSetter) {
-    window.addEventListener(settingName, (event) =>
-      stateSetter(parseFloat(window.localStorage.getItem(settingName)))
-    );
-    //this.addSettingListener(settingName, stateSetter, parseFloat);
+  getFloatSetting: function (settingName) {
+    return this.getSetting(settingName, parseFloat);
   },
 
   addSettingListener: function (settingName, stateSetter, typeConverter) {
     window.addEventListener(settingName, (event) =>
       stateSetter(typeConverter(window.localStorage.getItem(settingName)))
     );
+  },
+
+  addFloatSettingListener: function (settingName, stateSetter) {
+    this.addSettingListener(settingName, stateSetter, parseFloat);
   },
 
   addUnsavedChange: function (settingName, settingValue) {

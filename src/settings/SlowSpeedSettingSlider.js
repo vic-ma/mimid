@@ -24,15 +24,24 @@ import { SLOW_SPEED_SETTING_NAME } from "./constants";
 
 import Slider from "@mui/material/Slider";
 
+import { useEffect } from "react";
+import { useState } from "react";
+
 export default function SlowSpeedSettingSlider() {
+  useEffect(
+    () =>
+      setValue(SettingsIntegration.getFloatSetting(SLOW_SPEED_SETTING_NAME)),
+    []
+  );
+  const [value, setValue] = useState(
+    SettingsIntegration.getFloatSetting(SLOW_SPEED_SETTING_NAME)
+  );
   return (
     <Slider
       className="SlowSpeedSettingSlider"
       aria-label="Slow speed"
       onChange={handleChange}
-      defaultValue={SettingsIntegration.getFloatSetting(
-        SLOW_SPEED_SETTING_NAME
-      )}
+      value={value}
       min={0.25}
       max={0.95}
       step={0.05}
@@ -42,6 +51,7 @@ export default function SlowSpeedSettingSlider() {
   );
 
   function handleChange(event, value) {
+    setValue(value);
     SettingsIntegration.addUnsavedChange(SLOW_SPEED_SETTING_NAME, value);
   }
 }
