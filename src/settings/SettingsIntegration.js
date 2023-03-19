@@ -17,18 +17,27 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+import { defaultsMap } from "./constants";
+
 const SettingsIntegration = {
   unsavedChanges: new Map(),
 
-  getFloatSettingOrDefault: function (settingName, defaultValue) {
+  getFloatSetting: function (settingName) {
     return window.localStorage.getItem(settingName) !== null
       ? parseFloat(window.localStorage.getItem(settingName))
-      : defaultValue;
+      : defaultsMap.get(settingName);
   },
 
-  addSettingListenerFloat: function (settingName, stateSetter) {
+  addFloatSettingListener: function (settingName, stateSetter) {
     window.addEventListener(settingName, (event) =>
       stateSetter(parseFloat(window.localStorage.getItem(settingName)))
+    );
+    //this.addSettingListener(settingName, stateSetter, parseFloat);
+  },
+
+  addSettingListener: function (settingName, stateSetter, typeConverter) {
+    window.addEventListener(settingName, (event) =>
+      stateSetter(typeConverter(window.localStorage.getItem(settingName)))
     );
   },
 

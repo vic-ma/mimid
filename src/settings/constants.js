@@ -17,31 +17,8 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./SlowSpeedSettingSlider.scss";
+export const defaultsMap = new Map();
 
-import SettingsIntegration from "./SettingsIntegration.js";
-import { SLOW_SPEED_SETTING_NAME } from "./constants";
-
-import Slider from "@mui/material/Slider";
-
-export default function SlowSpeedSettingSlider() {
-  return (
-    <Slider
-      className="SlowSpeedSettingSlider"
-      aria-label="Slow speed"
-      onChange={handleChange}
-      defaultValue={SettingsIntegration.getFloatSetting(
-        SLOW_SPEED_SETTING_NAME
-      )}
-      min={0.25}
-      max={0.95}
-      step={0.05}
-      marks={true}
-      valueLabelDisplay="auto"
-    ></Slider>
-  );
-
-  function handleChange(event, value) {
-    SettingsIntegration.addUnsavedChange(SLOW_SPEED_SETTING_NAME, value);
-  }
-}
+export const SLOW_SPEED_SETTING_NAME = "slow-speed";
+export const SLOW_SPEED_SETTING_DEFAULT = 0.5;
+defaultsMap.set(SLOW_SPEED_SETTING_NAME, SLOW_SPEED_SETTING_DEFAULT);

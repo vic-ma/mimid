@@ -19,19 +19,19 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import SettingsIntegration from "../settings/SettingsIntegration.js";
 import PlayerAPIConnector from "../PlayerAPIConnector.js";
+import { SLOW_SPEED_SETTING_NAME } from "../settings/constants.js";
 
 import Button from "@mui/material/Button";
 
 import { useState } from "react";
 import { useEffect } from "react";
 
-// The current state vs. next state problem could make this button confusing
-// Maybe use some light-up mechanic? Maybe with a snail / tortoise?
 export default function SpeedButton() {
-  const SETTING_NAME = "slow-speed";
-  const DEFAULT_SPEED = 0.5;
   useEffect(() => {
-    SettingsIntegration.addSettingListenerFloat(SETTING_NAME, setSlowSpeed);
+    SettingsIntegration.addFloatSettingListener(
+      SLOW_SPEED_SETTING_NAME,
+      setSlowSpeed
+    );
     PlayerAPIConnector.addEventListener(
       "onPlaybackRateChange",
       handlePlaybackRateChange
@@ -39,7 +39,7 @@ export default function SpeedButton() {
   }, []);
 
   const [slowSpeed, setSlowSpeed] = useState(
-    SettingsIntegration.getFloatSettingOrDefault(SETTING_NAME, DEFAULT_SPEED)
+    SettingsIntegration.getFloatSetting(SLOW_SPEED_SETTING_NAME)
   );
   const [currentSpeed, setCurrentSpeed] = useState(1);
 
