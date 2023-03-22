@@ -17,7 +17,15 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-.SlowSpeedSettingSlider {
+.SliderSetting {
+  display: flex;
+}
+
+.SliderSettingLabel {
+  flex-grow: 1;
+}
+
+.SliderSettingSlider {
   flex-basis: 50vw;
   margin-right: 5vw;
 }

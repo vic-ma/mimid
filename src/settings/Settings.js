@@ -20,7 +20,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import "./Settings.scss";
 
 import SettingsHeader from "./SettingsHeader";
-import SlowSpeedSetting from "./SlowSpeedSetting";
+import SliderSetting from "./SliderSetting";
 
 import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
@@ -43,7 +43,13 @@ export default function Settings({ open, onClose }) {
     >
       <div className="settings-inner-div">
         <SettingsHeader onClose={onClose} />
-        <SlowSpeedSetting />
+        <SliderSetting
+          label="Slow Speed"
+          settingName="slow-speed"
+          min={0.25}
+          max={0.95}
+          step={0.05}
+        ></SliderSetting>
       </div>
     </Dialog>
   );

@@ -17,41 +17,53 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./SlowSpeedSettingSlider.scss";
+import "./SliderSetting.scss";
 
+import Typography from "@mui/material/Typography";
 import SettingsIntegration from "./SettingsIntegration.js";
-import { SLOW_SPEED_SETTING_NAME } from "./constants";
 
 import Slider from "@mui/material/Slider";
 
 import { useEffect } from "react";
 import { useState } from "react";
 
-export default function SlowSpeedSettingSlider() {
+export default function SliderSetting({
+  label,
+  settingName,
+  min,
+  max,
+  step,
+  marks = true,
+}) {
   useEffect(
-    () =>
-      setValue(SettingsIntegration.getFloatSetting(SLOW_SPEED_SETTING_NAME)),
-    []
+    () => setValue(SettingsIntegration.getFloatSetting(settingName)),
+    [] // eslint-disable-line
   );
+
   const [value, setValue] = useState(
-    SettingsIntegration.getFloatSetting(SLOW_SPEED_SETTING_NAME)
+    SettingsIntegration.getFloatSetting(settingName)
   );
+
   return (
-    <Slider
-      className="SlowSpeedSettingSlider"
-      aria-label="Slow speed"
-      onChange={handleChange}
-      value={value}
-      min={0.25}
-      max={0.95}
-      step={0.05}
-      marks={true}
-      valueLabelDisplay="auto"
-    ></Slider>
+    <div className="SliderSetting">
+      <Typography className="SliderSettingLabel" variant="h6">
+        {label}
+      </Typography>
+      <Slider
+        className="SliderSettingSlider"
+        onChange={handleChange}
+        value={value}
+        min={min}
+        max={max}
+        step={step}
+        marks={marks}
+        valueLabelDisplay="auto"
+      ></Slider>
+    </div>
   );
 
   function handleChange(event, value) {
     setValue(value);
-    SettingsIntegration.addUnsavedChange(SLOW_SPEED_SETTING_NAME, value);
+    SettingsIntegration.addUnsavedChange(settingName, value);
   }
 }
