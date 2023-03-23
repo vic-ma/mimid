@@ -18,19 +18,33 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import PlayerAPIConnector from "../PlayerAPIConnector.js";
+import SettingsIntegration from "../settings/SettingsIntegration.js";
 
 import Button from "@mui/material/Button";
 
+import { useState } from "react";
+import { useEffect } from "react";
+
 // TODO: Change paused behaviour
-export default function SkipButton({ className, amount }) {
+export default function SkipButton({ className, settingName, direction }) {
+  useEffect(() => {
+    SettingsIntegration.addFloatSettingListener(settingName, setSkipAmount);
+  }, []);
+
+  const [skipAmount, setSkipAmount] = useState(
+    SettingsIntegration.getFloatSetting(settingName)
+  );
   return (
     <Button className={className} onClick={onClick} variant="contained">
-      {"Skip " + amount}
+      {"Skip " + skipAmount}
     </Button>
   );
 
   function onClick() {
     const currentTime = PlayerAPIConnector.playerAPI.getCurrentTime();
-    PlayerAPIConnector.playerAPI.seekTo(currentTime + amount, true);
+    PlayerAPIConnector.playerAPI.seekTo(
+      currentTime + skipAmount * direction,
+      true
+    );
   }
 }

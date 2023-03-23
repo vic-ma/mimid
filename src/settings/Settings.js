@@ -21,6 +21,13 @@ import "./Settings.scss";
 
 import SettingsHeader from "./SettingsHeader";
 import SliderSetting from "./SliderSetting";
+import {
+  SLOW_SPEED_SETTING_NAME,
+  SKIP_BACKWARD_LONG_SETTING_NAME,
+  SKIP_BACKWARD_SHORT_SETTING_NAME,
+  SKIP_FORWARD_SHORT_SETTING_NAME,
+  SKIP_FORWARD_LONG_SETTING_NAME,
+} from "./constants";
 
 import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
@@ -45,10 +52,38 @@ export default function Settings({ open, onClose }) {
         <SettingsHeader onClose={onClose} />
         <SliderSetting
           label="Slow Speed"
-          settingName="slow-speed"
+          settingName={SLOW_SPEED_SETTING_NAME}
           min={0.25}
           max={0.95}
           step={0.05}
+        ></SliderSetting>
+        <SliderSetting
+          label="Skip Backward Long"
+          settingName={SKIP_BACKWARD_LONG_SETTING_NAME}
+          min={0.5}
+          max={10}
+          step={0.5}
+        ></SliderSetting>
+        <SliderSetting
+          label="Skip Backward Short"
+          settingName={SKIP_BACKWARD_SHORT_SETTING_NAME}
+          min={0.5}
+          max={10}
+          step={0.5}
+        ></SliderSetting>
+        <SliderSetting
+          label="Skip Forward Short"
+          settingName={SKIP_FORWARD_SHORT_SETTING_NAME}
+          min={0.5}
+          max={10}
+          step={0.5}
+        ></SliderSetting>
+        <SliderSetting
+          label="Skip Foward Long"
+          settingName={SKIP_FORWARD_LONG_SETTING_NAME}
+          min={0.5}
+          max={10}
+          step={0.5}
         ></SliderSetting>
       </div>
     </Dialog>

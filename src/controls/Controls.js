@@ -23,6 +23,15 @@ import LoopButton from "./LoopButton.js";
 import PlayButton from "./PlayButton.js";
 import SpeedButton from "./SpeedButton.js";
 import SkipButton from "./SkipButton.js";
+import {
+  SKIP_BACKWARD_LONG_SETTING_NAME,
+  SKIP_BACKWARD_SHORT_SETTING_NAME,
+  SKIP_FORWARD_SHORT_SETTING_NAME,
+  SKIP_FORWARD_LONG_SETTING_NAME,
+} from "../settings/constants";
+
+const SKIP_BACKWARD_DIRECTION = -1;
+const SKIP_FORWARD_DIRECTION = 1;
 
 export default function Controls() {
   return (
@@ -32,10 +41,26 @@ export default function Controls() {
           <LoopButton />
           <PlayButton />
           <SpeedButton />
-          <SkipButton className="SkipButtonBackwardLong" amount={-5} />
-          <SkipButton className="SkipButtonBackwardShort" amount={-1} />
-          <SkipButton className="SkipButtonForwardShort" amount={1} />
-          <SkipButton className="SkipButtonForwardLong" amount={5} />
+          <SkipButton
+            className="SkipButtonBackwardLong"
+            settingName={SKIP_BACKWARD_LONG_SETTING_NAME}
+            direction={SKIP_BACKWARD_DIRECTION}
+          />
+          <SkipButton
+            className="SkipButtonBackwardShort"
+            settingName={SKIP_BACKWARD_SHORT_SETTING_NAME}
+            direction={SKIP_BACKWARD_DIRECTION}
+          />
+          <SkipButton
+            className="SkipButtonForwardShort"
+            settingName={SKIP_FORWARD_SHORT_SETTING_NAME}
+            direction={SKIP_FORWARD_DIRECTION}
+          />
+          <SkipButton
+            className="SkipButtonForwardLong"
+            settingName={SKIP_FORWARD_LONG_SETTING_NAME}
+            direction={SKIP_FORWARD_DIRECTION}
+          />
         </div>
       </div>
     </div>
