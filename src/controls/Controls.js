@@ -32,6 +32,8 @@ import {
   SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA,
   SKIP_FORWARD_SHORT_BUTTON_GRID_AREA,
   SKIP_FORWARD_LONG_BUTTON_GRID_AREA,
+  SKIP_BACKWARD_DIRECTION,
+  SKIP_FORWARD_DIRECTION,
 } from "./constants.js";
 
 import {
@@ -40,9 +42,6 @@ import {
   SKIP_FORWARD_SHORT_SETTING_NAME,
   SKIP_FORWARD_LONG_SETTING_NAME,
 } from "../settings/constants";
-
-const SKIP_BACKWARD_DIRECTION = -1;
-const SKIP_FORWARD_DIRECTION = 1;
 
 export default function Controls() {
   return (

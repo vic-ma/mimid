@@ -21,6 +21,7 @@ import "./Settings.scss";
 
 import SettingsHeader from "./SettingsHeader";
 import SliderSetting from "./SliderSetting";
+import ControlsGridSetting from "./ControlsGridSetting";
 import {
   SLOW_SPEED_SETTING_NAME,
   SKIP_BACKWARD_LONG_SETTING_NAME,
@@ -85,6 +86,7 @@ export default function Settings({ open, onClose }) {
           max={10}
           step={0.5}
         ></SliderSetting>
+        <ControlsGridSetting></ControlsGridSetting>
       </div>
     </Dialog>
   );

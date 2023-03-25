@@ -17,13 +17,26 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-export const PLAY_BUTTON_GRID_AREA = "P";
-export const SPEED_BUTTON_GRID_AREA = "S";
-export const LOOP_BUTTON_GRID_AREA = "L";
-export const SKIP_BACKWARD_LONG_BUTTON_GRID_AREA = "BL";
-export const SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA = "BS";
-export const SKIP_FORWARD_SHORT_BUTTON_GRID_AREA = "FS";
-export const SKIP_FORWARD_LONG_BUTTON_GRID_AREA = "FL";
+import "./ControlsGridSetting.scss";
 
-export const SKIP_BACKWARD_DIRECTION = -1;
-export const SKIP_FORWARD_DIRECTION = 1;
+import ControlsGridSettingTable from "./ControlsGridSettingTable";
+
+import Typography from "@mui/material/Typography";
+import SettingsIntegration from "./SettingsIntegration.js";
+
+import { useEffect } from "react";
+import { useState } from "react";
+
+export default function ControlsGridSetting() {
+  return (
+    <div className="ControlsGridSetting">
+      <Typography className="ControlsGridSettingLabel" variant="h6">
+        Controls Grid Setting
+      </Typography>
+      <ControlsGridSettingTable
+        rowCount={3}
+        columnCount={3}
+      ></ControlsGridSettingTable>
+    </div>
+  );
+}
