@@ -23,7 +23,7 @@ import PlayerAPIConnector from "../PlayerAPIConnector.js";
 import { useState } from "react";
 import { useEffect } from "react";
 
-export default function PlayButton() {
+export default function PlayButton({ gridArea }) {
   useEffect(
     () =>
       PlayerAPIConnector.addEventListener("onStateChange", handleStateChange),
@@ -33,7 +33,11 @@ export default function PlayButton() {
   const [playerState, setPlayerState] = useState("Unset");
 
   return (
-    <Button className="PlayButton" onClick={handleClick} variant="contained">
+    <Button
+      style={{ gridArea: gridArea }}
+      onClick={handleClick}
+      variant="contained"
+    >
       {playerState.toString()}
     </Button>
   );

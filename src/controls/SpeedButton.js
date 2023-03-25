@@ -26,7 +26,7 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import { useEffect } from "react";
 
-export default function SpeedButton() {
+export default function SpeedButton({ gridArea }) {
   useEffect(() => {
     SettingsIntegration.addFloatSettingListener(
       SLOW_SPEED_SETTING_NAME,
@@ -44,7 +44,11 @@ export default function SpeedButton() {
   const [currentSpeed, setCurrentSpeed] = useState(1);
 
   return (
-    <Button className="SpeedButton" onClick={handleClick} variant="contained">
+    <Button
+      style={{ gridArea: gridArea }}
+      onClick={handleClick}
+      variant="contained"
+    >
       {currentSpeed + "X"}
     </Button>
   );

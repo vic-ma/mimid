@@ -45,34 +45,6 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
     "BL  BS  FS  FL";
 }
 
-.LoopButton {
-  grid-area: L;
-}
-
-.PlayButton {
-  grid-area: P;
-}
-
-.SpeedButton {
-  grid-area: S;
-}
-
-.SkipButtonBackwardLong {
-  grid-area: BL;
-}
-
-.SkipButtonBackwardShort {
-  grid-area: BS;
-}
-
-.SkipButtonForwardShort {
-  grid-area: FS;
-}
-
-.SkipButtonForwardLong {
-  grid-area: FL;
-}
-
 @mixin set-breakpoint-gap($breakpoint, $gap) {
   @media (min-width: $breakpoint) {
     .controls-grid {

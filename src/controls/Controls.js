@@ -23,6 +23,17 @@ import LoopButton from "./LoopButton.js";
 import PlayButton from "./PlayButton.js";
 import SpeedButton from "./SpeedButton.js";
 import SkipButton from "./SkipButton.js";
+
+import {
+  PLAY_BUTTON_GRID_AREA,
+  SPEED_BUTTON_GRID_AREA,
+  LOOP_BUTTON_GRID_AREA,
+  SKIP_BACKWARD_LONG_BUTTON_GRID_AREA,
+  SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA,
+  SKIP_FORWARD_SHORT_BUTTON_GRID_AREA,
+  SKIP_FORWARD_LONG_BUTTON_GRID_AREA,
+} from "./constants.js";
+
 import {
   SKIP_BACKWARD_LONG_SETTING_NAME,
   SKIP_BACKWARD_SHORT_SETTING_NAME,
@@ -38,28 +49,28 @@ export default function Controls() {
     <div className="Controls">
       <div className="controls-outer-div">
         <div className="controls-grid">
-          <LoopButton />
-          <PlayButton />
-          <SpeedButton />
+          <PlayButton gridArea={PLAY_BUTTON_GRID_AREA} />
+          <SpeedButton gridArea={SPEED_BUTTON_GRID_AREA} />
+          <LoopButton gridArea={LOOP_BUTTON_GRID_AREA} />
           <SkipButton
-            className="SkipButtonBackwardLong"
             settingName={SKIP_BACKWARD_LONG_SETTING_NAME}
             direction={SKIP_BACKWARD_DIRECTION}
+            gridArea={SKIP_BACKWARD_LONG_BUTTON_GRID_AREA}
           />
           <SkipButton
-            className="SkipButtonBackwardShort"
             settingName={SKIP_BACKWARD_SHORT_SETTING_NAME}
             direction={SKIP_BACKWARD_DIRECTION}
+            gridArea={SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA}
           />
           <SkipButton
-            className="SkipButtonForwardShort"
             settingName={SKIP_FORWARD_SHORT_SETTING_NAME}
             direction={SKIP_FORWARD_DIRECTION}
+            gridArea={SKIP_FORWARD_SHORT_BUTTON_GRID_AREA}
           />
           <SkipButton
-            className="SkipButtonForwardLong"
             settingName={SKIP_FORWARD_LONG_SETTING_NAME}
             direction={SKIP_FORWARD_DIRECTION}
+            gridArea={SKIP_FORWARD_LONG_BUTTON_GRID_AREA}
           />
         </div>
       </div>

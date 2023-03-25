@@ -26,7 +26,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 
 // TODO: handle skipping when paused
-export default function LoopButton() {
+export default function LoopButton({ gridArea }) {
   useEffect(
     () =>
       PlayerAPIConnector.addEventListener("onStateChange", handleStateChange),
@@ -46,7 +46,11 @@ export default function LoopButton() {
   const intervalID = useRef(null);
 
   return (
-    <Button className="LoopButton" onClick={handleClick} variant="contained">
+    <Button
+      style={{ gridArea: gridArea }}
+      onClick={handleClick}
+      variant="contained"
+    >
       {currentStage}
     </Button>
   );

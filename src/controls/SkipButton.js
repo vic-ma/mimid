@@ -26,16 +26,20 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 // TODO: Change paused behaviour
-export default function SkipButton({ className, settingName, direction }) {
+export default function SkipButton({ settingName, direction, gridArea }) {
   useEffect(() => {
     SettingsIntegration.addFloatSettingListener(settingName, setSkipAmount);
-  }, []);
+  }, []); // eslint-disable-line
 
   const [skipAmount, setSkipAmount] = useState(
     SettingsIntegration.getFloatSetting(settingName)
   );
   return (
-    <Button className={className} onClick={onClick} variant="contained">
+    <Button
+      style={{ gridArea: gridArea }}
+      onClick={onClick}
+      variant="contained"
+    >
       {"Skip " + skipAmount}
     </Button>
   );
