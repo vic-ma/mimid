@@ -33,26 +33,26 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 export default function ControlsGridSettingTable({ rowCount, columnCount }) {
-  var tableData = new Array(rowCount);
+  var table = new Array(rowCount);
   for (let row = 0; row < rowCount; row++) {
-    tableData[row] = new Array(columnCount);
+    table[row] = new Array(columnCount);
   }
 
   for (let row = 0; row < rowCount; row++) {
     for (let column = 0; column < columnCount; column++) {
-      tableData[row][column] = (
-        <TableCell>
+      table[row][column] = (
+        <TableCell key={row + "" + column}>
           <ControlsGridSettingTableSelector></ControlsGridSettingTableSelector>
         </TableCell>
       );
     }
-    tableData[row] = <TableRow>{tableData[row]}</TableRow>;
+    table[row] = <TableRow key={row}>{table[row]}</TableRow>;
   }
-  tableData = <TableBody>{tableData}</TableBody>;
+  table = <TableBody>{table}</TableBody>;
 
   return (
     <TableContainer component={Paper}>
-      <Table>{tableData}</Table>
+      <Table>{table}</Table>
     </TableContainer>
   );
 }

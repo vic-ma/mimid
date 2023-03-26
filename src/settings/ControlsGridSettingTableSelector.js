@@ -17,8 +17,7 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Typography from "@mui/material/Typography";
-import SettingsIntegration from "./SettingsIntegration.js";
+import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration.js";
 
 import {
   PLAY_BUTTON_GRID_AREA,
@@ -30,23 +29,18 @@ import {
   SKIP_FORWARD_LONG_BUTTON_GRID_AREA,
 } from "../controls/constants.js";
 
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-import { useEffect } from "react";
 import { useState } from "react";
 
-export default function ControlsGridSettingTableSelector() {
+export default function ControlsGridSettingTableSelector({ row, column }) {
   const [gridArea, setGridArea] = useState("");
 
   return (
     <FormControl fullWidth>
-      <Select
-        value={gridArea}
-        onChange={(event) => setGridArea(event.target.value)}
-      >
+      <Select value={gridArea} onChange={handleChange}>
         <MenuItem value={PLAY_BUTTON_GRID_AREA}>Play</MenuItem>
         <MenuItem value={SPEED_BUTTON_GRID_AREA}>Speed</MenuItem>
         <MenuItem value={LOOP_BUTTON_GRID_AREA}>Loop</MenuItem>
@@ -65,4 +59,13 @@ export default function ControlsGridSettingTableSelector() {
       </Select>
     </FormControl>
   );
+
+  function handleChange(event) {
+    ControlsGridSettingIntegration.addUnsavedGridChange(
+      row,
+      column,
+      event.target.value
+    );
+    setGridArea(event.target.value);
+  }
 }
