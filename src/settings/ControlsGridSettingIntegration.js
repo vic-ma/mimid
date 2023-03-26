@@ -17,12 +17,20 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-.ControlsGridSetting {
-  display: flex;
-  flex-direction: column;
-  gap: 1vw;
-}
+const ControlsGridSettingIntegration = {
+  unsavedGrid: [], // get from localstorage
 
-.ControlsGridSettingLabel {
-  flex-grow: 1;
-}
+  setUnsavedGrid: function (grid) {
+    this.unsavedGrid = grid;
+  },
+
+  addUnsavedGridChange: function (row, column, newValue) {
+    // this.unsavedGrid[row][column] = newValue;
+  },
+
+  getUnsavedGridString: function () {
+    return "";
+  },
+};
+
+export default ControlsGridSettingIntegration;

@@ -20,22 +20,34 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import "./ControlsGridSetting.scss";
 
 import ControlsGridSettingTable from "./ControlsGridSettingTable";
+import ControlsGridSettingDimensionSelector from "./ControlsGridSettingDimensionSelector";
 
 import Typography from "@mui/material/Typography";
-import SettingsIntegration from "./SettingsIntegration.js";
 
-import { useEffect } from "react";
 import { useState } from "react";
 
 export default function ControlsGridSetting() {
+  const [rowCount, setRowCount] = useState(1);
+  const [columnCount, setColumnCount] = useState(1);
+
   return (
     <div className="ControlsGridSetting">
       <Typography className="ControlsGridSettingLabel" variant="h6">
         Controls Grid Setting
       </Typography>
+
+      <ControlsGridSettingDimensionSelector
+        label="Rows"
+        stateSetter={setRowCount}
+      ></ControlsGridSettingDimensionSelector>
+      <ControlsGridSettingDimensionSelector
+        label="Columns"
+        stateSetter={setColumnCount}
+      ></ControlsGridSettingDimensionSelector>
+
       <ControlsGridSettingTable
-        rowCount={3}
-        columnCount={3}
+        rowCount={rowCount}
+        columnCount={columnCount}
       ></ControlsGridSettingTable>
     </div>
   );
