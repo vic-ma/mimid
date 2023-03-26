@@ -50,3 +50,5 @@ defaultsMap.set(
   SKIP_FORWARD_LONG_SETTING_NAME,
   SKIP_FORWARD_LONG_SETTING_DEFAULT
 );
+
+export const CONTROLS_GRID_SETTING_NAME = "controls-grid-template-areas";

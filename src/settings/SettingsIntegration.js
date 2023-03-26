@@ -17,10 +17,12 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import { defaultsMap } from "./constants";
+import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration";
+import { defaultsMap, CONTROLS_GRID_SETTING_NAME } from "./constants";
 
 const SettingsIntegration = {
   unsavedChanges: new Map(),
+  unsavedControlsGridSetting: [],
 
   getSetting: function (settingName, typeConverter) {
     return window.localStorage.getItem(settingName) !== null
@@ -50,6 +52,10 @@ const SettingsIntegration = {
     for (const [settingName, settingValue] of this.unsavedChanges) {
       window.localStorage.setItem(settingName, settingValue);
     }
+    window.localStorage.setItem(
+      CONTROLS_GRID_SETTING_NAME,
+      ControlsGridSettingIntegration.getUnsavedGridString()
+    );
   },
 
   notifyListeners: function () {

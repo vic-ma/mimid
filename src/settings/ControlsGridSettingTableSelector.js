@@ -42,7 +42,7 @@ export default function ControlsGridSettingTableSelector() {
   const [gridArea, setGridArea] = useState("");
 
   return (
-    <FormControl>
+    <FormControl fullWidth>
       <Select
         value={gridArea}
         onChange={(event) => setGridArea(event.target.value)}
