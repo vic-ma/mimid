@@ -27,8 +27,8 @@ import Typography from "@mui/material/Typography";
 import { useState } from "react";
 
 export default function ControlsGridSetting() {
-  const [rowCount, setRowCount] = useState(1);
-  const [columnCount, setColumnCount] = useState(1);
+  const [numRows, setNumRows] = useState(4); // TODO: fix default
+  const [numColumns, setNumColumns] = useState(4);
 
   return (
     <div className="ControlsGridSetting">
@@ -38,16 +38,16 @@ export default function ControlsGridSetting() {
 
       <ControlsGridSettingDimensionSelector
         label="Rows"
-        stateSetter={setRowCount}
+        stateSetter={setNumRows}
       ></ControlsGridSettingDimensionSelector>
       <ControlsGridSettingDimensionSelector
         label="Columns"
-        stateSetter={setColumnCount}
+        stateSetter={setNumColumns}
       ></ControlsGridSettingDimensionSelector>
 
       <ControlsGridSettingTable
-        rowCount={rowCount}
-        columnCount={columnCount}
+        numRows={numRows}
+        numColumns={numColumns}
       ></ControlsGridSettingTable>
     </div>
   );

@@ -18,18 +18,44 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 const ControlsGridSettingIntegration = {
-  unsavedGrid: [], // get from localstorage
+  unsavedGridData: new Map(), // TODO: get map from localstorage via function
 
-  setUnsavedGrid: function (grid) {
-    this.unsavedGrid = grid;
+  addUnsavedChange: function (button, row, column) {
+    this.updateButton(button, row, column);
   },
 
-  addUnsavedGridChange: function (row, column, newValue) {
-    // this.unsavedGrid[row][column] = newValue;
+  updateButton: function (button, row, column) {
+    const topLeftCorner = this.unsavedGridData.get(button)[0];
+    const [top, left] = topLeftCorner;
+
+    if (row >= top && column <= left) {
+      this.unsavedGridData.set(button, [[row, column], topLeftCorner]);
+    } else if (row <= top && column >= left) {
+      this.unsavedGridData.set(button, topLeftCorner, [[row, column]]);
+    } else if (row >= top && column >= left) {
+      this.unsavedGridData.set(button, [row, left], [[top, column]]);
+    } else if (row <= top && column <= left) {
+      this.unsavedGridData.set(button, [top, column], [[row, left]]);
+    }
   },
 
-  getUnsavedGridString: function () {
-    return "";
+  removeOverlapping: function () {
+    //  for (const [currentButton, [topLeftCorner, bottomRightCorner]] of this
+    //    .unsavedGridData) {
+    //    if (this.cornersContain(topLeftCorner, bottomRightCorner, row, column)) {
+    //      this.removeButton(currentButton);
+    //    }
+    //  }
+  },
+
+  removeButton: function (button) {
+    this.unsavedGridData.delete(button);
+  },
+
+  cornersContain: function (topLeftCorner, bottomRightCorner, row, column) {
+    const [top, left] = topLeftCorner;
+    const [bottom, right] = bottomRightCorner;
+    return bottom <= row && row <= top && left <= column && column <= right;
   },
 };
 

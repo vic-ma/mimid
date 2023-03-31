@@ -17,29 +17,23 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Typography from "@mui/material/Typography";
-import SettingsIntegration from "./SettingsIntegration.js";
 import ControlsGridSettingTableSelector from "./ControlsGridSettingTableSelector.js";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-import { useEffect } from "react";
-import { useState } from "react";
-
-export default function ControlsGridSettingTable({ rowCount, columnCount }) {
-  var table = new Array(rowCount);
-  for (let row = 0; row < rowCount; row++) {
-    table[row] = new Array(columnCount);
+export default function ControlsGridSettingTable({ numRows, numColumns }) {
+  var table = new Array(numRows);
+  for (let row = 0; row < numRows; row++) {
+    table[row] = new Array(numColumns);
   }
 
-  for (let row = 0; row < rowCount; row++) {
-    for (let column = 0; column < columnCount; column++) {
+  for (let row = 0; row < numRows; row++) {
+    for (let column = 0; column < numColumns; column++) {
       table[row][column] = (
         <TableCell key={row + "" + column}>
           <ControlsGridSettingTableSelector></ControlsGridSettingTableSelector>
@@ -48,11 +42,12 @@ export default function ControlsGridSettingTable({ rowCount, columnCount }) {
     }
     table[row] = <TableRow key={row}>{table[row]}</TableRow>;
   }
-  table = <TableBody>{table}</TableBody>;
 
   return (
     <TableContainer component={Paper}>
-      <Table>{table}</Table>
+      <Table>
+        <TableBody>{table}</TableBody>
+      </Table>
     </TableContainer>
   );
 }
