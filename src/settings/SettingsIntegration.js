@@ -17,7 +17,8 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import { defaultsMap } from "./constants";
+import { defaultsMap, CONTROLS_GRID_SETTING_NAME } from "./constants";
+import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration.js";
 
 const SettingsIntegration = {
   unsavedChanges: new Map(),
@@ -34,7 +35,7 @@ const SettingsIntegration = {
   },
 
   addSettingListener: function (settingName, stateSetter, typeConverter) {
-    window.addEventListener(settingName, (event) =>
+    window.addEventListener(settingName, () =>
       stateSetter(typeConverter(window.localStorage.getItem(settingName)))
     );
   },
@@ -47,26 +48,26 @@ const SettingsIntegration = {
     this.unsavedChanges.set(settingName, settingValue);
   },
 
+  saveUnsavedChanges: function () {
+    this.writeLocalStorage();
+    this.notifyListeners();
+    this.unsavedChanges.clear();
+  },
+
   writeLocalStorage: function () {
     for (const [settingName, settingValue] of this.unsavedChanges) {
       window.localStorage.setItem(settingName, settingValue);
     }
-    //window.localStorage.setItem(
-    //  CONTROLS_GRID_SETTING_NAME,
-    //  ControlsGridSettingIntegration.getUnsavedGridString()
-    //);
+    window.localStorage.setItem(
+      CONTROLS_GRID_SETTING_NAME,
+      ControlsGridSettingIntegration.getUnsavedGridString()
+    );
   },
 
   notifyListeners: function () {
     for (const setting of this.unsavedChanges.keys()) {
       window.dispatchEvent(new Event(setting));
     }
-  },
-
-  saveUnsavedChanges: function () {
-    this.writeLocalStorage();
-    this.notifyListeners();
-    this.unsavedChanges.clear();
   },
 };
 

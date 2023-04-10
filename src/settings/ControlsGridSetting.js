@@ -26,13 +26,10 @@ import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration";
 import Typography from "@mui/material/Typography";
 
 import { useState } from "react";
-import { useEffect } from "react";
 
 export default function ControlsGridSetting() {
   const [numRows, setNumRows] = useState(4); // TODO: fix default
   const [numColumns, setNumColumns] = useState(4);
-
-  useEffect(() => {}, [numRows, numColumns]);
 
   return (
     <div className="ControlsGridSetting">

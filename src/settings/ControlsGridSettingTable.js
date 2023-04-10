@@ -32,10 +32,9 @@ import { useState } from "react";
 export default function ControlsGridSettingTable({ numRows, numColumns }) {
   const [rerender, setRerender] = useState(false);
 
-  const unsavedGrid = ControlsGridSettingIntegration.getUnsavedGrid(
-    numRows,
-    numColumns
-  );
+  ControlsGridSettingIntegration.setMaxRows(numRows);
+  ControlsGridSettingIntegration.setMaxColumns(numColumns);
+  const unsavedGrid = ControlsGridSettingIntegration.getUnsavedGrid();
 
   let table = new Array(numRows);
   for (let row = 0; row < numRows; row++) {

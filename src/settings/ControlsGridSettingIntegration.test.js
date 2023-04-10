@@ -19,9 +19,15 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration";
 
-beforeEach(() => ControlsGridSettingIntegration.unsavedGridData.clear());
+beforeEach(() => {
+  ControlsGridSettingIntegration.unsavedGridData.clear();
+  ControlsGridSettingIntegration.maxRows = 0;
+  ControlsGridSettingIntegration.maxColumns = 0;
+});
 
 test("Add one-cell grid area", () => {
+  ControlsGridSettingIntegration.setMaxRows(1);
+  ControlsGridSettingIntegration.setMaxColumns(1);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
 
   const expectedMap = new Map();
@@ -33,12 +39,12 @@ test("Add one-cell grid area", () => {
   const expectedGrid = [["foo"]];
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid(1, 1)).toEqual(
-    expectedGrid
-  );
+  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
 });
 
 test("Add 2x2 grid area", () => {
+  ControlsGridSettingIntegration.setMaxRows(2);
+  ControlsGridSettingIntegration.setMaxColumns(2);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 1, 1);
 
@@ -54,12 +60,12 @@ test("Add 2x2 grid area", () => {
   ];
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid(2, 2)).toEqual(
-    expectedGrid
-  );
+  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
 });
 
 test("Redundant changes", () => {
+  ControlsGridSettingIntegration.setMaxRows(2);
+  ControlsGridSettingIntegration.setMaxColumns(2);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 1, 1);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
@@ -80,12 +86,12 @@ test("Redundant changes", () => {
   ];
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid(2, 2)).toEqual(
-    expectedGrid
-  );
+  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
 });
 
 test("Add two adjacent grid areas", () => {
+  ControlsGridSettingIntegration.setMaxRows(2);
+  ControlsGridSettingIntegration.setMaxColumns(4);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 1, 1);
   ControlsGridSettingIntegration.addUnsavedChange("bar", 0, 2);
@@ -107,12 +113,12 @@ test("Add two adjacent grid areas", () => {
   ];
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid(2, 4)).toEqual(
-    expectedGrid
-  );
+  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
 });
 
 test("Overlap centre", () => {
+  ControlsGridSettingIntegration.setMaxRows(3);
+  ControlsGridSettingIntegration.setMaxColumns(3);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 2, 2);
   ControlsGridSettingIntegration.addUnsavedChange("bar", 1, 1);
@@ -131,12 +137,12 @@ test("Overlap centre", () => {
   ];
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid(3, 3)).toEqual(
-    expectedGrid
-  );
+  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
 });
 
 test("Overlap top and bottom", () => {
+  ControlsGridSettingIntegration.setMaxRows(5);
+  ControlsGridSettingIntegration.setMaxColumns(3);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 2, 2);
   ControlsGridSettingIntegration.addUnsavedChange("bar", 2, 0);
@@ -157,12 +163,12 @@ test("Overlap top and bottom", () => {
   ];
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid(5, 3)).toEqual(
-    expectedGrid
-  );
+  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
 });
 
 test("Overlap left and right", () => {
+  ControlsGridSettingIntegration.setMaxRows(3);
+  ControlsGridSettingIntegration.setMaxColumns(5);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 2, 2);
   ControlsGridSettingIntegration.addUnsavedChange("bar", 0, 2);
@@ -181,12 +187,12 @@ test("Overlap left and right", () => {
   ];
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid(3, 5)).toEqual(
-    expectedGrid
-  );
+  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
 });
 
 test("Overlap corner", () => {
+  ControlsGridSettingIntegration.setMaxRows(5);
+  ControlsGridSettingIntegration.setMaxColumns(5);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 2, 2);
   ControlsGridSettingIntegration.addUnsavedChange("bar", 2, 2);
@@ -207,7 +213,5 @@ test("Overlap corner", () => {
   ];
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid(5, 5)).toEqual(
-    expectedGrid
-  );
+  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
 });

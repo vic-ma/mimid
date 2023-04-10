@@ -18,17 +18,27 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 const ControlsGridSettingIntegration = {
+  maxRows: 0,
+  maxColumns: 0,
+
   // TODO: get map from localstorage via function
   unsavedGridData: new Map(),
 
-  getUnsavedGrid: function (maxRows, maxColumns) {
-    if (maxRows === undefined || maxColumns === undefined) {
+  setMaxRows: function (maxRows) {
+    this.maxRows = maxRows;
+  },
+  setMaxColumns: function (maxColumns) {
+    this.maxColumns = maxColumns;
+  },
+
+  getUnsavedGrid: function () {
+    if (this.maxRows === undefined || this.maxColumns === undefined) {
       throw new Error("Missing arguments.");
     }
-    const unsavedGrid = new Array(maxRows);
-    for (let row = 0; row < maxRows; row++) {
-      unsavedGrid[row] = new Array(maxColumns);
-      for (let column = 0; column < maxColumns; column++) {
+    const unsavedGrid = new Array(this.maxRows);
+    for (let row = 0; row < this.maxRows; row++) {
+      unsavedGrid[row] = new Array(this.maxColumns);
+      for (let column = 0; column < this.maxColumns; column++) {
         unsavedGrid[row][column] = "";
       }
     }
