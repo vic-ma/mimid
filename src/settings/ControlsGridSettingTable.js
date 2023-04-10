@@ -18,6 +18,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import ControlsGridSettingTableSelector from "./ControlsGridSettingTableSelector.js";
+import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration.js";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -26,7 +27,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
+import { useState } from "react";
+
 export default function ControlsGridSettingTable({ numRows, numColumns }) {
+  const [unsavedGrid, setUnsavedGrid] = useState(
+    ControlsGridSettingIntegration.getUnsavedGrid(numRows, numColumns)
+  );
+
   let table = new Array(numRows);
   for (let row = 0; row < numRows; row++) {
     table[row] = new Array(numColumns);
@@ -36,7 +43,12 @@ export default function ControlsGridSettingTable({ numRows, numColumns }) {
     for (let column = 0; column < numColumns; column++) {
       table[row][column] = (
         <TableCell key={row + "" + column}>
-          <ControlsGridSettingTableSelector></ControlsGridSettingTableSelector>
+          <ControlsGridSettingTableSelector
+            row={row}
+            column={column}
+            controlledGridArea={unsavedGrid[row][column]}
+            afterChange={afterSelectorChange}
+          ></ControlsGridSettingTableSelector>
         </TableCell>
       );
     }
@@ -50,4 +62,8 @@ export default function ControlsGridSettingTable({ numRows, numColumns }) {
       </Table>
     </TableContainer>
   );
+
+  function afterSelectorChange() {
+    setUnsavedGrid(ControlsGridSettingIntegration.getUnsavedGrid());
+  }
 }

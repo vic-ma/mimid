@@ -34,10 +34,20 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 import { useState } from "react";
+import { useEffect } from "react";
 
 // TODO: Native select?
-export default function ControlsGridSettingTableSelector({ row, column }) {
+export default function ControlsGridSettingTableSelector({
+  row,
+  column,
+  controlledGridArea,
+  afterChange,
+}) {
   const [gridArea, setGridArea] = useState("");
+
+  useEffect(() => {
+    setGridArea(controlledGridArea);
+  }, [controlledGridArea]);
 
   return (
     <FormControl fullWidth>
@@ -62,11 +72,12 @@ export default function ControlsGridSettingTableSelector({ row, column }) {
   );
 
   function handleChange(event) {
-    ControlsGridSettingIntegration.addUnsavedGridChange(
-      row,
-      column,
-      event.target.value
-    );
+    //ControlsGridSettingIntegration.addUnsavedGridChange(
+    //  event.target.value,
+    //  row,
+    //  column
+    //);
     setGridArea(event.target.value);
+    //afterChange();
   }
 }

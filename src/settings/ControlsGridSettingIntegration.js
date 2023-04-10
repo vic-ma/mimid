@@ -26,34 +26,35 @@ const ControlsGridSettingIntegration = {
     for (let row = 0; row < maxRows; row++) {
       unsavedGrid[row] = new Array(maxColumns);
       for (let column = 0; column < maxColumns; column++) {
-        unsavedGrid[row][column] = null;
+        unsavedGrid[row][column] = "";
       }
     }
-    for (const [button, [[top, left], [bottom, right]]] of this
+    for (const [gridArea, [[top, left], [bottom, right]]] of this
       .unsavedGridData) {
       for (let row = top; row <= bottom; row++) {
         for (let column = left; column <= right; column++) {
-          unsavedGrid[row][column] = button;
+          unsavedGrid[row][column] = gridArea;
         }
       }
     }
     return unsavedGrid;
   },
 
-  addUnsavedChange: function (button, row, column) {
-    this.updateButton(button, row, column);
-    this.removeOverlapping(button);
+  addUnsavedChange: function (gridArea, row, column) {
+    this.updateGridArea(gridArea, row, column);
+    this.removeOverlapping(gridArea);
   },
 
-  updateButton: function (button, row, column) {
-    if (!this.unsavedGridData.has(button)) {
-      this.unsavedGridData.set(button, [
+  updateGridArea: function (gridArea, row, column) {
+    if (!this.unsavedGridData.has(gridArea)) {
+      this.unsavedGridData.set(gridArea, [
         [row, column],
         [row, column],
       ]);
     }
 
-    const [topLeftCorner, bottomRightCorner] = this.unsavedGridData.get(button);
+    const [topLeftCorner, bottomRightCorner] =
+      this.unsavedGridData.get(gridArea);
     const [top, left] = topLeftCorner;
 
     if (this.contains(topLeftCorner, bottomRightCorner, row, column)) {
@@ -62,34 +63,35 @@ const ControlsGridSettingIntegration = {
 
     // top-left quardrant
     if (row <= top && column <= left) {
-      this.unsavedGridData.set(button, [[row, column], topLeftCorner]);
+      this.unsavedGridData.set(gridArea, [[row, column], topLeftCorner]);
     }
     // top-right quadrant
     else if (row <= top && column >= left) {
-      this.unsavedGridData.set(button, [
+      this.unsavedGridData.set(gridArea, [
         [row, left],
         [top, column],
       ]);
     }
     // bottom-left quadrant
     else if (row >= top && column <= left) {
-      this.unsavedGridData.set(button, [
+      this.unsavedGridData.set(gridArea, [
         [top, column],
         [row, left],
       ]);
     }
     // bottom-right quadrant
     else if (row >= top && column >= left) {
-      this.unsavedGridData.set(button, [topLeftCorner, [row, column]]);
+      this.unsavedGridData.set(gridArea, [topLeftCorner, [row, column]]);
     }
   },
 
-  removeOverlapping: function (button) {
-    const [topLeftCorner, bottomRightCorner] = this.unsavedGridData.get(button);
+  removeOverlapping: function (gridArea) {
+    const [topLeftCorner, bottomRightCorner] =
+      this.unsavedGridData.get(gridArea);
 
-    for (const [currentButton, [currentTopLeft, currentBottomRight]] of this
+    for (const [currentgridArea, [currentTopLeft, currentBottomRight]] of this
       .unsavedGridData) {
-      if (currentButton === button) {
+      if (currentgridArea === gridArea) {
         continue;
       }
       if (
@@ -100,7 +102,7 @@ const ControlsGridSettingIntegration = {
           currentBottomRight
         )
       ) {
-        this.removeButton(currentButton);
+        this.removegridArea(currentgridArea);
       }
     }
   },
@@ -125,8 +127,8 @@ const ControlsGridSettingIntegration = {
     return top <= row && row <= bottom && left <= column && column <= right;
   },
 
-  removeButton: function (button) {
-    this.unsavedGridData.delete(button);
+  removegridArea: function (gridArea) {
+    this.unsavedGridData.delete(gridArea);
   },
 };
 

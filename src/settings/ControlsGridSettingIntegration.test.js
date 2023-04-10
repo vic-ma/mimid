@@ -21,7 +21,7 @@ import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration";
 
 beforeEach(() => ControlsGridSettingIntegration.unsavedGridData.clear());
 
-test("Add one-cell button", () => {
+test("Add one-cell grid area", () => {
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
 
   const expectedMap = new Map();
@@ -38,7 +38,7 @@ test("Add one-cell button", () => {
   );
 });
 
-test("Add 2x2 button", () => {
+test("Add 2x2 grid area", () => {
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 1, 1);
 
@@ -85,7 +85,7 @@ test("Redundant changes", () => {
   );
 });
 
-test("Add two adjacent buttons", () => {
+test("Add two adjacent grid areas", () => {
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 1, 1);
   ControlsGridSettingIntegration.addUnsavedChange("bar", 0, 2);
@@ -125,9 +125,9 @@ test("Overlap centre", () => {
   ]);
 
   const expectedGrid = [
-    [null, null, null],
-    [null, "bar", null],
-    [null, null, null],
+    ["", "", ""],
+    ["", "bar", ""],
+    ["", "", ""],
   ];
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
@@ -149,8 +149,8 @@ test("Overlap top and bottom", () => {
   ]);
 
   const expectedGrid = [
-    [null, null, null],
-    [null, null, null],
+    ["", "", ""],
+    ["", "", ""],
     ["bar", "bar", "bar"],
     ["bar", "bar", "bar"],
     ["bar", "bar", "bar"],
@@ -175,9 +175,9 @@ test("Overlap left and right", () => {
   ]);
 
   const expectedGrid = [
-    [null, null, "bar", "bar", "bar"],
-    [null, null, "bar", "bar", "bar"],
-    [null, null, "bar", "bar", "bar"],
+    ["", "", "bar", "bar", "bar"],
+    ["", "", "bar", "bar", "bar"],
+    ["", "", "bar", "bar", "bar"],
   ];
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
@@ -199,11 +199,11 @@ test("Overlap corner", () => {
   ]);
 
   const expectedGrid = [
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, "bar", "bar", "bar"],
-    [null, null, "bar", "bar", "bar"],
-    [null, null, "bar", "bar", "bar"],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "bar", "bar", "bar"],
+    ["", "", "bar", "bar", "bar"],
+    ["", "", "bar", "bar", "bar"],
   ];
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);

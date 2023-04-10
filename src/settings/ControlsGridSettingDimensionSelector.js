@@ -26,10 +26,11 @@ export default function ControlsGridSettingDimensionSelector({
   label,
   stateSetter,
 }) {
+  // TODO: Fix default value
   return (
     <FormControl fullWidth>
       <InputLabel>{label}</InputLabel>
-      <Select label={label} onChange={handleChange}>
+      <Select label={label} onChange={handleChange} defaultValue={4}>
         <MenuItem value={1}>1</MenuItem>
         <MenuItem value={2}>2</MenuItem>
         <MenuItem value={3}>3</MenuItem>
