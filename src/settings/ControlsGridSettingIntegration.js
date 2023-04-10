@@ -21,6 +21,25 @@ const ControlsGridSettingIntegration = {
   // TODO: get map from localstorage via function
   unsavedGridData: new Map(),
 
+  getUnsavedGrid: function (maxRows, maxColumns) {
+    const unsavedGrid = new Array(maxRows);
+    for (let row = 0; row < maxRows; row++) {
+      unsavedGrid[row] = new Array(maxColumns);
+      for (let column = 0; column < maxColumns; column++) {
+        unsavedGrid[row][column] = null;
+      }
+    }
+    for (const [button, [[top, left], [bottom, right]]] of this
+      .unsavedGridData) {
+      for (let row = top; row <= bottom; row++) {
+        for (let column = left; column <= right; column++) {
+          unsavedGrid[row][column] = button;
+        }
+      }
+    }
+    return unsavedGrid;
+  },
+
   addUnsavedChange: function (button, row, column) {
     this.updateButton(button, row, column);
     this.removeOverlapping(button);

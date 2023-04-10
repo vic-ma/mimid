@@ -27,7 +27,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 export default function ControlsGridSettingTable({ numRows, numColumns }) {
-  var table = new Array(numRows);
+  let table = new Array(numRows);
   for (let row = 0; row < numRows; row++) {
     table[row] = new Array(numColumns);
   }
