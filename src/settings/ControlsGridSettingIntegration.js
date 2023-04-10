@@ -18,44 +18,79 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 const ControlsGridSettingIntegration = {
-  unsavedGridData: new Map(), // TODO: get map from localstorage via function
+  // TODO: get map from localstorage via function
+  unsavedGridData: new Map(),
 
   addUnsavedChange: function (button, row, column) {
     this.updateButton(button, row, column);
+    this.removeOverlapping(button);
   },
 
   updateButton: function (button, row, column) {
+    if (!this.unsavedGridData.has(button)) {
+      this.unsavedGridData.set(button, [
+        [row, column],
+        [row, column],
+      ]);
+    }
+
     const topLeftCorner = this.unsavedGridData.get(button)[0];
     const [top, left] = topLeftCorner;
 
     if (row >= top && column <= left) {
       this.unsavedGridData.set(button, [[row, column], topLeftCorner]);
     } else if (row <= top && column >= left) {
-      this.unsavedGridData.set(button, topLeftCorner, [[row, column]]);
+      this.unsavedGridData.set(button, [topLeftCorner, [row, column]]);
     } else if (row >= top && column >= left) {
-      this.unsavedGridData.set(button, [row, left], [[top, column]]);
+      this.unsavedGridData.set(button, [
+        [row, left],
+        [top, column],
+      ]);
     } else if (row <= top && column <= left) {
-      this.unsavedGridData.set(button, [top, column], [[row, left]]);
+      this.unsavedGridData.set(button, [
+        [top, column],
+        [row, left],
+      ]);
     }
   },
 
-  removeOverlapping: function () {
-    //  for (const [currentButton, [topLeftCorner, bottomRightCorner]] of this
-    //    .unsavedGridData) {
-    //    if (this.cornersContain(topLeftCorner, bottomRightCorner, row, column)) {
-    //      this.removeButton(currentButton);
-    //    }
-    //  }
+  removeOverlapping: function (button) {
+    const [topLeftCorner, bottomRightCorner] = this.unsavedGridData.get(button);
+
+    for (const [currentButton, [currentTopLeft, currentBottomRight]] of this
+      .unsavedGridData) {
+      if (currentButton === button) {
+        continue;
+      }
+      if (
+        this.overlaps(
+          topLeftCorner,
+          bottomRightCorner,
+          currentTopLeft,
+          currentBottomRight
+        )
+      ) {
+        this.removeButton(currentButton);
+      }
+    }
+  },
+
+  overlaps: function (topLeftOne, bottomRightOne, topLeftTwo, bottomRightTwo) {
+    const [topOne, leftOne] = topLeftOne;
+    const [bottomOne, rightOne] = bottomRightOne;
+    const [topTwo, leftTwo] = topLeftTwo;
+    const [bottomTwo, rightTwo] = bottomRightTwo;
+
+    return !(
+      bottomOne < topTwo ||
+      bottomTwo < topOne ||
+      rightOne < leftTwo ||
+      rightTwo < leftOne
+    );
   },
 
   removeButton: function (button) {
     this.unsavedGridData.delete(button);
-  },
-
-  cornersContain: function (topLeftCorner, bottomRightCorner, row, column) {
-    const [top, left] = topLeftCorner;
-    const [bottom, right] = bottomRightCorner;
-    return bottom <= row && row <= top && left <= column && column <= right;
   },
 };
 

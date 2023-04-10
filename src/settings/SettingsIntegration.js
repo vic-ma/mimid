@@ -52,10 +52,10 @@ const SettingsIntegration = {
     for (const [settingName, settingValue] of this.unsavedChanges) {
       window.localStorage.setItem(settingName, settingValue);
     }
-    window.localStorage.setItem(
-      CONTROLS_GRID_SETTING_NAME,
-      ControlsGridSettingIntegration.getUnsavedGridString()
-    );
+    //window.localStorage.setItem(
+    //  CONTROLS_GRID_SETTING_NAME,
+    //  ControlsGridSettingIntegration.getUnsavedGridString()
+    //);
   },
 
   notifyListeners: function () {
