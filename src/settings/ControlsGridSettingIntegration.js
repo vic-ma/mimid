@@ -27,8 +27,23 @@ const ControlsGridSettingIntegration = {
   setMaxRows: function (maxRows) {
     this.maxRows = maxRows;
   },
+
   setMaxColumns: function (maxColumns) {
     this.maxColumns = maxColumns;
+  },
+
+  getUnsavedGridString: function () {
+    let gridString = "";
+    const unsavedGrid = this.getUnsavedGrid();
+    for (const row of unsavedGrid) {
+      gridString += "'";
+      for (const cell of row) {
+        gridString += (cell === "" ? "1fr" : cell) + " ";
+      }
+      gridString = gridString.slice(0, -1);
+      gridString += "' ";
+    }
+    return gridString.slice(0, -1);
   },
 
   getUnsavedGrid: function () {
