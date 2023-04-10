@@ -19,25 +19,126 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration";
 
-beforeAll(() => ControlsGridSettingIntegration.unsavedGridData.clear());
+beforeEach(() => ControlsGridSettingIntegration.unsavedGridData.clear());
 
-test("add one-cell button", () => {
+test("Add one-cell button", () => {
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   const expectedMap = new Map();
+
   expectedMap.set("foo", [
     [0, 0],
     [0, 0],
   ]);
+
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
 });
 
-test("add 2x2 button", () => {
+test("Add 2x2 button", () => {
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 1, 1);
+  const expectedMap = new Map();
+
+  expectedMap.set("foo", [
+    [0, 0],
+    [1, 1],
+  ]);
+
+  expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
+});
+
+test("Add two adjacent buttons", () => {
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 1, 1);
+  ControlsGridSettingIntegration.addUnsavedChange("bar", 0, 2);
+  ControlsGridSettingIntegration.addUnsavedChange("bar", 1, 3);
+
   const expectedMap = new Map();
   expectedMap.set("foo", [
     [0, 0],
     [1, 1],
   ]);
+  expectedMap.set("bar", [
+    [0, 2],
+    [1, 3],
+  ]);
+
+  expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
+});
+
+test("Redundant changes", () => {
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 1, 1);
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 1, 1);
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 1, 1);
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
+  const expectedMap = new Map();
+
+  expectedMap.set("foo", [
+    [0, 0],
+    [1, 1],
+  ]);
+
+  expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
+});
+
+test("Overlap centre", () => {
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 2, 2);
+  ControlsGridSettingIntegration.addUnsavedChange("bar", 1, 1);
+  ControlsGridSettingIntegration.addUnsavedChange("bar", 1, 1);
+
+  const expectedMap = new Map();
+  expectedMap.set("bar", [
+    [1, 1],
+    [1, 1],
+  ]);
+
+  expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
+});
+
+test("Overlap top and bottom", () => {
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 2, 2);
+  ControlsGridSettingIntegration.addUnsavedChange("bar", 2, 0);
+  ControlsGridSettingIntegration.addUnsavedChange("bar", 4, 2);
+
+  const expectedMap = new Map();
+  expectedMap.set("bar", [
+    [2, 0],
+    [4, 2],
+  ]);
+
+  expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
+});
+
+test("Overlap left and right", () => {
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 2, 2);
+  ControlsGridSettingIntegration.addUnsavedChange("bar", 0, 2);
+  ControlsGridSettingIntegration.addUnsavedChange("bar", 2, 4);
+
+  const expectedMap = new Map();
+  expectedMap.set("bar", [
+    [0, 2],
+    [2, 4],
+  ]);
+
+  expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
+});
+
+test("Overlap corner", () => {
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
+  ControlsGridSettingIntegration.addUnsavedChange("foo", 2, 2);
+  ControlsGridSettingIntegration.addUnsavedChange("bar", 2, 2);
+  ControlsGridSettingIntegration.addUnsavedChange("bar", 4, 4);
+
+  const expectedMap = new Map();
+  expectedMap.set("bar", [
+    [2, 2],
+    [4, 4],
+  ]);
+
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
 });

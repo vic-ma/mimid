@@ -34,23 +34,34 @@ const ControlsGridSettingIntegration = {
       ]);
     }
 
-    const topLeftCorner = this.unsavedGridData.get(button)[0];
+    const [topLeftCorner, bottomRightCorner] = this.unsavedGridData.get(button);
     const [top, left] = topLeftCorner;
 
-    if (row >= top && column <= left) {
+    if (this.contains(topLeftCorner, bottomRightCorner, row, column)) {
+      return;
+    }
+
+    // top-left quardrant
+    if (row <= top && column <= left) {
       this.unsavedGridData.set(button, [[row, column], topLeftCorner]);
-    } else if (row <= top && column >= left) {
+    }
+    // top-right quadrant
+    else if (row <= top && column >= left) {
+      this.unsavedGridData.set(button, [
+        [row, left],
+        [top, column],
+      ]);
+    }
+    // bottom-left quadrant
+    else if (row >= top && column <= left) {
+      this.unsavedGridData.set(button, [
+        [top, column],
+        [row, left],
+      ]);
+    }
+    // bottom-right quadrant
+    else if (row >= top && column >= left) {
       this.unsavedGridData.set(button, [topLeftCorner, [row, column]]);
-    } else if (row >= top && column >= left) {
-      this.unsavedGridData.set(button, [
-        [row, left],
-        [top, column],
-      ]);
-    } else if (row <= top && column <= left) {
-      this.unsavedGridData.set(button, [
-        [top, column],
-        [row, left],
-      ]);
     }
   },
 
@@ -87,6 +98,12 @@ const ControlsGridSettingIntegration = {
       rightOne < leftTwo ||
       rightTwo < leftOne
     );
+  },
+
+  contains: function (topLeftCorner, bottomRightCorner, row, column) {
+    const [top, left] = topLeftCorner;
+    const [bottom, right] = bottomRightCorner;
+    return top <= row && row <= bottom && left <= column && column <= right;
   },
 
   removeButton: function (button) {
