@@ -30,15 +30,17 @@ import Paper from "@mui/material/Paper";
 import { useState } from "react";
 
 export default function ControlsGridSettingTable({ numRows, numColumns }) {
-  const [unsavedGrid, setUnsavedGrid] = useState(
-    ControlsGridSettingIntegration.getUnsavedGrid(numRows, numColumns)
+  const [rerender, setRerender] = useState(false);
+
+  const unsavedGrid = ControlsGridSettingIntegration.getUnsavedGrid(
+    numRows,
+    numColumns
   );
 
   let table = new Array(numRows);
   for (let row = 0; row < numRows; row++) {
     table[row] = new Array(numColumns);
   }
-
   for (let row = 0; row < numRows; row++) {
     for (let column = 0; column < numColumns; column++) {
       table[row][column] = (
@@ -64,6 +66,6 @@ export default function ControlsGridSettingTable({ numRows, numColumns }) {
   );
 
   function afterSelectorChange() {
-    setUnsavedGrid(ControlsGridSettingIntegration.getUnsavedGrid());
+    setRerender(!rerender);
   }
 }

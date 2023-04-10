@@ -17,8 +17,7 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration";
-import { defaultsMap, CONTROLS_GRID_SETTING_NAME } from "./constants";
+import { defaultsMap } from "./constants";
 
 const SettingsIntegration = {
   unsavedChanges: new Map(),

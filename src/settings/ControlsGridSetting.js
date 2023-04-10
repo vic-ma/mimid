@@ -21,14 +21,18 @@ import "./ControlsGridSetting.scss";
 
 import ControlsGridSettingTable from "./ControlsGridSettingTable";
 import ControlsGridSettingDimensionSelector from "./ControlsGridSettingDimensionSelector";
+import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration";
 
 import Typography from "@mui/material/Typography";
 
 import { useState } from "react";
+import { useEffect } from "react";
 
 export default function ControlsGridSetting() {
   const [numRows, setNumRows] = useState(4); // TODO: fix default
   const [numColumns, setNumColumns] = useState(4);
+
+  useEffect(() => {}, [numRows, numColumns]);
 
   return (
     <div className="ControlsGridSetting">
@@ -39,8 +43,10 @@ export default function ControlsGridSetting() {
       <ControlsGridSettingDimensionSelector
         label="Rows"
         stateSetter={setNumRows}
+        handleChange={handleRowDimensionSelectorChange}
       ></ControlsGridSettingDimensionSelector>
       <ControlsGridSettingDimensionSelector
+        handleChange={handleColumnDimensionSelectorChange}
         label="Columns"
         stateSetter={setNumColumns}
       ></ControlsGridSettingDimensionSelector>
@@ -51,4 +57,13 @@ export default function ControlsGridSetting() {
       ></ControlsGridSettingTable>
     </div>
   );
+
+  function handleRowDimensionSelectorChange(event) {
+    ControlsGridSettingIntegration.addUnsavedClear();
+    setNumRows(event.target.value);
+  }
+  function handleColumnDimensionSelectorChange(event) {
+    ControlsGridSettingIntegration.addUnsavedClear();
+    setNumColumns(event.target.value);
+  }
 }

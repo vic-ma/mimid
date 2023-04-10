@@ -24,9 +24,9 @@ import Select from "@mui/material/Select";
 
 export default function ControlsGridSettingDimensionSelector({
   label,
-  stateSetter,
+  handleChange,
 }) {
-  // TODO: Fix default value
+  // TODO: Fix default value to localstorage
   return (
     <FormControl fullWidth>
       <InputLabel>{label}</InputLabel>
@@ -44,8 +44,4 @@ export default function ControlsGridSettingDimensionSelector({
       </Select>
     </FormControl>
   );
-
-  function handleChange(event) {
-    stateSetter(event.target.value);
-  }
 }

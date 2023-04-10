@@ -22,6 +22,9 @@ const ControlsGridSettingIntegration = {
   unsavedGridData: new Map(),
 
   getUnsavedGrid: function (maxRows, maxColumns) {
+    if (maxRows === undefined || maxColumns === undefined) {
+      throw new Error("Missing arguments.");
+    }
     const unsavedGrid = new Array(maxRows);
     for (let row = 0; row < maxRows; row++) {
       unsavedGrid[row] = new Array(maxColumns);
@@ -38,6 +41,10 @@ const ControlsGridSettingIntegration = {
       }
     }
     return unsavedGrid;
+  },
+
+  addUnsavedClear: function () {
+    this.unsavedGridData.clear();
   },
 
   addUnsavedChange: function (gridArea, row, column) {
