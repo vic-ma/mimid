@@ -60,6 +60,66 @@ export default function Controls() {
     SettingsIntegration.getStringSetting(CONTROLS_GRID_SETTING_NAME)
   );
 
+  let buttons = new Array(7);
+
+  if (gridTemplateAreas.includes(" " + PLAY_BUTTON_GRID_AREA + " ")) {
+    buttons.push(<PlayButton key={1} gridArea={PLAY_BUTTON_GRID_AREA} />);
+  }
+  if (gridTemplateAreas.includes(" " + SPEED_BUTTON_GRID_AREA + " ")) {
+    buttons.push(<SpeedButton key={2} gridArea={SPEED_BUTTON_GRID_AREA} />);
+  }
+  if (gridTemplateAreas.includes(" " + LOOP_BUTTON_GRID_AREA + " ")) {
+    buttons.push(<LoopButton key={3} gridArea={LOOP_BUTTON_GRID_AREA} />);
+  }
+  if (
+    gridTemplateAreas.includes(" " + SKIP_BACKWARD_LONG_BUTTON_GRID_AREA + " ")
+  ) {
+    buttons.push(
+      <SkipButton
+        key={4}
+        settingName={SKIP_BACKWARD_LONG_SETTING_NAME}
+        direction={SKIP_BACKWARD_DIRECTION}
+        gridArea={SKIP_BACKWARD_LONG_BUTTON_GRID_AREA}
+      />
+    );
+  }
+  if (
+    gridTemplateAreas.includes(" " + SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA + " ")
+  ) {
+    buttons.push(
+      <SkipButton
+        key={5}
+        settingName={SKIP_BACKWARD_SHORT_SETTING_NAME}
+        direction={SKIP_BACKWARD_DIRECTION}
+        gridArea={SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA}
+      />
+    );
+  }
+  if (
+    gridTemplateAreas.includes(" " + SKIP_FORWARD_SHORT_BUTTON_GRID_AREA + " ")
+  ) {
+    buttons.push(
+      <SkipButton
+        key={6}
+        settingName={SKIP_FORWARD_SHORT_SETTING_NAME}
+        direction={SKIP_FORWARD_DIRECTION}
+        gridArea={SKIP_FORWARD_SHORT_BUTTON_GRID_AREA}
+      />
+    );
+  }
+  if (
+    gridTemplateAreas.includes(" " + SKIP_FORWARD_LONG_BUTTON_GRID_AREA + " ")
+  ) {
+    buttons.push(
+      <SkipButton
+        key={7}
+        settingName={SKIP_FORWARD_LONG_SETTING_NAME}
+        direction={SKIP_FORWARD_DIRECTION}
+        gridArea={SKIP_FORWARD_LONG_BUTTON_GRID_AREA}
+      />
+    );
+  }
+
   return (
     <div className="Controls">
       <div className="controls-outer-div">
@@ -69,29 +129,7 @@ export default function Controls() {
             gridTemplateAreas: gridTemplateAreas,
           }}
         >
-          <PlayButton gridArea={PLAY_BUTTON_GRID_AREA} />
-          <SpeedButton gridArea={SPEED_BUTTON_GRID_AREA} />
-          <LoopButton gridArea={LOOP_BUTTON_GRID_AREA} />
-          <SkipButton
-            settingName={SKIP_BACKWARD_LONG_SETTING_NAME}
-            direction={SKIP_BACKWARD_DIRECTION}
-            gridArea={SKIP_BACKWARD_LONG_BUTTON_GRID_AREA}
-          />
-          <SkipButton
-            settingName={SKIP_BACKWARD_SHORT_SETTING_NAME}
-            direction={SKIP_BACKWARD_DIRECTION}
-            gridArea={SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA}
-          />
-          <SkipButton
-            settingName={SKIP_FORWARD_SHORT_SETTING_NAME}
-            direction={SKIP_FORWARD_DIRECTION}
-            gridArea={SKIP_FORWARD_SHORT_BUTTON_GRID_AREA}
-          />
-          <SkipButton
-            settingName={SKIP_FORWARD_LONG_SETTING_NAME}
-            direction={SKIP_FORWARD_DIRECTION}
-            gridArea={SKIP_FORWARD_LONG_BUTTON_GRID_AREA}
-          />
+          {buttons}
         </div>
       </div>
     </div>

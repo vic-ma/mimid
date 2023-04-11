@@ -37,12 +37,6 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-areas:
-    "P   P   P   P "
-    "L   L   S   S "
-    "BL  BS  FS  FL";
 }
 
 @mixin set-breakpoint-gap($breakpoint, $gap) {
