@@ -22,7 +22,11 @@ import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration.js"
 
 const SettingsIntegration = {
   unsavedChanges: new Map(),
-  unsavedControlsGridSetting: [],
+  controlsGridChanged: false,
+
+  setControlsGridChanged() {
+    this.controlsGridChanged = true;
+  },
 
   getSetting: function (settingName, typeConverter) {
     return window.localStorage.getItem(settingName) !== null
@@ -60,6 +64,7 @@ const SettingsIntegration = {
     this.writeLocalStorage();
     this.notifyListeners();
     this.unsavedChanges.clear();
+    this.gridTemplateChanged = false;
   },
 
   writeLocalStorage: function () {
@@ -75,6 +80,9 @@ const SettingsIntegration = {
   notifyListeners: function () {
     for (const setting of this.unsavedChanges.keys()) {
       window.dispatchEvent(new Event(setting));
+    }
+    if (this.controlsGridChanged) {
+      window.dispatchEvent(new Event(CONTROLS_GRID_SETTING_NAME));
     }
   },
 };

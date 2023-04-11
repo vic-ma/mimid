@@ -17,6 +17,8 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+import SettingsIntegration from "./SettingsIntegration";
+
 const ControlsGridSettingIntegration = {
   maxRows: 0,
   maxColumns: 0,
@@ -70,11 +72,13 @@ const ControlsGridSettingIntegration = {
 
   addUnsavedClear: function () {
     this.unsavedGridData.clear();
+    SettingsIntegration.setControlsGridChanged();
   },
 
   addUnsavedChange: function (gridArea, row, column) {
     this.updateGridArea(gridArea, row, column);
     this.removeOverlapping(gridArea);
+    SettingsIntegration.setControlsGridChanged();
   },
 
   updateGridArea: function (gridArea, row, column) {
