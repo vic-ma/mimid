@@ -24,6 +24,7 @@ import PlayButton from "./PlayButton.js";
 import SpeedButton from "./SpeedButton.js";
 import SkipButton from "./SkipButton.js";
 import SettingsIntegration from "../settings/SettingsIntegration";
+import ControlsGridSettingIntegration from "../settings/ControlsGridSettingIntegration";
 
 import {
   PLAY_BUTTON_GRID_AREA,
@@ -62,17 +63,19 @@ export default function Controls() {
 
   let buttons = new Array(7);
 
-  if (gridTemplateAreas.includes(" " + PLAY_BUTTON_GRID_AREA + " ")) {
+  if (ControlsGridSettingIntegration.buttonInGrid(PLAY_BUTTON_GRID_AREA)) {
     buttons.push(<PlayButton key={1} gridArea={PLAY_BUTTON_GRID_AREA} />);
   }
-  if (gridTemplateAreas.includes(" " + SPEED_BUTTON_GRID_AREA + " ")) {
+  if (ControlsGridSettingIntegration.buttonInGrid(SPEED_BUTTON_GRID_AREA)) {
     buttons.push(<SpeedButton key={2} gridArea={SPEED_BUTTON_GRID_AREA} />);
   }
-  if (gridTemplateAreas.includes(" " + LOOP_BUTTON_GRID_AREA + " ")) {
+  if (ControlsGridSettingIntegration.buttonInGrid(LOOP_BUTTON_GRID_AREA)) {
     buttons.push(<LoopButton key={3} gridArea={LOOP_BUTTON_GRID_AREA} />);
   }
   if (
-    gridTemplateAreas.includes(" " + SKIP_BACKWARD_LONG_BUTTON_GRID_AREA + " ")
+    ControlsGridSettingIntegration.buttonInGrid(
+      SKIP_BACKWARD_LONG_BUTTON_GRID_AREA
+    )
   ) {
     buttons.push(
       <SkipButton
@@ -84,7 +87,9 @@ export default function Controls() {
     );
   }
   if (
-    gridTemplateAreas.includes(" " + SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA + " ")
+    ControlsGridSettingIntegration.buttonInGrid(
+      SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA
+    )
   ) {
     buttons.push(
       <SkipButton
@@ -96,7 +101,9 @@ export default function Controls() {
     );
   }
   if (
-    gridTemplateAreas.includes(" " + SKIP_FORWARD_SHORT_BUTTON_GRID_AREA + " ")
+    ControlsGridSettingIntegration.buttonInGrid(
+      SKIP_FORWARD_SHORT_BUTTON_GRID_AREA
+    )
   ) {
     buttons.push(
       <SkipButton
@@ -108,7 +115,9 @@ export default function Controls() {
     );
   }
   if (
-    gridTemplateAreas.includes(" " + SKIP_FORWARD_LONG_BUTTON_GRID_AREA + " ")
+    ControlsGridSettingIntegration.buttonInGrid(
+      SKIP_FORWARD_LONG_BUTTON_GRID_AREA
+    )
   ) {
     buttons.push(
       <SkipButton
@@ -120,6 +129,18 @@ export default function Controls() {
     );
   }
 
+  let gridTemplateRows = "";
+  for (let i = 1; i <= ControlsGridSettingIntegration.maxRows; i++) {
+    gridTemplateRows += "1fr ";
+  }
+  gridTemplateRows = gridTemplateRows.slice(0, -1);
+
+  let gridTemplateColumns = "";
+  for (let i = 1; i <= ControlsGridSettingIntegration.maxColumns; i++) {
+    gridTemplateColumns += "1fr ";
+  }
+  gridTemplateColumns = gridTemplateColumns.slice(0, -1);
+
   return (
     <div className="Controls">
       <div className="controls-outer-div">
@@ -127,6 +148,8 @@ export default function Controls() {
           className="controls-grid"
           style={{
             gridTemplateAreas: gridTemplateAreas,
+            gridTemplateRows: gridTemplateRows,
+            gridTemplateColumns: gridTemplateColumns,
           }}
         >
           {buttons}

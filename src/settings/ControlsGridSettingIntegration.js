@@ -34,6 +34,10 @@ const ControlsGridSettingIntegration = {
     this.maxColumns = maxColumns;
   },
 
+  buttonInGrid: function (button) {
+    return this.unsavedGridData.has(button);
+  },
+
   getUnsavedGridTemplate: function () {
     let gridString = "";
     const unsavedGrid = this.getUnsavedGrid();
