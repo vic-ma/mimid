@@ -63,7 +63,12 @@ export default function Controls() {
   return (
     <div className="Controls">
       <div className="controls-outer-div">
-        <div className="controls-grid" gridTemplateAreas={gridTemplateAreas}>
+        <div
+          className="controls-grid"
+          style={{
+            gridTemplateAreas: gridTemplateAreas,
+          }}
+        >
           <PlayButton gridArea={PLAY_BUTTON_GRID_AREA} />
           <SpeedButton gridArea={SPEED_BUTTON_GRID_AREA} />
           <LoopButton gridArea={LOOP_BUTTON_GRID_AREA} />
