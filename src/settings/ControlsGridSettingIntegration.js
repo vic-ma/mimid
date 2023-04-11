@@ -32,13 +32,13 @@ const ControlsGridSettingIntegration = {
     this.maxColumns = maxColumns;
   },
 
-  getUnsavedGridString: function () {
+  getUnsavedGridTemplate: function () {
     let gridString = "";
     const unsavedGrid = this.getUnsavedGrid();
     for (const row of unsavedGrid) {
       gridString += "'";
       for (const cell of row) {
-        gridString += (cell === "" ? "1fr" : cell) + " ";
+        gridString += cell + " ";
       }
       gridString = gridString.slice(0, -1);
       gridString += "' ";
@@ -54,7 +54,7 @@ const ControlsGridSettingIntegration = {
     for (let row = 0; row < this.maxRows; row++) {
       unsavedGrid[row] = new Array(this.maxColumns);
       for (let column = 0; column < this.maxColumns; column++) {
-        unsavedGrid[row][column] = "";
+        unsavedGrid[row][column] = ".";
       }
     }
     for (const [gridArea, [[top, left], [bottom, right]]] of this

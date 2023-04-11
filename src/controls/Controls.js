@@ -23,6 +23,7 @@ import LoopButton from "./LoopButton.js";
 import PlayButton from "./PlayButton.js";
 import SpeedButton from "./SpeedButton.js";
 import SkipButton from "./SkipButton.js";
+import SettingsIntegration from "../settings/SettingsIntegration";
 
 import {
   PLAY_BUTTON_GRID_AREA,
@@ -41,13 +42,28 @@ import {
   SKIP_BACKWARD_SHORT_SETTING_NAME,
   SKIP_FORWARD_SHORT_SETTING_NAME,
   SKIP_FORWARD_LONG_SETTING_NAME,
+  CONTROLS_GRID_SETTING_NAME,
 } from "../settings/constants";
 
+import { useState } from "react";
+import { useEffect } from "react";
+
 export default function Controls() {
+  useEffect(() => {
+    SettingsIntegration.addStringSettingListener(
+      CONTROLS_GRID_SETTING_NAME,
+      setGridTemplateAreas
+    );
+  }, []);
+
+  const [gridTemplateAreas, setGridTemplateAreas] = useState(
+    SettingsIntegration.getStringSetting(CONTROLS_GRID_SETTING_NAME)
+  );
+
   return (
     <div className="Controls">
       <div className="controls-outer-div">
-        <div className="controls-grid">
+        <div className="controls-grid" gridTemplateAreas={gridTemplateAreas}>
           <PlayButton gridArea={PLAY_BUTTON_GRID_AREA} />
           <SpeedButton gridArea={SPEED_BUTTON_GRID_AREA} />
           <LoopButton gridArea={LOOP_BUTTON_GRID_AREA} />

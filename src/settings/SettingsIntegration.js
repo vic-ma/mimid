@@ -30,6 +30,10 @@ const SettingsIntegration = {
       : defaultsMap.get(settingName);
   },
 
+  getStringSetting: function (settingName) {
+    return this.getSetting(settingName, (x) => x);
+  },
+
   getFloatSetting: function (settingName) {
     return this.getSetting(settingName, parseFloat);
   },
@@ -38,6 +42,10 @@ const SettingsIntegration = {
     window.addEventListener(settingName, () =>
       stateSetter(typeConverter(window.localStorage.getItem(settingName)))
     );
+  },
+
+  addStringSettingListener: function (settingName, stateSetter) {
+    this.addSettingListener(settingName, stateSetter, (x) => x);
   },
 
   addFloatSettingListener: function (settingName, stateSetter) {
