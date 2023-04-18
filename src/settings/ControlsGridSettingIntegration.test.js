@@ -21,13 +21,13 @@ import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration";
 
 beforeEach(() => {
   ControlsGridSettingIntegration.unsavedGridData.clear();
-  ControlsGridSettingIntegration.maxRows = 0;
-  ControlsGridSettingIntegration.maxColumns = 0;
+  ControlsGridSettingIntegration.numRows = 0;
+  ControlsGridSettingIntegration.numColumns = 0;
 });
 
 test("Add one-cell grid area", () => {
-  ControlsGridSettingIntegration.setMaxRows(1);
-  ControlsGridSettingIntegration.setMaxColumns(1);
+  ControlsGridSettingIntegration.setNumRows(1);
+  ControlsGridSettingIntegration.setNumColumns(1);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
 
   const expectedMap = new Map();
@@ -46,8 +46,8 @@ test("Add one-cell grid area", () => {
 });
 
 test("Add 2x2 grid area", () => {
-  ControlsGridSettingIntegration.setMaxRows(2);
-  ControlsGridSettingIntegration.setMaxColumns(2);
+  ControlsGridSettingIntegration.setNumRows(2);
+  ControlsGridSettingIntegration.setNumColumns(2);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 1, 1);
 
@@ -70,8 +70,8 @@ test("Add 2x2 grid area", () => {
 });
 
 test("Redundant changes", () => {
-  ControlsGridSettingIntegration.setMaxRows(2);
-  ControlsGridSettingIntegration.setMaxColumns(2);
+  ControlsGridSettingIntegration.setNumRows(2);
+  ControlsGridSettingIntegration.setNumColumns(2);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 1, 1);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
@@ -99,8 +99,8 @@ test("Redundant changes", () => {
 });
 
 test("Add two adjacent grid areas", () => {
-  ControlsGridSettingIntegration.setMaxRows(2);
-  ControlsGridSettingIntegration.setMaxColumns(4);
+  ControlsGridSettingIntegration.setNumRows(2);
+  ControlsGridSettingIntegration.setNumColumns(4);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 1, 1);
   ControlsGridSettingIntegration.addUnsavedChange("bar", 0, 2);
@@ -129,8 +129,8 @@ test("Add two adjacent grid areas", () => {
 });
 
 test("Overlap centre", () => {
-  ControlsGridSettingIntegration.setMaxRows(3);
-  ControlsGridSettingIntegration.setMaxColumns(3);
+  ControlsGridSettingIntegration.setNumRows(3);
+  ControlsGridSettingIntegration.setNumColumns(3);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 2, 2);
   ControlsGridSettingIntegration.addUnsavedChange("bar", 1, 1);
@@ -156,8 +156,8 @@ test("Overlap centre", () => {
 });
 
 test("Overlap top and bottom", () => {
-  ControlsGridSettingIntegration.setMaxRows(5);
-  ControlsGridSettingIntegration.setMaxColumns(3);
+  ControlsGridSettingIntegration.setNumRows(5);
+  ControlsGridSettingIntegration.setNumColumns(3);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 2, 2);
   ControlsGridSettingIntegration.addUnsavedChange("bar", 2, 0);
@@ -186,8 +186,8 @@ test("Overlap top and bottom", () => {
 });
 
 test("Overlap left and right", () => {
-  ControlsGridSettingIntegration.setMaxRows(3);
-  ControlsGridSettingIntegration.setMaxColumns(5);
+  ControlsGridSettingIntegration.setNumRows(3);
+  ControlsGridSettingIntegration.setNumColumns(5);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 2, 2);
   ControlsGridSettingIntegration.addUnsavedChange("bar", 0, 2);
@@ -214,8 +214,8 @@ test("Overlap left and right", () => {
 });
 
 test("Overlap corner", () => {
-  ControlsGridSettingIntegration.setMaxRows(5);
-  ControlsGridSettingIntegration.setMaxColumns(5);
+  ControlsGridSettingIntegration.setNumRows(5);
+  ControlsGridSettingIntegration.setNumColumns(5);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 0, 0);
   ControlsGridSettingIntegration.addUnsavedChange("foo", 2, 2);
   ControlsGridSettingIntegration.addUnsavedChange("bar", 2, 2);

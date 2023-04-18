@@ -20,18 +20,18 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import SettingsIntegration from "./SettingsIntegration";
 
 const ControlsGridSettingIntegration = {
-  maxRows: 0,
-  maxColumns: 0,
+  numRows: 0,
+  numColumns: 0,
 
   // TODO: get map from localstorage via function
   unsavedGridData: new Map(),
 
-  setMaxRows: function (maxRows) {
-    this.maxRows = maxRows;
+  setNumRows: function (numRows) {
+    this.numRows = numRows;
   },
 
-  setMaxColumns: function (maxColumns) {
-    this.maxColumns = maxColumns;
+  setNumColumns: function (numColumns) {
+    this.numColumns = numColumns;
   },
 
   buttonInGrid: function (button) {
@@ -53,21 +53,21 @@ const ControlsGridSettingIntegration = {
   },
 
   getUnsavedGrid: function () {
-    if (this.maxRows === undefined || this.maxColumns === undefined) {
+    if (this.numRows === undefined || this.numColumns === undefined) {
       throw new Error("Missing arguments.");
     }
-    const unsavedGrid = new Array(this.maxRows);
-    for (let row = 0; row < this.maxRows; row++) {
-      unsavedGrid[row] = new Array(this.maxColumns);
-      for (let column = 0; column < this.maxColumns; column++) {
+    const unsavedGrid = new Array(this.numRows);
+    for (let row = 0; row < this.numRows; row++) {
+      unsavedGrid[row] = new Array(this.numColumns);
+      for (let column = 0; column < this.numColumns; column++) {
         unsavedGrid[row][column] = ".";
       }
     }
-    for (const [gridArea, [[top, left], [bottom, right]]] of this
+    for (const [areaName, [[top, left], [bottom, right]]] of this
       .unsavedGridData) {
       for (let row = top; row <= bottom; row++) {
         for (let column = left; column <= right; column++) {
-          unsavedGrid[row][column] = gridArea;
+          unsavedGrid[row][column] = areaName;
         }
       }
     }
@@ -79,79 +79,78 @@ const ControlsGridSettingIntegration = {
     SettingsIntegration.setControlsGridChanged();
   },
 
-  addUnsavedChange: function (gridArea, row, column) {
-    this.updateGridArea(gridArea, row, column);
-    this.removeOverlapping(gridArea);
+  addUnsavedChange: function (areaName, row, column) {
+    this.updateGridArea(areaName, row, column);
+    this.removeOverlapping(areaName);
     SettingsIntegration.setControlsGridChanged();
   },
 
-  updateGridArea: function (gridArea, row, column) {
-    if (!this.unsavedGridData.has(gridArea)) {
-      this.unsavedGridData.set(gridArea, [
+  updateGridArea: function (areaName, row, column) {
+    if (!this.unsavedGridData.has(areaName)) {
+      this.unsavedGridData.set(areaName, [
         [row, column],
         [row, column],
       ]);
     }
 
     const [topLeftCorner, bottomRightCorner] =
-      this.unsavedGridData.get(gridArea);
+      this.unsavedGridData.get(areaName);
     const [top, left] = topLeftCorner;
 
-    if (this.contains(topLeftCorner, bottomRightCorner, row, column)) {
+    if (this.areaContains([topLeftCorner, bottomRightCorner], row, column)) {
       return;
     }
 
     // top-left quardrant
     if (row <= top && column <= left) {
-      this.unsavedGridData.set(gridArea, [[row, column], topLeftCorner]);
+      this.unsavedGridData.set(areaName, [[row, column], topLeftCorner]);
     }
     // top-right quadrant
     else if (row <= top && column >= left) {
-      this.unsavedGridData.set(gridArea, [
+      this.unsavedGridData.set(areaName, [
         [row, left],
         [top, column],
       ]);
     }
     // bottom-left quadrant
     else if (row >= top && column <= left) {
-      this.unsavedGridData.set(gridArea, [
+      this.unsavedGridData.set(areaName, [
         [top, column],
         [row, left],
       ]);
     }
     // bottom-right quadrant
     else if (row >= top && column >= left) {
-      this.unsavedGridData.set(gridArea, [topLeftCorner, [row, column]]);
+      this.unsavedGridData.set(areaName, [topLeftCorner, [row, column]]);
     }
   },
 
-  removeOverlapping: function (gridArea) {
+  removeOverlapping: function (areaName) {
     const [topLeftCorner, bottomRightCorner] =
-      this.unsavedGridData.get(gridArea);
+      this.unsavedGridData.get(areaName);
 
-    for (const [currentgridArea, [currentTopLeft, currentBottomRight]] of this
+    for (const [currentAreaName, [currentTopLeft, currentBottomRight]] of this
       .unsavedGridData) {
-      if (currentgridArea === gridArea) {
+      if (currentAreaName === areaName) {
         continue;
       }
       if (
-        this.overlaps(
-          topLeftCorner,
-          bottomRightCorner,
-          currentTopLeft,
-          currentBottomRight
+        this.areasOverlap(
+          [topLeftCorner, bottomRightCorner],
+          [currentTopLeft, currentBottomRight]
         )
       ) {
-        this.removegridArea(currentgridArea);
+        this.removeArea(currentAreaName);
       }
     }
   },
+  removeArea: function (areaName) {
+    this.unsavedGridData.delete(areaName);
+  },
 
-  overlaps: function (topLeftOne, bottomRightOne, topLeftTwo, bottomRightTwo) {
-    const [topOne, leftOne] = topLeftOne;
-    const [bottomOne, rightOne] = bottomRightOne;
-    const [topTwo, leftTwo] = topLeftTwo;
-    const [bottomTwo, rightTwo] = bottomRightTwo;
+  areasOverlap: function (areaOne, areaTwo) {
+    const [[topOne, leftOne], [bottomOne, rightOne]] = areaOne;
+    const [[topTwo, leftTwo], [bottomTwo, rightTwo]] = areaTwo;
 
     return !(
       bottomOne < topTwo ||
@@ -160,15 +159,9 @@ const ControlsGridSettingIntegration = {
       rightTwo < leftOne
     );
   },
-
-  contains: function (topLeftCorner, bottomRightCorner, row, column) {
-    const [top, left] = topLeftCorner;
-    const [bottom, right] = bottomRightCorner;
+  areaContains: function (area, row, column) {
+    const [[top, left], [bottom, right]] = area;
     return top <= row && row <= bottom && left <= column && column <= right;
-  },
-
-  removegridArea: function (gridArea) {
-    this.unsavedGridData.delete(gridArea);
   },
 };
 

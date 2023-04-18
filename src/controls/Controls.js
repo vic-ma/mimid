@@ -130,13 +130,13 @@ export default function Controls() {
   }
 
   let gridTemplateRows = "";
-  for (let i = 1; i <= ControlsGridSettingIntegration.maxRows; i++) {
+  for (let i = 1; i <= ControlsGridSettingIntegration.numRows; i++) {
     gridTemplateRows += "1fr ";
   }
   gridTemplateRows = gridTemplateRows.slice(0, -1);
 
   let gridTemplateColumns = "";
-  for (let i = 1; i <= ControlsGridSettingIntegration.maxColumns; i++) {
+  for (let i = 1; i <= ControlsGridSettingIntegration.numColumns; i++) {
     gridTemplateColumns += "1fr ";
   }
   gridTemplateColumns = gridTemplateColumns.slice(0, -1);
