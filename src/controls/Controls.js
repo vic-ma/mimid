@@ -61,82 +61,76 @@ export default function Controls() {
     SettingsIntegration.getStringSetting(CONTROLS_GRID_SETTING_NAME)
   );
 
+  const enabledGridAreas = new Set(
+    gridTemplateAreas.replaceAll("'", "").split(" ")
+  );
+
   let buttons = new Array(7);
 
-  if (ControlsGridSettingIntegration.buttonInGrid(PLAY_BUTTON_GRID_AREA)) {
-    buttons.push(<PlayButton key={1} gridArea={PLAY_BUTTON_GRID_AREA} />);
-  }
-  if (ControlsGridSettingIntegration.buttonInGrid(SPEED_BUTTON_GRID_AREA)) {
-    buttons.push(<SpeedButton key={2} gridArea={SPEED_BUTTON_GRID_AREA} />);
-  }
-  if (ControlsGridSettingIntegration.buttonInGrid(LOOP_BUTTON_GRID_AREA)) {
-    buttons.push(<LoopButton key={3} gridArea={LOOP_BUTTON_GRID_AREA} />);
-  }
-  if (
-    ControlsGridSettingIntegration.buttonInGrid(
-      SKIP_BACKWARD_LONG_BUTTON_GRID_AREA
-    )
-  ) {
-    buttons.push(
-      <SkipButton
-        key={4}
-        settingName={SKIP_BACKWARD_LONG_SETTING_NAME}
-        direction={SKIP_BACKWARD_DIRECTION}
-        gridArea={SKIP_BACKWARD_LONG_BUTTON_GRID_AREA}
-      />
-    );
-  }
-  if (
-    ControlsGridSettingIntegration.buttonInGrid(
-      SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA
-    )
-  ) {
-    buttons.push(
-      <SkipButton
-        key={5}
-        settingName={SKIP_BACKWARD_SHORT_SETTING_NAME}
-        direction={SKIP_BACKWARD_DIRECTION}
-        gridArea={SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA}
-      />
-    );
-  }
-  if (
-    ControlsGridSettingIntegration.buttonInGrid(
-      SKIP_FORWARD_SHORT_BUTTON_GRID_AREA
-    )
-  ) {
-    buttons.push(
-      <SkipButton
-        key={6}
-        settingName={SKIP_FORWARD_SHORT_SETTING_NAME}
-        direction={SKIP_FORWARD_DIRECTION}
-        gridArea={SKIP_FORWARD_SHORT_BUTTON_GRID_AREA}
-      />
-    );
-  }
-  if (
-    ControlsGridSettingIntegration.buttonInGrid(
-      SKIP_FORWARD_LONG_BUTTON_GRID_AREA
-    )
-  ) {
-    buttons.push(
-      <SkipButton
-        key={7}
-        settingName={SKIP_FORWARD_LONG_SETTING_NAME}
-        direction={SKIP_FORWARD_DIRECTION}
-        gridArea={SKIP_FORWARD_LONG_BUTTON_GRID_AREA}
-      />
-    );
+  for (const areaName of enabledGridAreas) {
+    if (areaName === PLAY_BUTTON_GRID_AREA) {
+      buttons.push(<PlayButton key={1} gridArea={PLAY_BUTTON_GRID_AREA} />);
+    }
+    if (areaName === SPEED_BUTTON_GRID_AREA) {
+      buttons.push(<SpeedButton key={2} gridArea={SPEED_BUTTON_GRID_AREA} />);
+    }
+    if (areaName === LOOP_BUTTON_GRID_AREA) {
+      buttons.push(<LoopButton key={3} gridArea={LOOP_BUTTON_GRID_AREA} />);
+    }
+    if (areaName === SKIP_BACKWARD_LONG_BUTTON_GRID_AREA) {
+      buttons.push(
+        <SkipButton
+          key={4}
+          settingName={SKIP_BACKWARD_LONG_SETTING_NAME}
+          direction={SKIP_BACKWARD_DIRECTION}
+          gridArea={SKIP_BACKWARD_LONG_BUTTON_GRID_AREA}
+        />
+      );
+    }
+    if (areaName === SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA) {
+      buttons.push(
+        <SkipButton
+          key={5}
+          settingName={SKIP_BACKWARD_SHORT_SETTING_NAME}
+          direction={SKIP_BACKWARD_DIRECTION}
+          gridArea={SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA}
+        />
+      );
+    }
+    if (areaName === SKIP_FORWARD_SHORT_BUTTON_GRID_AREA) {
+      buttons.push(
+        <SkipButton
+          key={6}
+          settingName={SKIP_FORWARD_SHORT_SETTING_NAME}
+          direction={SKIP_FORWARD_DIRECTION}
+          gridArea={SKIP_FORWARD_SHORT_BUTTON_GRID_AREA}
+        />
+      );
+    }
+    if (areaName === SKIP_FORWARD_LONG_BUTTON_GRID_AREA) {
+      buttons.push(
+        <SkipButton
+          key={7}
+          settingName={SKIP_FORWARD_LONG_SETTING_NAME}
+          direction={SKIP_FORWARD_DIRECTION}
+          gridArea={SKIP_FORWARD_LONG_BUTTON_GRID_AREA}
+        />
+      );
+    }
   }
 
+  const rowsArray = gridTemplateAreas.match(/'([^']+)'/g);
+  const numRows = rowsArray.length;
+  const numColumns = rowsArray[0].split(" ").length;
+
   let gridTemplateRows = "";
-  for (let i = 1; i <= ControlsGridSettingIntegration.numRows; i++) {
+  for (let i = 1; i <= numRows; i++) {
     gridTemplateRows += "1fr ";
   }
   gridTemplateRows = gridTemplateRows.slice(0, -1);
 
   let gridTemplateColumns = "";
-  for (let i = 1; i <= ControlsGridSettingIntegration.numColumns; i++) {
+  for (let i = 1; i <= numColumns; i++) {
     gridTemplateColumns += "1fr ";
   }
   gridTemplateColumns = gridTemplateColumns.slice(0, -1);
