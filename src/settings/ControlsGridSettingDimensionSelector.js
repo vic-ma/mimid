@@ -25,12 +25,12 @@ import Select from "@mui/material/Select";
 export default function ControlsGridSettingDimensionSelector({
   label,
   handleChange,
+  defaultValue,
 }) {
-  // TODO: Fix default value to localstorage
   return (
     <FormControl fullWidth>
       <InputLabel>{label}</InputLabel>
-      <Select label={label} onChange={handleChange} defaultValue={4}>
+      <Select label={label} onChange={handleChange} defaultValue={defaultValue}>
         <MenuItem value={1}>1</MenuItem>
         <MenuItem value={2}>2</MenuItem>
         <MenuItem value={3}>3</MenuItem>

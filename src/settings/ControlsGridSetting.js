@@ -22,14 +22,21 @@ import "./ControlsGridSetting.scss";
 import ControlsGridSettingTable from "./ControlsGridSettingTable";
 import ControlsGridSettingDimensionSelector from "./ControlsGridSettingDimensionSelector";
 import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration";
+import { CONTROLS_GRID_SETTING_NAME } from "./constants";
 
 import Typography from "@mui/material/Typography";
 
 import { useState } from "react";
+import SettingsIntegration from "./SettingsIntegration";
 
 export default function ControlsGridSetting() {
-  const [numRows, setNumRows] = useState(4); // TODO: fix default
-  const [numColumns, setNumColumns] = useState(4);
+  const [defaultNumRows, defaultNumColumns] =
+    ControlsGridSettingIntegration.getDimensionsFromGridTemplateAreas(
+      SettingsIntegration.getStringSetting(CONTROLS_GRID_SETTING_NAME)
+    );
+
+  const [numRows, setNumRows] = useState(defaultNumRows);
+  const [numColumns, setNumColumns] = useState(defaultNumColumns);
 
   return (
     <div className="ControlsGridSetting">
@@ -41,11 +48,13 @@ export default function ControlsGridSetting() {
         label="Rows"
         stateSetter={setNumRows}
         handleChange={handleRowDimensionSelectorChange}
+        defaultValue={defaultNumRows}
       ></ControlsGridSettingDimensionSelector>
       <ControlsGridSettingDimensionSelector
         handleChange={handleColumnDimensionSelectorChange}
         label="Columns"
         stateSetter={setNumColumns}
+        defaultValue={defaultNumColumns}
       ></ControlsGridSettingDimensionSelector>
 
       <ControlsGridSettingTable

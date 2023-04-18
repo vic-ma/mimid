@@ -34,6 +34,10 @@ const ControlsGridSettingIntegration = {
     this.numColumns = numColumns;
   },
 
+  getDefaultUnsavedGridData: function () {
+    return;
+  },
+
   generateUnsavedGridTemplateAreas: function () {
     let gridString = "";
     const unsavedGrid = this.generateUnsavedGrid();
@@ -159,6 +163,34 @@ const ControlsGridSettingIntegration = {
   areaContains: function (area, row, column) {
     const [[top, left], [bottom, right]] = area;
     return top <= row && row <= bottom && left <= column && column <= right;
+  },
+
+  convertGridTemplateAreasToGrid(gridTemplateAreas) {
+    const [numRows, numColumns] =
+      this.getDimensionsFromGridTemplateAreas(gridTemplateAreas);
+
+    const rowsStr = gridTemplateAreas
+      .match(/'([^']+)'/g)
+      .map((str) => str.slice(1, -1));
+
+    console.log(rowsStr);
+
+    const grid = new Array(numRows);
+    for (let row = 0; row < numRows; row++) {
+      grid[row] = new Array(numColumns);
+      const areas = rowsStr[row].split(" ");
+      for (let column = 0; column < numColumns; column++) {
+        grid[row][column] = areas[column];
+      }
+    }
+    return grid;
+  },
+
+  getDimensionsFromGridTemplateAreas(gridTemplateAreas) {
+    const rowsArray = gridTemplateAreas.match(/'([^']+)'/g);
+    const numRows = rowsArray.length;
+    const numColumns = rowsArray[0].split(" ").length;
+    return [numRows, numColumns];
   },
 };
 

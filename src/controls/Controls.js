@@ -24,6 +24,7 @@ import PlayButton from "./PlayButton.js";
 import SpeedButton from "./SpeedButton.js";
 import SkipButton from "./SkipButton.js";
 import SettingsIntegration from "../settings/SettingsIntegration";
+import ControlsGridSettingIntegration from "../settings/ControlsGridSettingIntegration";
 
 import {
   PLAY_BUTTON_GRID_AREA,
@@ -118,9 +119,10 @@ export default function Controls() {
     }
   }
 
-  const rowsArray = gridTemplateAreas.match(/'([^']+)'/g);
-  const numRows = rowsArray.length;
-  const numColumns = rowsArray[0].split(" ").length;
+  const [numRows, numColumns] =
+    ControlsGridSettingIntegration.getDimensionsFromGridTemplateAreas(
+      gridTemplateAreas
+    );
 
   let gridTemplateRows = "";
   for (let i = 1; i <= numRows; i++) {
