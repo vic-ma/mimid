@@ -24,7 +24,6 @@ import PlayButton from "./PlayButton.js";
 import SpeedButton from "./SpeedButton.js";
 import SkipButton from "./SkipButton.js";
 import SettingsIntegration from "../settings/SettingsIntegration";
-import ControlsGridSettingIntegration from "../settings/ControlsGridSettingIntegration";
 
 import {
   PLAY_BUTTON_GRID_AREA,

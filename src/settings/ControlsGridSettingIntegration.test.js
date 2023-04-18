@@ -39,10 +39,12 @@ test("Add one-cell grid area", () => {
   const expectedGridString = "'foo'";
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
-  expect(ControlsGridSettingIntegration.getUnsavedGridTemplate()).toEqual(
-    expectedGridString
+  expect(ControlsGridSettingIntegration.generateUnsavedGrid()).toEqual(
+    expectedGrid
   );
+  expect(
+    ControlsGridSettingIntegration.generateUnsavedGridTemplateAreas()
+  ).toEqual(expectedGridString);
 });
 
 test("Add 2x2 grid area", () => {
@@ -63,10 +65,12 @@ test("Add 2x2 grid area", () => {
   const expectedGridString = "'foo foo' 'foo foo'";
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
-  expect(ControlsGridSettingIntegration.getUnsavedGridTemplate()).toEqual(
-    expectedGridString
+  expect(ControlsGridSettingIntegration.generateUnsavedGrid()).toEqual(
+    expectedGrid
   );
+  expect(
+    ControlsGridSettingIntegration.generateUnsavedGridTemplateAreas()
+  ).toEqual(expectedGridString);
 });
 
 test("Redundant changes", () => {
@@ -92,10 +96,12 @@ test("Redundant changes", () => {
   const expectedGridString = "'foo foo' 'foo foo'";
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
-  expect(ControlsGridSettingIntegration.getUnsavedGridTemplate()).toEqual(
-    expectedGridString
+  expect(ControlsGridSettingIntegration.generateUnsavedGrid()).toEqual(
+    expectedGrid
   );
+  expect(
+    ControlsGridSettingIntegration.generateUnsavedGridTemplateAreas()
+  ).toEqual(expectedGridString);
 });
 
 test("Add two adjacent grid areas", () => {
@@ -122,10 +128,12 @@ test("Add two adjacent grid areas", () => {
   const expectedGridString = "'foo foo bar bar' 'foo foo bar bar'";
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
-  expect(ControlsGridSettingIntegration.getUnsavedGridTemplate()).toEqual(
-    expectedGridString
+  expect(ControlsGridSettingIntegration.generateUnsavedGrid()).toEqual(
+    expectedGrid
   );
+  expect(
+    ControlsGridSettingIntegration.generateUnsavedGridTemplateAreas()
+  ).toEqual(expectedGridString);
 });
 
 test("Overlap centre", () => {
@@ -149,10 +157,12 @@ test("Overlap centre", () => {
   const expectedGridString = "'. . .' '. bar .' '. . .'";
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
-  expect(ControlsGridSettingIntegration.getUnsavedGridTemplate()).toEqual(
-    expectedGridString
+  expect(ControlsGridSettingIntegration.generateUnsavedGrid()).toEqual(
+    expectedGrid
   );
+  expect(
+    ControlsGridSettingIntegration.generateUnsavedGridTemplateAreas()
+  ).toEqual(expectedGridString);
 });
 
 test("Overlap top and bottom", () => {
@@ -179,10 +189,12 @@ test("Overlap top and bottom", () => {
     "'. . .' '. . .' 'bar bar bar' 'bar bar bar' 'bar bar bar'";
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
-  expect(ControlsGridSettingIntegration.getUnsavedGridTemplate()).toEqual(
-    expectedGridString
+  expect(ControlsGridSettingIntegration.generateUnsavedGrid()).toEqual(
+    expectedGrid
   );
+  expect(
+    ControlsGridSettingIntegration.generateUnsavedGridTemplateAreas()
+  ).toEqual(expectedGridString);
 });
 
 test("Overlap left and right", () => {
@@ -207,10 +219,12 @@ test("Overlap left and right", () => {
     "'. . bar bar bar' '. . bar bar bar' '. . bar bar bar'";
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
-  expect(ControlsGridSettingIntegration.getUnsavedGridTemplate()).toEqual(
-    expectedGridString
+  expect(ControlsGridSettingIntegration.generateUnsavedGrid()).toEqual(
+    expectedGrid
   );
+  expect(
+    ControlsGridSettingIntegration.generateUnsavedGridTemplateAreas()
+  ).toEqual(expectedGridString);
 });
 
 test("Overlap corner", () => {
@@ -237,8 +251,10 @@ test("Overlap corner", () => {
     "'. . . . .' '. . . . .' '. . bar bar bar' '. . bar bar bar' '. . bar bar bar'";
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
-  expect(ControlsGridSettingIntegration.getUnsavedGrid()).toEqual(expectedGrid);
-  expect(ControlsGridSettingIntegration.getUnsavedGridTemplate()).toEqual(
-    expectedGridString
+  expect(ControlsGridSettingIntegration.generateUnsavedGrid()).toEqual(
+    expectedGrid
   );
+  expect(
+    ControlsGridSettingIntegration.generateUnsavedGridTemplateAreas()
+  ).toEqual(expectedGridString);
 });

@@ -42,8 +42,6 @@ const PlayerAPIConnector = {
           videoId: "Q7jhLV22VUk",
         });
 
-        window.player = this.playerAPI; //TODO: REMOVE; FOR DEVELOPMENT USE ONLY
-
         this.UNSTARTED = window.YT.PlayerState.UNSTARTED;
         this.ENDED = window.YT.PlayerState.ENDED;
         this.PLAYING = window.YT.PlayerState.PLAYING;

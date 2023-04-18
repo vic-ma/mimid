@@ -82,7 +82,7 @@ const SettingsIntegration = {
     if (this.controlsGridChanged) {
       window.localStorage.setItem(
         CONTROLS_GRID_SETTING_NAME,
-        ControlsGridSettingIntegration.getUnsavedGridTemplate()
+        ControlsGridSettingIntegration.generateUnsavedGridTemplateAreas()
       );
     }
   },

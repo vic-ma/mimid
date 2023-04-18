@@ -34,9 +34,9 @@ const ControlsGridSettingIntegration = {
     this.numColumns = numColumns;
   },
 
-  getUnsavedGridTemplate: function () {
+  generateUnsavedGridTemplateAreas: function () {
     let gridString = "";
-    const unsavedGrid = this.getUnsavedGrid();
+    const unsavedGrid = this.generateUnsavedGrid();
     for (const row of unsavedGrid) {
       gridString += "'";
       for (const cell of row) {
@@ -48,7 +48,7 @@ const ControlsGridSettingIntegration = {
     return gridString.slice(0, -1);
   },
 
-  getUnsavedGrid: function () {
+  generateUnsavedGrid: function () {
     if (this.numRows === undefined || this.numColumns === undefined) {
       throw new Error("Missing arguments.");
     }
@@ -155,6 +155,7 @@ const ControlsGridSettingIntegration = {
       rightTwo < leftOne
     );
   },
+
   areaContains: function (area, row, column) {
     const [[top, left], [bottom, right]] = area;
     return top <= row && row <= bottom && left <= column && column <= right;
