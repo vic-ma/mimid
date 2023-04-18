@@ -34,6 +34,7 @@ export default function SkipButton({ settingName, direction, gridArea }) {
   const [skipAmount, setSkipAmount] = useState(
     SettingsIntegration.getFloatSetting(settingName)
   );
+
   return (
     <Button
       style={{ gridArea: gridArea }}

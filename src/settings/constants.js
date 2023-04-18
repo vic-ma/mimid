@@ -20,35 +20,37 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 export const defaultsMap = new Map();
 
 export const SLOW_SPEED_SETTING_NAME = "slow-speed";
-export const SLOW_SPEED_SETTING_DEFAULT = 0.5;
+export const SLOW_SPEED_SETTING_DEFAULT = "0.5";
 defaultsMap.set(SLOW_SPEED_SETTING_NAME, SLOW_SPEED_SETTING_DEFAULT);
 
 export const SKIP_BACKWARD_LONG_SETTING_NAME = "skip-backward-long";
-export const SKIP_BACKWARD_LONG_SETTING_DEFAULT = 5;
+export const SKIP_BACKWARD_LONG_SETTING_DEFAULT = "5";
 defaultsMap.set(
   SKIP_BACKWARD_LONG_SETTING_NAME,
   SKIP_BACKWARD_LONG_SETTING_DEFAULT
 );
 
 export const SKIP_BACKWARD_SHORT_SETTING_NAME = "skip-backward-short";
-export const SKIP_BACKWARD_SHORT_SETTING_DEFAULT = 2;
+export const SKIP_BACKWARD_SHORT_SETTING_DEFAULT = "2";
 defaultsMap.set(
   SKIP_BACKWARD_SHORT_SETTING_NAME,
   SKIP_BACKWARD_SHORT_SETTING_DEFAULT
 );
 
 export const SKIP_FORWARD_SHORT_SETTING_NAME = "skip-forward-short";
-export const SKIP_FORWARD_SHORT_SETTING_DEFAULT = 2;
+export const SKIP_FORWARD_SHORT_SETTING_DEFAULT = "2";
 defaultsMap.set(
   SKIP_FORWARD_SHORT_SETTING_NAME,
   SKIP_FORWARD_SHORT_SETTING_DEFAULT
 );
 
 export const SKIP_FORWARD_LONG_SETTING_NAME = "skip-forward-long";
-export const SKIP_FORWARD_LONG_SETTING_DEFAULT = 5;
+export const SKIP_FORWARD_LONG_SETTING_DEFAULT = "5";
 defaultsMap.set(
   SKIP_FORWARD_LONG_SETTING_NAME,
   SKIP_FORWARD_LONG_SETTING_DEFAULT
 );
 
 export const CONTROLS_GRID_SETTING_NAME = "controls-grid-template-areas";
+export const CONTROLS_GRID_SETTING_DEFAULT =
+  "'P P P P' 'L L S S' 'BL BS FS FL'";

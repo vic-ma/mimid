@@ -17,7 +17,11 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import { defaultsMap, CONTROLS_GRID_SETTING_NAME } from "./constants";
+import {
+  defaultsMap,
+  CONTROLS_GRID_SETTING_NAME,
+  CONTROLS_GRID_SETTING_DEFAULT,
+} from "./constants";
 import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration.js";
 
 const SettingsIntegration = {
@@ -26,20 +30,6 @@ const SettingsIntegration = {
 
   setControlsGridChanged() {
     this.controlsGridChanged = true;
-  },
-
-  getSetting: function (settingName, typeConverter) {
-    return window.localStorage.getItem(settingName) !== null
-      ? typeConverter(window.localStorage.getItem(settingName))
-      : defaultsMap.get(settingName);
-  },
-
-  getStringSetting: function (settingName) {
-    return this.getSetting(settingName, (x) => x);
-  },
-
-  getFloatSetting: function (settingName) {
-    return this.getSetting(settingName, parseFloat);
   },
 
   addSettingListener: function (settingName, stateSetter, typeConverter) {
@@ -54,6 +44,24 @@ const SettingsIntegration = {
 
   addFloatSettingListener: function (settingName, stateSetter) {
     this.addSettingListener(settingName, stateSetter, parseFloat);
+  },
+
+  getSetting: function (settingName, typeConverter) {
+    if (window.localStorage.getItem(settingName) !== null) {
+      return typeConverter(window.localStorage.getItem(settingName));
+    } else if (settingName === CONTROLS_GRID_SETTING_NAME) {
+      return typeConverter(CONTROLS_GRID_SETTING_DEFAULT);
+    } else {
+      return typeConverter(defaultsMap.get(settingName));
+    }
+  },
+
+  getStringSetting: function (settingName) {
+    return this.getSetting(settingName, (x) => x);
+  },
+
+  getFloatSetting: function (settingName) {
+    return this.getSetting(settingName, parseFloat);
   },
 
   addUnsavedChange: function (settingName, settingValue) {
@@ -71,10 +79,12 @@ const SettingsIntegration = {
     for (const [settingName, settingValue] of this.unsavedChanges) {
       window.localStorage.setItem(settingName, settingValue);
     }
-    window.localStorage.setItem(
-      CONTROLS_GRID_SETTING_NAME,
-      ControlsGridSettingIntegration.getUnsavedGridTemplate()
-    );
+    if (this.controlsGridChanged) {
+      window.localStorage.setItem(
+        CONTROLS_GRID_SETTING_NAME,
+        ControlsGridSettingIntegration.getUnsavedGridTemplate()
+      );
+    }
   },
 
   notifyListeners: function () {
