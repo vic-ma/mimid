@@ -18,6 +18,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import SettingsIntegration from "./SettingsIntegration";
+import { CONTROLS_GRID_SETTING_NAME } from "./constants";
 
 const ControlsGridSettingIntegration = {
   numRows: 0,
@@ -28,14 +29,30 @@ const ControlsGridSettingIntegration = {
 
   setNumRows: function (numRows) {
     this.numRows = numRows;
+    this.addUnsavedClear();
   },
 
   setNumColumns: function (numColumns) {
     this.numColumns = numColumns;
+    this.addUnsavedClear();
   },
 
-  getDefaultUnsavedGridData: function () {
-    return;
+  initialize: function () {
+    const gridTemplateAreas = SettingsIntegration.getStringSetting(
+      CONTROLS_GRID_SETTING_NAME
+    );
+
+    const [numRows, numColumns] =
+      this.getDimensionsFromGridTemplateAreas(gridTemplateAreas);
+    this.numRows = numRows;
+    this.numColumns = numColumns;
+
+    const defaultGrid = this.convertGridTemplateAreasToGrid(gridTemplateAreas);
+    for (let row = 0; row < this.numRows; row++) {
+      for (let column = 0; column < this.numColumns; column++) {
+        this.updateGridArea(defaultGrid[row][column], row, column);
+      }
+    }
   },
 
   generateUnsavedGridTemplateAreas: function () {

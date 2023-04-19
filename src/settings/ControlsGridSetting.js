@@ -21,13 +21,14 @@ import "./ControlsGridSetting.scss";
 
 import ControlsGridSettingTable from "./ControlsGridSettingTable";
 import ControlsGridSettingDimensionSelector from "./ControlsGridSettingDimensionSelector";
+import SettingsIntegration from "./SettingsIntegration";
 import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration";
 import { CONTROLS_GRID_SETTING_NAME } from "./constants";
 
 import Typography from "@mui/material/Typography";
 
 import { useState } from "react";
-import SettingsIntegration from "./SettingsIntegration";
+import { useEffect } from "react";
 
 export default function ControlsGridSetting() {
   const [defaultNumRows, defaultNumColumns] =
@@ -65,11 +66,13 @@ export default function ControlsGridSetting() {
   );
 
   function handleRowDimensionSelectorChange(event) {
-    ControlsGridSettingIntegration.addUnsavedClear();
-    setNumRows(event.target.value);
+    const newNumRows = event.target.value;
+    setNumRows(newNumRows);
+    ControlsGridSettingIntegration.setNumRows(newNumRows);
   }
   function handleColumnDimensionSelectorChange(event) {
-    ControlsGridSettingIntegration.addUnsavedClear();
-    setNumColumns(event.target.value);
+    const newNumColumns = event.target.value;
+    setNumColumns(newNumColumns);
+    ControlsGridSettingIntegration.setNumColumns(newNumColumns);
   }
 }

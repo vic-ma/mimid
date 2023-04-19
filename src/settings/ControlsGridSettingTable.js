@@ -31,9 +31,6 @@ import { useState } from "react";
 
 export default function ControlsGridSettingTable({ numRows, numColumns }) {
   const [rerender, setRerender] = useState(false);
-
-  ControlsGridSettingIntegration.setNumRows(numRows);
-  ControlsGridSettingIntegration.setNumColumns(numColumns);
   const unsavedGrid = ControlsGridSettingIntegration.generateUnsavedGrid();
 
   let table = new Array(numRows);
