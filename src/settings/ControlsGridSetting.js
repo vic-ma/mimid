@@ -21,23 +21,22 @@ import "./ControlsGridSetting.scss";
 
 import ControlsGridSettingTable from "./ControlsGridSettingTable";
 import ControlsGridSettingDimensionSelector from "./ControlsGridSettingDimensionSelector";
-import SettingsIntegration from "./SettingsIntegration";
 import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration";
-import { CONTROLS_GRID_SETTING_NAME } from "./constants";
 
 import Typography from "@mui/material/Typography";
 
 import { useState } from "react";
-import { useEffect } from "react";
+import { useRef } from "react";
 
 export default function ControlsGridSetting() {
-  const [defaultNumRows, defaultNumColumns] =
-    ControlsGridSettingIntegration.getDimensionsFromGridTemplateAreas(
-      SettingsIntegration.getStringSetting(CONTROLS_GRID_SETTING_NAME)
-    );
+  // Using ref as a hack to only use this value once
+  const defaultNumRowsRef = useRef(ControlsGridSettingIntegration.numRows);
+  const defaultNumColumnsRef = useRef(
+    ControlsGridSettingIntegration.numColumns
+  );
 
-  const [numRows, setNumRows] = useState(defaultNumRows);
-  const [numColumns, setNumColumns] = useState(defaultNumColumns);
+  const [numRows, setNumRows] = useState(defaultNumRowsRef.current);
+  const [numColumns, setNumColumns] = useState(defaultNumColumnsRef.current);
 
   return (
     <div className="ControlsGridSetting">
@@ -49,13 +48,13 @@ export default function ControlsGridSetting() {
         label="Rows"
         stateSetter={setNumRows}
         handleChange={handleRowDimensionSelectorChange}
-        defaultValue={defaultNumRows}
+        defaultValue={defaultNumRowsRef.current}
       ></ControlsGridSettingDimensionSelector>
       <ControlsGridSettingDimensionSelector
         handleChange={handleColumnDimensionSelectorChange}
         label="Columns"
         stateSetter={setNumColumns}
-        defaultValue={defaultNumColumns}
+        defaultValue={defaultNumColumnsRef.current}
       ></ControlsGridSettingDimensionSelector>
 
       <ControlsGridSettingTable

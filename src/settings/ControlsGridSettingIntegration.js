@@ -70,9 +70,6 @@ const ControlsGridSettingIntegration = {
   },
 
   generateUnsavedGrid: function () {
-    if (this.numRows === undefined || this.numColumns === undefined) {
-      throw new Error("Missing arguments.");
-    }
     const unsavedGrid = new Array(this.numRows);
     for (let row = 0; row < this.numRows; row++) {
       unsavedGrid[row] = new Array(this.numColumns);
@@ -189,8 +186,6 @@ const ControlsGridSettingIntegration = {
     const rowsStr = gridTemplateAreas
       .match(/'([^']+)'/g)
       .map((str) => str.slice(1, -1));
-
-    console.log(rowsStr);
 
     const grid = new Array(numRows);
     for (let row = 0; row < numRows; row++) {
