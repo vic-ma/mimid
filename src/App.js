@@ -25,6 +25,9 @@ import YouTubePlayer from "./YouTubePlayer.js";
 import Controls from "./controls/Controls.js";
 import Footer from "./Footer.js";
 import PlayerAPIConnector from "./PlayerAPIConnector.js";
+import SettingsIntegration from "./settings/SettingsIntegration";
+
+import { AUTO_PASTE_SETTING_NAME } from "./settings/constants";
 
 import { useState } from "react";
 import { useEffect } from "react";
@@ -39,14 +42,19 @@ import { useRef } from "react";
 export default function App() {
   const clipboardText = useRef("");
 
+  // More optimized version would use deps and setting listener
+  // to only run interval if auto-paste enabled.
   useEffect(() => {
     setInterval(() => {
+      if (!SettingsIntegration.getBooleanSetting(AUTO_PASTE_SETTING_NAME)) {
+        return;
+      }
       navigator.clipboard
         .readText()
         .then((text) => onClipboardRead(text))
         .catch((error) => {});
     }, 1000);
-  }, []);
+  }, []); // eslint-disable-line
 
   const [errorURLBar, setErrorURLBar] = useState(false);
 
