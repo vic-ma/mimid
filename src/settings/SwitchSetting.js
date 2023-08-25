@@ -27,11 +27,7 @@ import Switch from "@mui/material/Switch";
 import { useEffect } from "react";
 import { useState } from "react";
 
-export default function SwitchSetting({
-  label,
-  settingName,
-  defaultChecked = false,
-}) {
+export default function SwitchSetting({ label, settingName }) {
   useEffect(
     () => setChecked(SettingsIntegration.getBooleanSetting(settingName)),
     [] // eslint-disable-line
@@ -51,13 +47,12 @@ export default function SwitchSetting({
         onChange={handleChange}
         checked={checked}
       />
-      ;
     </div>
   );
 
   function handleChange(event) {
     const checked = event.target.checked;
     setChecked(checked);
-    SettingsIntegration.addUnsavedChange(checked);
+    SettingsIntegration.addUnsavedChange(settingName, checked);
   }
 }

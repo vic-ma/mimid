@@ -19,6 +19,10 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 export const defaultsMap = new Map();
 
+export const AUTO_PASTE_SETTING_NAME = "auto-paste";
+export const AUTO_PASTE_SETTING_DEFAULT = false;
+defaultsMap.set(AUTO_PASTE_SETTING_NAME, AUTO_PASTE_SETTING_DEFAULT);
+
 export const SLOW_SPEED_SETTING_NAME = "slow-speed";
 export const SLOW_SPEED_SETTING_DEFAULT = "0.5";
 defaultsMap.set(SLOW_SPEED_SETTING_NAME, SLOW_SPEED_SETTING_DEFAULT);
@@ -54,6 +58,3 @@ defaultsMap.set(
 export const CONTROLS_GRID_SETTING_NAME = "controls-grid-template-areas";
 export const CONTROLS_GRID_SETTING_DEFAULT =
   "'P P P P' 'L L S S' 'BL BS FS FL'";
-
-export const AUTO_PASTE_SETTING_NAME = "auto-paste";
-export const AUTO_PASTE_SETTING_DEFAULT = false;

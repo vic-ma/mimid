@@ -51,7 +51,7 @@ export default function SliderSetting({
       </Typography>
       <Slider
         className="SliderSettingSlider"
-        onChangeCommited={handleChange}
+        onChangeCommitted={handleChangeCommitted}
         value={value}
         min={min}
         max={max}
@@ -62,7 +62,7 @@ export default function SliderSetting({
     </div>
   );
 
-  function handleChange(event, value) {
+  function handleChangeCommitted(event, value) {
     setValue(value);
     SettingsIntegration.addUnsavedChange(settingName, value);
   }

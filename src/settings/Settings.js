@@ -20,9 +20,11 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import "./Settings.scss";
 
 import SettingsHeader from "./SettingsHeader";
+import SwitchSetting from "./SwitchSetting";
 import SliderSetting from "./SliderSetting";
 import ControlsGridSetting from "./ControlsGridSetting";
 import {
+  AUTO_PASTE_SETTING_NAME,
   SLOW_SPEED_SETTING_NAME,
   SKIP_BACKWARD_LONG_SETTING_NAME,
   SKIP_BACKWARD_SHORT_SETTING_NAME,
@@ -51,6 +53,10 @@ export default function Settings({ open, onClose }) {
     >
       <div className="settings-inner-div">
         <SettingsHeader onClose={onClose} />
+        <SwitchSetting
+          label="Auto-paste Video URL"
+          settingName={AUTO_PASTE_SETTING_NAME}
+        ></SwitchSetting>
         <SliderSetting
           label="Slow Speed"
           settingName={SLOW_SPEED_SETTING_NAME}
