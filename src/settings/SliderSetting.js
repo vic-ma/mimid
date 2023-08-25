@@ -24,7 +24,6 @@ import SettingsIntegration from "./SettingsIntegration.js";
 
 import Slider from "@mui/material/Slider";
 
-import { useEffect } from "react";
 import { useState } from "react";
 
 export default function SliderSetting({
@@ -35,11 +34,6 @@ export default function SliderSetting({
   step,
   marks = true,
 }) {
-  useEffect(
-    () => setValue(SettingsIntegration.getFloatSetting(settingName)),
-    [] // eslint-disable-line
-  );
-
   const [value, setValue] = useState(
     SettingsIntegration.getFloatSetting(settingName)
   );

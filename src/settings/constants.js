@@ -17,11 +17,17 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+// NOTE: all defaults must be strings, since localStorage uses only strings
+
 export const defaultsMap = new Map();
 
 export const AUTO_PASTE_SETTING_NAME = "auto-paste";
-export const AUTO_PASTE_SETTING_DEFAULT = false;
+export const AUTO_PASTE_SETTING_DEFAULT = "false";
 defaultsMap.set(AUTO_PASTE_SETTING_NAME, AUTO_PASTE_SETTING_DEFAULT);
+
+export const SCALE_SKIPS_SETTING_NAME = "scale-skips";
+export const SCALE_SKIPS_SETTING_DEFAULT = "true";
+defaultsMap.set(SCALE_SKIPS_SETTING_NAME, SCALE_SKIPS_SETTING_DEFAULT);
 
 export const SLOW_SPEED_SETTING_NAME = "slow-speed";
 export const SLOW_SPEED_SETTING_DEFAULT = "0.5";

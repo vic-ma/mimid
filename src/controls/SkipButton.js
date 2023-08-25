@@ -20,6 +20,8 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import PlayerAPIConnector from "../PlayerAPIConnector.js";
 import SettingsIntegration from "../settings/SettingsIntegration.js";
 
+import { SCALE_SKIPS_SETTING_NAME } from "../settings/constants.js";
+
 import Button from "@mui/material/Button";
 
 import { useState } from "react";
@@ -48,8 +50,15 @@ export default function SkipButton({ settingName, direction, gridArea }) {
   function onClick() {
     const currentTime = PlayerAPIConnector.playerAPI.getCurrentTime();
     PlayerAPIConnector.playerAPI.seekTo(
-      currentTime + skipAmount * direction,
+      currentTime + getSkipAmount() * direction,
       true
     );
+  }
+
+  function getSkipAmount() {
+    if (!SettingsIntegration.getBooleanSetting(SCALE_SKIPS_SETTING_NAME)) {
+      return skipAmount;
+    }
+    return skipAmount * PlayerAPIConnector.playerAPI.getPlaybackRate();
   }
 }

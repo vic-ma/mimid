@@ -25,6 +25,7 @@ import SliderSetting from "./SliderSetting";
 import ControlsGridSetting from "./ControlsGridSetting";
 import {
   AUTO_PASTE_SETTING_NAME,
+  SCALE_SKIPS_SETTING_NAME,
   SLOW_SPEED_SETTING_NAME,
   SKIP_BACKWARD_LONG_SETTING_NAME,
   SKIP_BACKWARD_SHORT_SETTING_NAME,
@@ -56,6 +57,10 @@ export default function Settings({ open, onClose }) {
         <SwitchSetting
           label="Auto-paste Video URL"
           settingName={AUTO_PASTE_SETTING_NAME}
+        ></SwitchSetting>
+        <SwitchSetting
+          label="Scale skips by speed"
+          settingName={SCALE_SKIPS_SETTING_NAME}
         ></SwitchSetting>
         <SliderSetting
           label="Slow Speed"
