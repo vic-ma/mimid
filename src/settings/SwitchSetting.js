@@ -17,53 +17,47 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./SliderSetting.scss";
+import "./SwitchSetting.scss";
 
 import Typography from "@mui/material/Typography";
 import SettingsIntegration from "./SettingsIntegration.js";
 
-import Slider from "@mui/material/Slider";
+import Switch from "@mui/material/Switch";
 
 import { useEffect } from "react";
 import { useState } from "react";
 
-export default function SliderSetting({
+export default function SwitchSetting({
   label,
   settingName,
-  min,
-  max,
-  step,
-  marks = true,
+  defaultChecked = false,
 }) {
   useEffect(
-    () => setValue(SettingsIntegration.getFloatSetting(settingName)),
+    () => setChecked(SettingsIntegration.getBooleanSetting(settingName)),
     [] // eslint-disable-line
   );
 
-  const [value, setValue] = useState(
-    SettingsIntegration.getFloatSetting(settingName)
+  const [checked, setChecked] = useState(
+    SettingsIntegration.getBooleanSetting(settingName)
   );
 
   return (
-    <div className="SliderSetting">
-      <Typography className="SliderSettingLabel" variant="h6">
+    <div className="SwitchSetting">
+      <Typography className="SwitchSettingLabel" variant="h6">
         {label}
       </Typography>
-      <Slider
-        className="SliderSettingSlider"
-        onChangeCommited={handleChange}
-        value={value}
-        min={min}
-        max={max}
-        step={step}
-        marks={marks}
-        valueLabelDisplay="auto"
-      ></Slider>
+      <Switch
+        className="SwitchSettingSwitch"
+        onChange={handleChange}
+        checked={checked}
+      />
+      ;
     </div>
   );
 
-  function handleChange(event, value) {
-    setValue(value);
-    SettingsIntegration.addUnsavedChange(settingName, value);
+  function handleChange(event) {
+    const checked = event.target.checked;
+    setChecked(checked);
+    SettingsIntegration.addUnsavedChange(checked);
   }
 }

@@ -60,6 +60,10 @@ const SettingsIntegration = {
     return this.getSetting(settingName, (x) => x);
   },
 
+  getBooleanSetting: function (settingName) {
+    return this.getSetting(settingName, (x) => x === "true");
+  },
+
   getFloatSetting: function (settingName) {
     return this.getSetting(settingName, parseFloat);
   },

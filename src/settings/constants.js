@@ -54,3 +54,6 @@ defaultsMap.set(
 export const CONTROLS_GRID_SETTING_NAME = "controls-grid-template-areas";
 export const CONTROLS_GRID_SETTING_DEFAULT =
   "'P P P P' 'L L S S' 'BL BS FS FL'";
+
+export const AUTO_PASTE_SETTING_NAME = "auto-paste";
+export const AUTO_PASTE_SETTING_DEFAULT = false;
