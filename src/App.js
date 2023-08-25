@@ -27,6 +27,8 @@ import Footer from "./Footer.js";
 import PlayerAPIConnector from "./PlayerAPIConnector.js";
 
 import { useState } from "react";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 /* TODO
  * All: lock zoom
@@ -35,6 +37,17 @@ import { useState } from "react";
  */
 
 export default function App() {
+  const clipboardText = useRef("");
+
+  useEffect(() => {
+    setInterval(() => {
+      navigator.clipboard
+        .readText()
+        .then((text) => onClipboardRead(text))
+        .catch((error) => {});
+    }, 1000);
+  }, []);
+
   const [errorURLBar, setErrorURLBar] = useState(false);
 
   return (
@@ -47,6 +60,18 @@ export default function App() {
       </div>
     </div>
   );
+
+  function onClipboardRead(text) {
+    if (text === clipboardText.current) {
+      return;
+    }
+    clipboardText.current = text;
+    const id = getVideoIDFromURL(text);
+    if (id !== null) {
+      setErrorURLBar(false);
+      PlayerAPIConnector.playerAPI.loadVideoById(id);
+    }
+  }
 
   function handleChangeURLBar(event) {
     const url = event.target.value;
