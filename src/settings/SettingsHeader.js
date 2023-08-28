@@ -28,7 +28,7 @@ import Typography from "@mui/material/Typography";
 
 export default function SettingsHeader({ onClose, onReset }) {
   return (
-    <AppBar className="SettingsHeader">
+    <AppBar position="sticky">
       <Toolbar>
         <Button
           className="SettingsHeaderClose"
