@@ -19,13 +19,6 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 .SliderSetting {
   display: flex;
-}
-
-.SliderSettingLabel {
+  flex-direction: column;
   flex-grow: 1;
-}
-
-.SliderSettingSlider {
-  flex-basis: 50vw;
-  margin-right: 5vw;
 }

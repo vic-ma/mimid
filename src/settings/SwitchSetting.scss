@@ -19,11 +19,6 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 .SwitchSetting {
   display: flex;
-}
-
-.SwitchSettingLabel {
+  justify-content: space-between;
   flex-grow: 1;
-}
-
-.SwitchSettingSwitch {
 }

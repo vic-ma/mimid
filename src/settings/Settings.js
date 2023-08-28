@@ -33,6 +33,8 @@ import {
   SKIP_FORWARD_LONG_SETTING_NAME,
 } from "./constants";
 
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
 
@@ -52,53 +54,69 @@ export default function Settings({ open, onClose }) {
       onClose={onClose}
       TransitionComponent={Transition}
     >
-      <div className="settings-inner-div">
+      <List className="settings-inner-div">
         <SettingsHeader onClose={onClose} />
-        <SwitchSetting
-          label="Auto-paste Video URL"
-          settingName={AUTO_PASTE_SETTING_NAME}
-        ></SwitchSetting>
-        <SwitchSetting
-          label="Scale skips by speed"
-          settingName={SCALE_SKIPS_SETTING_NAME}
-        ></SwitchSetting>
-        <SliderSetting
-          label="Slow Speed"
-          settingName={SLOW_SPEED_SETTING_NAME}
-          min={0.25}
-          max={0.95}
-          step={0.05}
-        ></SliderSetting>
-        <SliderSetting
-          label="Skip Backward Long"
-          settingName={SKIP_BACKWARD_LONG_SETTING_NAME}
-          min={0.5}
-          max={10}
-          step={0.5}
-        ></SliderSetting>
-        <SliderSetting
-          label="Skip Backward Short"
-          settingName={SKIP_BACKWARD_SHORT_SETTING_NAME}
-          min={0.5}
-          max={10}
-          step={0.5}
-        ></SliderSetting>
-        <SliderSetting
-          label="Skip Forward Short"
-          settingName={SKIP_FORWARD_SHORT_SETTING_NAME}
-          min={0.5}
-          max={10}
-          step={0.5}
-        ></SliderSetting>
-        <SliderSetting
-          label="Skip Foward Long"
-          settingName={SKIP_FORWARD_LONG_SETTING_NAME}
-          min={0.5}
-          max={10}
-          step={0.5}
-        ></SliderSetting>
-        <ControlsGridSetting></ControlsGridSetting>
-      </div>
+        <ListItem className="SettingsListItem">
+          <SwitchSetting
+            label="Auto-paste Video URL"
+            settingName={AUTO_PASTE_SETTING_NAME}
+          ></SwitchSetting>
+        </ListItem>
+        <ListItem className="SettingsListItem">
+          <SwitchSetting
+            label="Scale skips by speed"
+            settingName={SCALE_SKIPS_SETTING_NAME}
+          ></SwitchSetting>
+        </ListItem>
+        <ListItem className="SettingsListItem">
+          <SliderSetting
+            label="Slow Speed"
+            settingName={SLOW_SPEED_SETTING_NAME}
+            min={0.25}
+            max={0.95}
+            step={0.05}
+          ></SliderSetting>
+        </ListItem>
+        <ListItem className="SettingsListItem">
+          <SliderSetting
+            label="Skip Backward Long"
+            settingName={SKIP_BACKWARD_LONG_SETTING_NAME}
+            min={0.5}
+            max={10}
+            step={0.5}
+          ></SliderSetting>
+        </ListItem>
+        <ListItem className="SettingsListItem">
+          <SliderSetting
+            label="Skip Backward Short"
+            settingName={SKIP_BACKWARD_SHORT_SETTING_NAME}
+            min={0.5}
+            max={10}
+            step={0.5}
+          ></SliderSetting>
+        </ListItem>
+        <ListItem className="SettingsListItem">
+          <SliderSetting
+            label="Skip Forward Short"
+            settingName={SKIP_FORWARD_SHORT_SETTING_NAME}
+            min={0.5}
+            max={10}
+            step={0.5}
+          ></SliderSetting>
+        </ListItem>
+        <ListItem className="SettingsListItem">
+          <SliderSetting
+            label="Skip Foward Long"
+            settingName={SKIP_FORWARD_LONG_SETTING_NAME}
+            min={0.5}
+            max={10}
+            step={0.5}
+          ></SliderSetting>
+        </ListItem>
+        <ListItem className="SettingsListItem">
+          <ControlsGridSetting></ControlsGridSetting>
+        </ListItem>
+      </List>
     </Dialog>
   );
 }
