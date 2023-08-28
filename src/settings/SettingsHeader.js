@@ -19,6 +19,8 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import "./SettingsHeader.scss";
 
+import SettingsIntegration from "./SettingsIntegration";
+
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
@@ -38,10 +40,21 @@ export default function SettingsHeader({ onClose }) {
         <Typography className="SettingsHeaderLabel" variant="h5">
           Settings
         </Typography>
-        <Button className="SettingsHeaderReset" variant="text">
+        <Button
+          className="SettingsHeaderReset"
+          variant="text"
+          onClick={onReset}
+        >
           Reset
         </Button>
       </Toolbar>
     </AppBar>
   );
+
+  // Ideally, it doesn't close, and instead every setting
+  // resets their states by gettting their setting.
+  function onReset() {
+    SettingsIntegration.reset();
+    onClose();
+  }
 }

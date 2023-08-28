@@ -49,6 +49,8 @@ import {
 import { useState } from "react";
 import { useEffect } from "react";
 
+const NUM_BUTTONS = 7;
+
 export default function Controls() {
   useEffect(() => {
     SettingsIntegration.addStringSettingListener(
@@ -65,7 +67,7 @@ export default function Controls() {
     gridTemplateAreas.replaceAll("'", "").split(" ")
   );
 
-  let buttons = new Array(7);
+  let buttons = new Array(NUM_BUTTONS);
 
   for (const areaName of enabledGridAreas) {
     if (areaName === PLAY_BUTTON_GRID_AREA) {

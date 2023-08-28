@@ -17,11 +17,7 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import {
-  defaultsMap,
-  CONTROLS_GRID_SETTING_NAME,
-  CONTROLS_GRID_SETTING_DEFAULT,
-} from "./constants";
+import { defaultsMap, CONTROLS_GRID_SETTING_NAME } from "./constants";
 import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration.js";
 
 const SettingsIntegration = {
@@ -34,7 +30,7 @@ const SettingsIntegration = {
 
   addSettingListener: function (settingName, stateSetter, typeConverter) {
     window.addEventListener(settingName, () =>
-      stateSetter(typeConverter(window.localStorage.getItem(settingName)))
+      stateSetter(this.getSetting(settingName, typeConverter))
     );
   },
 
@@ -49,11 +45,8 @@ const SettingsIntegration = {
   getSetting: function (settingName, typeConverter) {
     if (window.localStorage.getItem(settingName) !== null) {
       return typeConverter(window.localStorage.getItem(settingName));
-    } else if (settingName === CONTROLS_GRID_SETTING_NAME) {
-      return typeConverter(CONTROLS_GRID_SETTING_DEFAULT);
-    } else {
-      return typeConverter(defaultsMap.get(settingName));
     }
+    return typeConverter(defaultsMap.get(settingName));
   },
 
   getStringSetting: function (settingName) {
@@ -98,6 +91,20 @@ const SettingsIntegration = {
     if (this.controlsGridChanged) {
       window.dispatchEvent(new Event(CONTROLS_GRID_SETTING_NAME));
     }
+  },
+
+  reset: function () {
+    window.localStorage.clear();
+    this.unsavedChanges.clear();
+    this.gridTemplateChanged = false;
+    this.notifyAllListeners();
+  },
+
+  notifyAllListeners: function () {
+    for (const setting of defaultsMap.keys()) {
+      window.dispatchEvent(new Event(setting));
+    }
+    window.dispatchEvent(new Event(CONTROLS_GRID_SETTING_NAME));
   },
 };
 
