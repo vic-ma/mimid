@@ -54,8 +54,8 @@ export default function Settings({ open, onClose }) {
       onClose={onClose}
       TransitionComponent={Transition}
     >
+      <SettingsHeader onClose={onClose} />
       <List className="SettingsList">
-        <SettingsHeader onClose={onClose} />
         <ListItem className="SettingsListItem">
           <SwitchSetting
             label="Auto-paste Video URL"

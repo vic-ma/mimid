@@ -19,19 +19,29 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import "./SettingsHeader.scss";
 
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 export default function SettingsHeader({ onClose }) {
   return (
-    <header className="SettingsHeader">
-      <Button variant="text" onClick={onClose}>
-        X
-      </Button>
-      <Typography className="SettingsHeaderLabel" variant="h5">
-        Settings
-      </Typography>
-      <Button variant="text">Reset</Button>
-    </header>
+    <AppBar className="SettingsHeader">
+      <Toolbar>
+        <Button
+          className="SettingsHeaderClose"
+          variant="text"
+          onClick={onClose}
+        >
+          X
+        </Button>
+        <Typography className="SettingsHeaderLabel" variant="h5">
+          Settings
+        </Typography>
+        <Button className="SettingsHeaderReset" variant="text">
+          Reset
+        </Button>
+      </Toolbar>
+    </AppBar>
   );
 }

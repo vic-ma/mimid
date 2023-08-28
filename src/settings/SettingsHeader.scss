@@ -18,7 +18,15 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 .SettingsHeader {
-  display: flex;
+  position: static !important;
+}
+
+.SettingsHeaderClose {
+  color: inherit !important;
+}
+
+.SettingsHeaderReset {
+  color: inherit !important;
 }
 
 .SettingsHeaderLabel {
