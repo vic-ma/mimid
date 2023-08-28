@@ -54,7 +54,7 @@ export default function Settings({ open, onClose }) {
       onClose={onClose}
       TransitionComponent={Transition}
     >
-      <List>
+      <List className="SettingsList">
         <SettingsHeader onClose={onClose} />
         <ListItem className="SettingsListItem">
           <SwitchSetting

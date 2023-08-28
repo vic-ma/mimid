@@ -28,8 +28,8 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
   }
 }
 
-@include set-grid-gap(breakpoints.$xs-breakpoint, breakpoints.$xs-gap);
-@include set-grid-gap(breakpoints.$sm-breakpoint, breakpoints.$sm-gap);
-@include set-grid-gap(breakpoints.$md-breakpoint, breakpoints.$md-gap);
-@include set-grid-gap(breakpoints.$lg-breakpoint, breakpoints.$lg-gap);
-@include set-grid-gap(breakpoints.$xl-breakpoint, breakpoints.$xl-gap);
+@include set-grid-gap(breakpoints.$xs-breakpoint, breakpoints.$xs-spacing);
+@include set-grid-gap(breakpoints.$sm-breakpoint, breakpoints.$sm-spacing);
+@include set-grid-gap(breakpoints.$md-breakpoint, breakpoints.$md-spacing);
+@include set-grid-gap(breakpoints.$lg-breakpoint, breakpoints.$lg-spacing);
+@include set-grid-gap(breakpoints.$xl-breakpoint, breakpoints.$xl-spacing);

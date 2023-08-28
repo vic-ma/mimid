@@ -27,3 +27,32 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 .SettingsListItem {
   display: flex;
 }
+
+@mixin set-breakpoint-spacing($breakpoint, $spacing) {
+  @media (min-width: $breakpoint) {
+    .SettingsList {
+      margin: $spacing !important;
+    }
+  }
+}
+
+@include set-breakpoint-spacing(
+  breakpoints.$xs-breakpoint,
+  breakpoints.$xs-spacing
+);
+@include set-breakpoint-spacing(
+  breakpoints.$sm-breakpoint,
+  breakpoints.$sm-spacing
+);
+@include set-breakpoint-spacing(
+  breakpoints.$md-breakpoint,
+  breakpoints.$md-spacing
+);
+@include set-breakpoint-spacing(
+  breakpoints.$lg-breakpoint,
+  breakpoints.$lg-spacing
+);
+@include set-breakpoint-spacing(
+  breakpoints.$xl-breakpoint,
+  breakpoints.$xl-spacing
+);

@@ -29,16 +29,31 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
   flex-grow: 1;
 }
 
-@mixin set-breakpoint-gap($breakpoint, $gap) {
+@mixin set-breakpoint-spacing($breakpoint, $spacing) {
   @media (min-width: $breakpoint) {
     .ControlsGridSetting {
-      gap: $gap;
+      gap: $spacing;
     }
   }
 }
 
-@include set-breakpoint-gap(breakpoints.$xs-breakpoint, breakpoints.$xs-gap);
-@include set-breakpoint-gap(breakpoints.$sm-breakpoint, breakpoints.$sm-gap);
-@include set-breakpoint-gap(breakpoints.$md-breakpoint, breakpoints.$md-gap);
-@include set-breakpoint-gap(breakpoints.$lg-breakpoint, breakpoints.$lg-gap);
-@include set-breakpoint-gap(breakpoints.$xl-breakpoint, breakpoints.$xl-gap);
+@include set-breakpoint-spacing(
+  breakpoints.$xs-breakpoint,
+  breakpoints.$xs-spacing
+);
+@include set-breakpoint-spacing(
+  breakpoints.$sm-breakpoint,
+  breakpoints.$sm-spacing
+);
+@include set-breakpoint-spacing(
+  breakpoints.$md-breakpoint,
+  breakpoints.$md-spacing
+);
+@include set-breakpoint-spacing(
+  breakpoints.$lg-breakpoint,
+  breakpoints.$lg-spacing
+);
+@include set-breakpoint-spacing(
+  breakpoints.$xl-breakpoint,
+  breakpoints.$xl-spacing
+);
