@@ -48,7 +48,7 @@ export default function ControlsGridSettingTable({ numRows, numColumns }) {
               unsavedGrid[row][column] === "." ? "" : unsavedGrid[row][column]
             }
             afterChange={afterSelectorChange}
-          ></ControlsGridSettingTableSelector>
+          />
         </TableCell>
       );
     }

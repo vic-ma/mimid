@@ -49,18 +49,15 @@ export default function ControlsGridSetting() {
         stateSetter={setNumRows}
         handleChange={handleRowDimensionSelectorChange}
         defaultValue={defaultNumRowsRef.current}
-      ></ControlsGridSettingDimensionSelector>
+      />
       <ControlsGridSettingDimensionSelector
         handleChange={handleColumnDimensionSelectorChange}
         label="Columns"
         stateSetter={setNumColumns}
         defaultValue={defaultNumColumnsRef.current}
-      ></ControlsGridSettingDimensionSelector>
+      />
 
-      <ControlsGridSettingTable
-        numRows={numRows}
-        numColumns={numColumns}
-      ></ControlsGridSettingTable>
+      <ControlsGridSettingTable numRows={numRows} numColumns={numColumns} />
     </div>
   );
 

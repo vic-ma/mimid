@@ -52,7 +52,7 @@ export default function SliderSetting({
         step={step}
         marks={marks}
         valueLabelDisplay="auto"
-      ></Slider>
+      />
     </div>
   );
 

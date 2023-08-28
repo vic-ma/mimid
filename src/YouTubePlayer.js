@@ -25,10 +25,7 @@ import "./YouTubePlayer.scss";
 export default function YouTubePlayer() {
   return (
     <div className="YouTubePlayer">
-      <div
-        className="youtube-player-inner-div"
-        id="youtube-player-inner-div"
-      ></div>
+      <div className="youtube-player-inner-div" id="youtube-player-inner-div" />
     </div>
   );
 }

@@ -60,13 +60,13 @@ export default function Settings({ open, onClose }) {
           <SwitchSetting
             label="Auto-paste Video URL"
             settingName={AUTO_PASTE_SETTING_NAME}
-          ></SwitchSetting>
+          />
         </ListItem>
         <ListItem className="SettingsListItem">
           <SwitchSetting
             label="Scale skips by speed"
             settingName={SCALE_SKIPS_SETTING_NAME}
-          ></SwitchSetting>
+          />
         </ListItem>
         <ListItem className="SettingsListItem">
           <SliderSetting
@@ -75,7 +75,7 @@ export default function Settings({ open, onClose }) {
             min={0.25}
             max={0.95}
             step={0.05}
-          ></SliderSetting>
+          />
         </ListItem>
         <ListItem className="SettingsListItem">
           <SliderSetting
@@ -84,7 +84,7 @@ export default function Settings({ open, onClose }) {
             min={0.5}
             max={10}
             step={0.5}
-          ></SliderSetting>
+          />
         </ListItem>
         <ListItem className="SettingsListItem">
           <SliderSetting
@@ -93,7 +93,7 @@ export default function Settings({ open, onClose }) {
             min={0.5}
             max={10}
             step={0.5}
-          ></SliderSetting>
+          />
         </ListItem>
         <ListItem className="SettingsListItem">
           <SliderSetting
@@ -102,7 +102,7 @@ export default function Settings({ open, onClose }) {
             min={0.5}
             max={10}
             step={0.5}
-          ></SliderSetting>
+          />
         </ListItem>
         <ListItem className="SettingsListItem">
           <SliderSetting
@@ -111,10 +111,10 @@ export default function Settings({ open, onClose }) {
             min={0.5}
             max={10}
             step={0.5}
-          ></SliderSetting>
+          />
         </ListItem>
         <ListItem className="SettingsListItem">
-          <ControlsGridSetting></ControlsGridSetting>
+          <ControlsGridSetting />
         </ListItem>
       </List>
     </Dialog>
