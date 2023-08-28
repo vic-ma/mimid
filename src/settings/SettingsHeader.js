@@ -26,7 +26,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-export default function SettingsHeader({ onClose }) {
+export default function SettingsHeader({ onClose, onReset }) {
   return (
     <AppBar className="SettingsHeader">
       <Toolbar>
@@ -50,11 +50,4 @@ export default function SettingsHeader({ onClose }) {
       </Toolbar>
     </AppBar>
   );
-
-  // Ideally, it doesn't close, and instead every setting
-  // resets their states by gettting their setting.
-  function onReset() {
-    SettingsIntegration.reset();
-    onClose();
-  }
 }

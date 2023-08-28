@@ -30,7 +30,11 @@ export default function Footer() {
   return (
     <footer className="Footer">
       <SettingsButton onClick={handleSettingsButtonClick} />
-      <Settings open={settingsOpen} onClose={handleSettingsClose} />
+      <Settings
+        open={settingsOpen}
+        onClose={handleSettingsClose}
+        onReset={handleSettingsReset}
+      />
     </footer>
   );
 
@@ -40,6 +44,13 @@ export default function Footer() {
 
   function handleSettingsClose() {
     SettingsIntegration.saveUnsavedChanges();
+    setSettingsOpen(false);
+  }
+
+  // Ideally, it doesn't close, and instead every setting
+  // resets their states by gettting their setting.
+  function handleSettingsReset() {
+    SettingsIntegration.reset();
     setSettingsOpen(false);
   }
 }

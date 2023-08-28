@@ -24,7 +24,6 @@ const ControlsGridSettingIntegration = {
   numRows: 0,
   numColumns: 0,
 
-  // TODO: get map from localstorage via function
   unsavedGridData: new Map(),
 
   setNumRows: function (numRows) {
