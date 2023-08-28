@@ -54,7 +54,7 @@ export default function Settings({ open, onClose }) {
       onClose={onClose}
       TransitionComponent={Transition}
     >
-      <List className="settings-inner-div">
+      <List>
         <SettingsHeader onClose={onClose} />
         <ListItem className="SettingsListItem">
           <SwitchSetting
@@ -64,7 +64,7 @@ export default function Settings({ open, onClose }) {
         </ListItem>
         <ListItem className="SettingsListItem">
           <SwitchSetting
-            label="Scale skips by speed"
+            label="Scale Skips by Speed"
             settingName={SCALE_SKIPS_SETTING_NAME}
           />
         </ListItem>

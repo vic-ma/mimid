@@ -17,13 +17,28 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+@use "../breakpoints.scss";
+
 .ControlsGridSetting {
   display: flex;
   flex-direction: column;
-  gap: 1vw;
   overflow: hidden;
 }
 
 .ControlsGridSettingLabel {
   flex-grow: 1;
 }
+
+@mixin set-breakpoint-gap($breakpoint, $gap) {
+  @media (min-width: $breakpoint) {
+    .ControlsGridSetting {
+      gap: $gap;
+    }
+  }
+}
+
+@include set-breakpoint-gap(breakpoints.$xs-breakpoint, breakpoints.$xs-gap);
+@include set-breakpoint-gap(breakpoints.$sm-breakpoint, breakpoints.$sm-gap);
+@include set-breakpoint-gap(breakpoints.$md-breakpoint, breakpoints.$md-gap);
+@include set-breakpoint-gap(breakpoints.$lg-breakpoint, breakpoints.$lg-gap);
+@include set-breakpoint-gap(breakpoints.$xl-breakpoint, breakpoints.$xl-gap);

@@ -41,7 +41,7 @@ export default function ControlsGridSetting() {
   return (
     <div className="ControlsGridSetting">
       <Typography className="ControlsGridSettingLabel" variant="h6">
-        Controls Grid Setting
+        Controls Grid
       </Typography>
 
       <ControlsGridSettingDimensionSelector
