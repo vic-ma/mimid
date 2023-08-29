@@ -19,8 +19,6 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import "./SettingsHeader.scss";
 
-import SettingsIntegration from "./SettingsIntegration";
-
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";

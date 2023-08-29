@@ -69,7 +69,7 @@ const SettingsIntegration = {
     this.writeLocalStorage();
     this.notifyListeners();
     this.unsavedChanges.clear();
-    this.gridTemplateChanged = false;
+    this.controlsGridChanged = false;
   },
 
   writeLocalStorage: function () {
@@ -96,7 +96,8 @@ const SettingsIntegration = {
   reset: function () {
     window.localStorage.clear();
     this.unsavedChanges.clear();
-    this.gridTemplateChanged = false;
+    ControlsGridSettingIntegration.reset();
+    this.controlsGridChanged = false;
     this.notifyAllListeners();
   },
 

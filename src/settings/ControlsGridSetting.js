@@ -26,35 +26,32 @@ import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration";
 import Typography from "@mui/material/Typography";
 
 import { useState } from "react";
-import { useRef } from "react";
 
 export default function ControlsGridSetting() {
-  // Using ref as a hack to only use this value once
-  const defaultNumRowsRef = useRef(ControlsGridSettingIntegration.numRows);
-  const defaultNumColumnsRef = useRef(
+  const [numRows, setNumRows] = useState(
+    ControlsGridSettingIntegration.numRows
+  );
+  const [numColumns, setNumColumns] = useState(
     ControlsGridSettingIntegration.numColumns
   );
-
-  const [numRows, setNumRows] = useState(defaultNumRowsRef.current);
-  const [numColumns, setNumColumns] = useState(defaultNumColumnsRef.current);
 
   return (
     <div className="ControlsGridSetting">
       <Typography className="ControlsGridSettingLabel" variant="h6">
-        Controls Grid
+        Controls Layout
       </Typography>
 
       <ControlsGridSettingDimensionSelector
         label="Rows"
-        stateSetter={setNumRows}
         handleChange={handleRowDimensionSelectorChange}
-        defaultValue={defaultNumRowsRef.current}
+        stateSetter={setNumRows}
+        defaultValue={ControlsGridSettingIntegration.numRows}
       />
       <ControlsGridSettingDimensionSelector
-        handleChange={handleColumnDimensionSelectorChange}
         label="Columns"
+        handleChange={handleColumnDimensionSelectorChange}
         stateSetter={setNumColumns}
-        defaultValue={defaultNumColumnsRef.current}
+        defaultValue={ControlsGridSettingIntegration.numColumns}
       />
 
       <ControlsGridSettingTable numRows={numRows} numColumns={numColumns} />

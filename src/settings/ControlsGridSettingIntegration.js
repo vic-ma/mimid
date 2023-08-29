@@ -54,6 +54,10 @@ const ControlsGridSettingIntegration = {
     }
   },
 
+  reset: function () {
+    this.initialize();
+  },
+
   generateUnsavedGridTemplateAreas: function () {
     let gridString = "";
     const unsavedGrid = this.generateUnsavedGrid();
