@@ -96,7 +96,7 @@ const SettingsIntegration = {
   reset: function () {
     window.localStorage.clear();
     this.unsavedChanges.clear();
-    ControlsGridSettingIntegration.reset();
+    ControlsGridSettingIntegration.initialize();
     this.controlsGridChanged = false;
     this.notifyAllListeners();
   },

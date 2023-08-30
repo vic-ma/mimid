@@ -18,11 +18,27 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import ControlsGridSettingIntegration from "./ControlsGridSettingIntegration";
+import LocalStorageMock from "../utils/localStorageMock";
+
+import {
+  CONTROLS_GRID_SETTING_NAME,
+  CONTROLS_GRID_SETTING_DEFAULT,
+} from "./constants";
+
+import {
+  PLAY_BUTTON_GRID_AREA,
+  LOOP_BUTTON_GRID_AREA,
+  SPEED_BUTTON_GRID_AREA,
+  SKIP_BACKWARD_LONG_BUTTON_GRID_AREA,
+  SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA,
+  SKIP_FORWARD_SHORT_BUTTON_GRID_AREA,
+  SKIP_FORWARD_LONG_BUTTON_GRID_AREA,
+} from "../controls/constants";
 
 beforeEach(() => {
-  ControlsGridSettingIntegration.unsavedGridData.clear();
   ControlsGridSettingIntegration.numRows = 0;
   ControlsGridSettingIntegration.numColumns = 0;
+  ControlsGridSettingIntegration.unsavedGridData = new Map();
 });
 
 test("Add one-cell grid area", () => {
@@ -284,6 +300,80 @@ test("Overlap corner", () => {
   ];
   const expectedGridTemplateAreas =
     "'. . . . .' '. . . . .' '. . bar bar bar' '. . bar bar bar' '. . bar bar bar'";
+
+  expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
+  expect(ControlsGridSettingIntegration.generateUnsavedGrid()).toEqual(
+    expectedGrid
+  );
+  expect(
+    ControlsGridSettingIntegration.generateUnsavedGridTemplateAreas()
+  ).toEqual(expectedGridTemplateAreas);
+  expect(
+    ControlsGridSettingIntegration.convertGridTemplateAreasToGrid(
+      expectedGridTemplateAreas
+    )
+  ).toEqual(expectedGrid);
+});
+
+test("Initialize with localStorage", () => {
+  window.localStorage = new LocalStorageMock();
+  localStorage.setItem(
+    CONTROLS_GRID_SETTING_NAME,
+    CONTROLS_GRID_SETTING_DEFAULT
+  );
+  ControlsGridSettingIntegration.initialize();
+
+  const expectedMap = new Map();
+  expectedMap.set(PLAY_BUTTON_GRID_AREA, [
+    [0, 0],
+    [0, 3],
+  ]);
+  expectedMap.set(LOOP_BUTTON_GRID_AREA, [
+    [1, 0],
+    [1, 1],
+  ]);
+  expectedMap.set(SPEED_BUTTON_GRID_AREA, [
+    [1, 2],
+    [1, 3],
+  ]);
+  expectedMap.set(SKIP_BACKWARD_LONG_BUTTON_GRID_AREA, [
+    [2, 0],
+    [2, 0],
+  ]);
+  expectedMap.set(SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA, [
+    [2, 1],
+    [2, 1],
+  ]);
+  expectedMap.set(SKIP_FORWARD_SHORT_BUTTON_GRID_AREA, [
+    [2, 2],
+    [2, 2],
+  ]);
+  expectedMap.set(SKIP_FORWARD_LONG_BUTTON_GRID_AREA, [
+    [2, 3],
+    [2, 3],
+  ]);
+
+  const expectedGrid = [
+    [
+      PLAY_BUTTON_GRID_AREA,
+      PLAY_BUTTON_GRID_AREA,
+      PLAY_BUTTON_GRID_AREA,
+      PLAY_BUTTON_GRID_AREA,
+    ],
+    [
+      LOOP_BUTTON_GRID_AREA,
+      LOOP_BUTTON_GRID_AREA,
+      SPEED_BUTTON_GRID_AREA,
+      SPEED_BUTTON_GRID_AREA,
+    ],
+    [
+      SKIP_BACKWARD_LONG_BUTTON_GRID_AREA,
+      SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA,
+      SKIP_FORWARD_SHORT_BUTTON_GRID_AREA,
+      SKIP_FORWARD_LONG_BUTTON_GRID_AREA,
+    ],
+  ];
+  const expectedGridTemplateAreas = "'P P P P' 'L L S S' 'BL BS FS FL'";
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
   expect(ControlsGridSettingIntegration.generateUnsavedGrid()).toEqual(

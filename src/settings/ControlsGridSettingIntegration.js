@@ -54,10 +54,6 @@ const ControlsGridSettingIntegration = {
     }
   },
 
-  reset: function () {
-    this.initialize();
-  },
-
   generateUnsavedGridTemplateAreas: function () {
     let gridString = "";
     const unsavedGrid = this.generateUnsavedGrid();
@@ -161,6 +157,7 @@ const ControlsGridSettingIntegration = {
       }
     }
   },
+
   removeArea: function (areaName) {
     this.unsavedGridData.delete(areaName);
   },

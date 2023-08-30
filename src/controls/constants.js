@@ -18,8 +18,8 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 export const PLAY_BUTTON_GRID_AREA = "P";
-export const SPEED_BUTTON_GRID_AREA = "S";
 export const LOOP_BUTTON_GRID_AREA = "L";
+export const SPEED_BUTTON_GRID_AREA = "S";
 export const SKIP_BACKWARD_LONG_BUTTON_GRID_AREA = "BL";
 export const SKIP_BACKWARD_SHORT_BUTTON_GRID_AREA = "BS";
 export const SKIP_FORWARD_SHORT_BUTTON_GRID_AREA = "FS";
