@@ -28,25 +28,22 @@ const SettingsIntegration = {
     this.controlsGridChanged = true;
   },
 
-  addSettingListener: function (settingName, stateSetter, typeConverter) {
-    window.addEventListener(settingName, () =>
-      stateSetter(this.getSetting(settingName, typeConverter))
-    );
-  },
-
   addStringSettingListener: function (settingName, stateSetter) {
     this.addSettingListener(settingName, stateSetter, (x) => x);
+  },
+
+  addBooleanSettingListener: function (settingName, stateSetter) {
+    this.addSettingListener(settingName, stateSetter, (x) => x === "true");
   },
 
   addFloatSettingListener: function (settingName, stateSetter) {
     this.addSettingListener(settingName, stateSetter, parseFloat);
   },
 
-  getSetting: function (settingName, typeConverter) {
-    if (window.localStorage.getItem(settingName) !== null) {
-      return typeConverter(window.localStorage.getItem(settingName));
-    }
-    return typeConverter(defaultsMap.get(settingName));
+  addSettingListener: function (settingName, stateSetter, typeConverter) {
+    window.addEventListener(settingName, () =>
+      stateSetter(this.getSetting(settingName, typeConverter))
+    );
   },
 
   getStringSetting: function (settingName) {
@@ -59,6 +56,13 @@ const SettingsIntegration = {
 
   getFloatSetting: function (settingName) {
     return this.getSetting(settingName, parseFloat);
+  },
+
+  getSetting: function (settingName, typeConverter) {
+    if (window.localStorage.getItem(settingName) !== null) {
+      return typeConverter(window.localStorage.getItem(settingName));
+    }
+    return typeConverter(defaultsMap.get(settingName));
   },
 
   addUnsavedChange: function (settingName, settingValue) {
