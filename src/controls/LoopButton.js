@@ -25,7 +25,6 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 
-// TODO: handle skipping when paused
 export default function LoopButton({ gridArea }) {
   useEffect(
     () =>
@@ -39,7 +38,7 @@ export default function LoopButton({ gridArea }) {
     DELETE: 3,
   };
 
-  const [currentStage, setCurrentStage] = useState(stages.SET_START);
+  const [nextStage, setNextStage] = useState(stages.SET_START);
 
   const startTime = useRef(null);
   const endTime = useRef(null);
@@ -51,12 +50,12 @@ export default function LoopButton({ gridArea }) {
       onClick={handleClick}
       variant="contained"
     >
-      {currentStage}
+      {nextStage}
     </Button>
   );
 
   function handleClick() {
-    switch (currentStage) {
+    switch (nextStage) {
       case stages.SET_START:
         startTime.current = PlayerAPIConnector.playerAPI.getCurrentTime();
         break;
@@ -70,7 +69,6 @@ export default function LoopButton({ gridArea }) {
             currentTime > endTime.current
           ) {
             PlayerAPIConnector.playerAPI.seekTo(startTime.current, true);
-            PlayerAPIConnector.playerAPI.playVideo();
           }
         }, PlayerAPIConnector.STANDARD_DELAY);
         break;
@@ -80,10 +78,11 @@ export default function LoopButton({ gridArea }) {
       default:
         throw new Error("Invalid LoopButton stage.");
     }
-    if (currentStage === stages.DELETE) {
-      setCurrentStage(stages.SET_START);
+
+    if (nextStage === stages.DELETE) {
+      setNextStage(stages.SET_START);
     } else {
-      setCurrentStage(currentStage + 1);
+      setNextStage(nextStage + 1);
     }
   }
 
@@ -106,7 +105,7 @@ export default function LoopButton({ gridArea }) {
   function handleStateChange(event) {
     if (event.data === PlayerAPIConnector.UNSTARTED) {
       deleteLoop();
-      setCurrentStage(stages.SET_START);
+      setNextStage(stages.SET_START);
     }
   }
 }

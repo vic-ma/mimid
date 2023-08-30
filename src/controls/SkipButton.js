@@ -27,7 +27,6 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import { useEffect } from "react";
 
-// TODO: Change paused behaviour
 export default function SkipButton({ settingName, direction, gridArea }) {
   useEffect(() => {
     SettingsIntegration.addFloatSettingListener(settingName, setSkipAmount);
