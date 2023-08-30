@@ -99,10 +99,6 @@ const ControlsGridSettingIntegration = {
   },
 
   updateGridArea: function (areaName, row, column) {
-    if (areaName === ".") {
-      return;
-    }
-
     if (!this.unsavedGridData.has(areaName)) {
       this.unsavedGridData.set(areaName, [
         [row, column],

@@ -27,7 +27,9 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 .controls-outer-div {
   position: relative;
-  padding-top: 100%;
+
+  // Make default layout skip buttons squares on mobile
+  padding-top: math.percentage(math.div(3.4, 4.6));
 }
 
 .controls-grid {
