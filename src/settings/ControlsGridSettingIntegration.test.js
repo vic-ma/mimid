@@ -372,8 +372,11 @@ test("Initialize with localStorage", () => {
       SKIP_FORWARD_SHORT_BUTTON_GRID_AREA,
       SKIP_FORWARD_LONG_BUTTON_GRID_AREA,
     ],
+    [".", ".", ".", "."],
   ];
-  const expectedGridTemplateAreas = "'P P P P' 'L L S S' 'BL BS FS FL'";
+
+  const expectedGridTemplateAreas =
+    "'P P P P' 'L L S S' 'BL BS FS FL' '. . . .'";
 
   expect(ControlsGridSettingIntegration.unsavedGridData).toEqual(expectedMap);
   expect(ControlsGridSettingIntegration.generateUnsavedGrid()).toEqual(
