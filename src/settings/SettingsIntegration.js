@@ -29,20 +29,32 @@ const SettingsIntegration = {
   },
 
   addStringSettingListener: function (settingName, stateSetter) {
-    this.addSettingListener(settingName, stateSetter, (x) => x);
+    this.addSettingListener(
+      settingName,
+      stateSetter,
+      this.getStringSetting.bind(this)
+    );
   },
 
   addBooleanSettingListener: function (settingName, stateSetter) {
-    this.addSettingListener(settingName, stateSetter, (x) => x === "true");
+    this.addSettingListener(
+      settingName,
+      stateSetter,
+      this.getBooleanSetting.bind(this)
+    );
   },
 
   addFloatSettingListener: function (settingName, stateSetter) {
-    this.addSettingListener(settingName, stateSetter, parseFloat);
+    this.addSettingListener(
+      settingName,
+      stateSetter,
+      this.getFloatSetting.bind(this)
+    );
   },
 
-  addSettingListener: function (settingName, stateSetter, typeConverter) {
+  addSettingListener: function (settingName, stateSetter, settingGetter) {
     window.addEventListener(settingName, () =>
-      stateSetter(this.getSetting(settingName, typeConverter))
+      stateSetter(settingGetter(settingName))
     );
   },
 
