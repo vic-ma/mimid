@@ -19,8 +19,6 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 @use "./breakpoints.scss";
 
-// TODO: Use flex-shrink to ensure settings is always visible
-
 .App {
   display: flex;
   height: 100svh;

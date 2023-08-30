@@ -19,15 +19,17 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 @use "../breakpoints.scss";
 
-// TODO: minmax
-// TODO: Maybe change aspect ratio to make the squares a square
+@use "sass:math";
+
 .Controls {
   flex-grow: 1;
 }
 
 .controls-outer-div {
   position: relative;
-  padding-top: 70%;
+
+  // Make default layout skip buttons squares on mobile
+  padding-top: math.percentage(math.div(3.4, 4.6));
 }
 
 .controls-grid {

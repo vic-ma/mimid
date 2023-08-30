@@ -36,7 +36,6 @@ import Select from "@mui/material/Select";
 import { useState } from "react";
 import { useEffect } from "react";
 
-// TODO: Native select?
 export default function ControlsGridSettingTableSelector({
   row,
   column,

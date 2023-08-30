@@ -26,9 +26,6 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
  * invalid and then valid again.
  */
 
-// TODO: Some sort of error handling if polling for API ready takes too long
-// TODO: Maybe rename to "createPlayer" and just .player or something
-
 const PlayerAPIConnector = {
   playerAPI: null,
 

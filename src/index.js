@@ -26,12 +26,14 @@ import reportWebVitals from "./reportWebVitals";
 import ControlsGridSettingIntegration from "./settings/ControlsGridSettingIntegration";
 
 ControlsGridSettingIntegration.initialize();
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
+
 PlayerAPIConnector.connect("youtube-player-inner-div");
 
 // If you want to start measuring performance in your app, pass a function

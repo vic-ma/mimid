@@ -33,12 +33,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 
-/* TODO
- * All: lock zoom
- * Phone: lock orientation to portrait
- * Targeted padding for more aspect ratios
- */
-
 export default function App() {
   const clipboardText = useRef("");
 
@@ -52,7 +46,7 @@ export default function App() {
       navigator.clipboard
         .readText()
         .then((text) => onClipboardRead(text))
-        .catch((error) => {});
+        .catch(() => {});
     }, 1000);
   }, []); // eslint-disable-line
 
