@@ -17,6 +17,8 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+import { PREVIOUS_VIDEO_LS_KEY, DEFAULT_VIDEO_ID } from "./constants";
+
 /* Trying to create a YT.Player on an iframe without a YouTube src will make
  * that iframe unable to be controlled with the YouTube API forever, even if
  * a valid YouTube src is added later on.
@@ -36,7 +38,8 @@ const PlayerAPIConnector = {
     const intervalID = setInterval(() => {
       if (window.isYouTubeIframeAPIReady) {
         this.playerAPI = new window.YT.Player(playerElementID, {
-          videoId: "Q7jhLV22VUk",
+          videoId:
+            localStorage.getItem(PREVIOUS_VIDEO_LS_KEY) || DEFAULT_VIDEO_ID,
         });
 
         this.UNSTARTED = window.YT.PlayerState.UNSTARTED;

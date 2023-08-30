@@ -17,7 +17,6 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./global.scss";
 import "./App.scss";
 
 import URLBar from "./URLBar.js";
@@ -28,6 +27,7 @@ import PlayerAPIConnector from "./PlayerAPIConnector.js";
 import SettingsIntegration from "./settings/SettingsIntegration";
 
 import { AUTO_PASTE_SETTING_NAME } from "./settings/constants";
+import { PREVIOUS_VIDEO_LS_KEY } from "./constants";
 
 import { useState } from "react";
 import { useEffect } from "react";
@@ -81,6 +81,7 @@ export default function App() {
     if (id !== null) {
       setErrorURLBar(false);
       PlayerAPIConnector.playerAPI.loadVideoById(id);
+      localStorage.setItem(PREVIOUS_VIDEO_LS_KEY, id);
     } else if (url === "") {
       setErrorURLBar(false);
     } else {
