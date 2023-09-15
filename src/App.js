@@ -69,10 +69,7 @@ export default function App() {
     }
     clipboardText.current = text;
     const id = getVideoIDFromURL(text);
-    if (
-      id !== null &&
-      id !== getVideoIDFromURL(PlayerAPIConnector.playerAPI.getVideoUrl())
-    ) {
+    if (id !== null && id !== getCurrentVideoID()) {
       setErrorURLBar(false);
       PlayerAPIConnector.playerAPI.loadVideoById(id);
       localStorage.setItem(PREVIOUS_VIDEO_LS_KEY, id);
@@ -84,6 +81,9 @@ export default function App() {
     const id = getVideoIDFromURL(url);
     if (id !== null) {
       setErrorURLBar(false);
+      if (id === getCurrentVideoID()) {
+        return;
+      }
       PlayerAPIConnector.playerAPI.loadVideoById(id);
       localStorage.setItem(PREVIOUS_VIDEO_LS_KEY, id);
     } else if (url === "") {
@@ -91,6 +91,10 @@ export default function App() {
     } else {
       setErrorURLBar(true);
     }
+  }
+
+  function getCurrentVideoID() {
+    return getVideoIDFromURL(PlayerAPIConnector.playerAPI.getVideoUrl());
   }
 
   // https://stackoverflow.com/a/27728417
