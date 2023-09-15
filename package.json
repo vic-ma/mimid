@@ -2,7 +2,7 @@
   "name": "musicians-remote",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vic-ma.github.io/musicians-remote",
+  "homepage": "https://mimid.app",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
