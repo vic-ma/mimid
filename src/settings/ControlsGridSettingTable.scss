@@ -17,19 +17,11 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-@use "./breakpoints.scss";
-
-@mixin set-grid-gap($breakpoint, $gap) {
-  @media (min-width: $breakpoint) {
-    .App,
-    .controls-grid {
-      gap: $gap;
-    }
-  }
+.MuiTable-root {
+  table-layout: fixed;
 }
 
-@include set-grid-gap(breakpoints.$xs-breakpoint, breakpoints.$xs-spacing);
-@include set-grid-gap(breakpoints.$sm-breakpoint, breakpoints.$sm-spacing);
-@include set-grid-gap(breakpoints.$md-breakpoint, breakpoints.$md-spacing);
-@include set-grid-gap(breakpoints.$lg-breakpoint, breakpoints.$lg-spacing);
-@include set-grid-gap(breakpoints.$xl-breakpoint, breakpoints.$xl-spacing);
+// TODO: better constants / use media query
+.MuiTableCell-root {
+  width: 50vw;
+}

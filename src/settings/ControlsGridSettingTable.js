@@ -29,6 +29,8 @@ import Paper from "@mui/material/Paper";
 
 import { useState } from "react";
 
+import "./ControlsGridSettingTable.scss";
+
 export default function ControlsGridSettingTable({ numRows, numColumns }) {
   const [rerender, setRerender] = useState(false);
   const unsavedGrid = ControlsGridSettingIntegration.generateUnsavedGrid();
