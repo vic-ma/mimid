@@ -50,7 +50,7 @@ export default function ControlsGridSettingTableSelector({
 
   return (
     <FormControl fullWidth>
-      <Select value={gridArea} onChange={handleChange} defaultValue="">
+      <Select value={gridArea} onChange={handleChange}>
         <MenuItem value={PLAY_BUTTON_GRID_AREA}>Play</MenuItem>
         <MenuItem value={SPEED_BUTTON_GRID_AREA}>Speed</MenuItem>
         <MenuItem value={LOOP_BUTTON_GRID_AREA}>Loop</MenuItem>

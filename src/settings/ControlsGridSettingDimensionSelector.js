@@ -25,12 +25,12 @@ import Select from "@mui/material/Select";
 export default function ControlsGridSettingDimensionSelector({
   label,
   handleChange,
-  defaultValue,
+  initialValue,
 }) {
   return (
     <FormControl fullWidth>
       <InputLabel>{label}</InputLabel>
-      <Select label={label} onChange={handleChange} defaultValue={defaultValue}>
+      <Select label={label} onChange={handleChange} value={initialValue}>
         <MenuItem value={1}>1</MenuItem>
         <MenuItem value={2}>2</MenuItem>
         <MenuItem value={3}>3</MenuItem>

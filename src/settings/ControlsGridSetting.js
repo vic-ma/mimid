@@ -44,14 +44,12 @@ export default function ControlsGridSetting() {
       <ControlsGridSettingDimensionSelector
         label="Rows"
         handleChange={handleRowDimensionSelectorChange}
-        stateSetter={setNumRows}
-        defaultValue={ControlsGridSettingIntegration.numRows}
+        initialValue={ControlsGridSettingIntegration.numRows}
       />
       <ControlsGridSettingDimensionSelector
         label="Columns"
         handleChange={handleColumnDimensionSelectorChange}
-        stateSetter={setNumColumns}
-        defaultValue={ControlsGridSettingIntegration.numColumns}
+        initialValue={ControlsGridSettingIntegration.numColumns}
       />
 
       <ControlsGridSettingTable numRows={numRows} numColumns={numColumns} />
