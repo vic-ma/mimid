@@ -69,9 +69,13 @@ export default function App() {
     }
     clipboardText.current = text;
     const id = getVideoIDFromURL(text);
-    if (id !== null) {
+    if (
+      id !== null &&
+      id !== getVideoIDFromURL(PlayerAPIConnector.playerAPI.getVideoUrl())
+    ) {
       setErrorURLBar(false);
       PlayerAPIConnector.playerAPI.loadVideoById(id);
+      localStorage.setItem(PREVIOUS_VIDEO_LS_KEY, id);
     }
   }
 
