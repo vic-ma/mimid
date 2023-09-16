@@ -19,10 +19,22 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import Button from "@mui/material/Button";
 
-export default function SettingsButton({ onClick }) {
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+
+export default function FooterAlert({ title, text, open, handleClose }) {
   return (
-    <Button className="SettingsButton" onClick={onClick} variant="text">
-      Settings
-    </Button>
+    <Dialog open={open} onClose={handleClose}>
+      <DialogTitle>{title}</DialogTitle>
+      <DialogContent>
+        <DialogContentText>TODO</DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose}>Close</Button>
+      </DialogActions>
+    </Dialog>
   );
 }

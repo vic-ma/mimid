@@ -17,7 +17,12 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-.Footer {
-  display: flex;
-  justify-content: space-around;
+import Button from "@mui/material/Button";
+
+export default function SettingsButton({ onClick }) {
+  return (
+    <Button onClick={onClick} variant="text">
+      Settings
+    </Button>
+  );
 }

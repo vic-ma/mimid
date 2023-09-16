@@ -19,16 +19,27 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import "./Footer.scss";
 
-import SettingsButton from "./SettingsButton.js";
+import SettingsButton from "./settings/SettingsButton.js";
 import Settings from "./settings/Settings.js";
 import SettingsIntegration from "./settings/SettingsIntegration.js";
+
+import PrivacyButton from "./controls/privacy/PrivacyButton";
+
+import FooterAlert from "./controls/privacy/FooterAlert";
 
 import { useState } from "react";
 
 export default function Footer() {
+  const [privacyOpen, setPrivacyOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   return (
     <footer className="Footer">
+      <PrivacyButton onClick={handlePrivacyButtonClick} />
+      <FooterAlert
+        title={"Privacy"}
+        open={privacyOpen}
+        onClose={handlePrivacyClose}
+      ></FooterAlert>
       <SettingsButton onClick={handleSettingsButtonClick} />
       <Settings
         open={settingsOpen}
@@ -37,6 +48,14 @@ export default function Footer() {
       />
     </footer>
   );
+
+  function handlePrivacyButtonClick() {
+    setPrivacyOpen(true);
+  }
+
+  function handlePrivacyClose() {
+    setPrivacyOpen(false);
+  }
 
   function handleSettingsButtonClick() {
     setSettingsOpen(true);
