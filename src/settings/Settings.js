@@ -44,17 +44,16 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Settings({ open, handleClose, onReset }) {
+export default function Settings({ open, onClose, onReset }) {
   return (
     <Dialog
       className="Settings"
       fullScreen
       disableRestoreFocus
       open={open}
-      onClose={handleClose}
       TransitionComponent={Transition}
     >
-      <SettingsHeader onClose={handleClose} onReset={onReset} />
+      <SettingsHeader onClose={onClose} onReset={onReset} />
       <List className="SettingsList">
         <ListItem className="SettingsListItem">
           <SwitchSetting

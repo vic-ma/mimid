@@ -43,12 +43,12 @@ export default function ControlsGridSetting() {
 
       <ControlsGridSettingDimensionSelector
         label="Rows"
-        handleChange={handleRowDimensionSelectorChange}
+        onChange={handleRowDimensionSelectorChange}
         initialValue={ControlsGridSettingIntegration.numRows}
       />
       <ControlsGridSettingDimensionSelector
         label="Columns"
-        handleChange={handleColumnDimensionSelectorChange}
+        onChange={handleColumnDimensionSelectorChange}
         initialValue={ControlsGridSettingIntegration.numColumns}
       />
 

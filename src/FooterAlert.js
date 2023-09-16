@@ -25,15 +25,15 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function FooterAlert({ title, text, open, handleClose }) {
+export default function FooterAlert({ title, text, open, onClose }) {
   return (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog open={open}>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>
         <DialogContentText>TODO</DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Close</Button>
+        <Button onClick={onClose}>Close</Button>
       </DialogActions>
     </Dialog>
   );

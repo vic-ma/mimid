@@ -23,9 +23,8 @@ import SettingsButton from "./settings/SettingsButton.js";
 import Settings from "./settings/Settings.js";
 import SettingsIntegration from "./settings/SettingsIntegration.js";
 
-import PrivacyButton from "./controls/privacy/PrivacyButton";
-
-import FooterAlert from "./controls/privacy/FooterAlert";
+import PrivacyButton from "./PrivacyButton";
+import FooterAlert from "./FooterAlert";
 
 import { useState } from "react";
 
@@ -40,6 +39,7 @@ export default function Footer() {
         open={privacyOpen}
         onClose={handlePrivacyClose}
       ></FooterAlert>
+
       <SettingsButton onClick={handleSettingsButtonClick} />
       <Settings
         open={settingsOpen}
@@ -54,6 +54,7 @@ export default function Footer() {
   }
 
   function handlePrivacyClose() {
+    console.log("HANDLE PRIVACY CLOSE");
     setPrivacyOpen(false);
   }
 
