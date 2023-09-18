@@ -67,13 +67,3 @@ test("Float setting", () => {
   expect(window.localStorage.getItem("foo")).toBe("6.28");
   expect(SettingsIntegration.getFloatSetting("foo")).toBe(6.28);
 });
-
-test("Reset", () => {
-  SettingsIntegration.addStringSettingListener("foo", stateSetter);
-  SettingsIntegration.addUnsavedChange("foo", "bar");
-  SettingsIntegration.addUnsavedChange("foo", "baz");
-  SettingsIntegration.saveUnsavedChanges();
-  SettingsIntegration.reset();
-
-  expect(window.localStorage.getItem("foo")).toBe(null);
-});

@@ -29,30 +29,35 @@ import Button from "@mui/material/Button";
 
 import { useState } from "react";
 
+const PRIVACY_SEEN_LS_KEY = "privacy-seen";
+
 export default function Footer() {
-  const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [privacyOpen, setPrivacyOpen] = useState(
+    localStorage.getItem(PRIVACY_SEEN_LS_KEY) === null
+  );
   const [settingsOpen, setSettingsOpen] = useState(false);
+
   return (
     <footer className="Footer">
-      <Button
-        className="PrivacyButton"
-        onClick={handlePrivacyButtonClick}
-        variant="text"
-      >
+      <Button onClick={handlePrivacyButtonClick} variant="text">
         Privacy
       </Button>
+
       <FooterAlert
         title={"Privacy"}
         open={privacyOpen}
         onClose={handlePrivacyClose}
       ></FooterAlert>
-
       <SettingsButton onClick={handleSettingsButtonClick} />
       <Settings
         open={settingsOpen}
         onClose={handleSettingsClose}
         onReset={handleSettingsReset}
       />
+
+      <a href="https://docs.mimid.app" target="_blank" rel="noreferrer">
+        <Button variant="text">About</Button>
+      </a>
     </footer>
   );
 
@@ -61,7 +66,7 @@ export default function Footer() {
   }
 
   function handlePrivacyClose() {
-    console.log("HANDLE PRIVACY CLOSE");
+    localStorage.setItem(PRIVACY_SEEN_LS_KEY, "true");
     setPrivacyOpen(false);
   }
 

@@ -71,8 +71,8 @@ const SettingsIntegration = {
   },
 
   getSetting: function (settingName, typeConverter) {
-    if (window.localStorage.getItem(settingName) !== null) {
-      return typeConverter(window.localStorage.getItem(settingName));
+    if (localStorage.getItem(settingName) !== null) {
+      return typeConverter(localStorage.getItem(settingName));
     }
     return typeConverter(defaultsMap.get(settingName));
   },
@@ -90,10 +90,10 @@ const SettingsIntegration = {
 
   writeLocalStorage: function () {
     for (const [settingName, settingValue] of this.unsavedChanges) {
-      window.localStorage.setItem(settingName, settingValue);
+      localStorage.setItem(settingName, settingValue);
     }
     if (this.controlsGridChanged) {
-      window.localStorage.setItem(
+      localStorage.setItem(
         CONTROLS_GRID_SETTING_NAME,
         ControlsGridSettingIntegration.generateUnsavedGridTemplateAreas()
       );
@@ -110,7 +110,10 @@ const SettingsIntegration = {
   },
 
   reset: function () {
-    window.localStorage.clear();
+    for (const settingName of defaultsMap.keys()) {
+      localStorage.removeItem(settingName);
+    }
+
     this.unsavedChanges.clear();
     ControlsGridSettingIntegration.initialize();
     this.controlsGridChanged = false;
