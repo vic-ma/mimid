@@ -23,8 +23,9 @@ import SettingsButton from "./settings/SettingsButton.js";
 import Settings from "./settings/Settings.js";
 import SettingsIntegration from "./settings/SettingsIntegration.js";
 
-import PrivacyButton from "./PrivacyButton";
 import FooterAlert from "./FooterAlert";
+
+import Button from "@mui/material/Button";
 
 import { useState } from "react";
 
@@ -33,7 +34,13 @@ export default function Footer() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   return (
     <footer className="Footer">
-      <PrivacyButton onClick={handlePrivacyButtonClick} />
+      <Button
+        className="PrivacyButton"
+        onClick={handlePrivacyButtonClick}
+        variant="text"
+      >
+        Privacy
+      </Button>
       <FooterAlert
         title={"Privacy"}
         open={privacyOpen}
