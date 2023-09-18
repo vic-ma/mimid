@@ -36,18 +36,19 @@ export default function Footer() {
     localStorage.getItem(PRIVACY_SEEN_LS_KEY) === null
   );
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   return (
     <footer className="Footer">
       <Button onClick={handlePrivacyButtonClick} variant="text">
         Privacy
       </Button>
-
       <FooterAlert
         title={"Privacy"}
         open={privacyOpen}
         onClose={handlePrivacyClose}
       ></FooterAlert>
+
       <SettingsButton onClick={handleSettingsButtonClick} />
       <Settings
         open={settingsOpen}
@@ -55,9 +56,14 @@ export default function Footer() {
         onReset={handleSettingsReset}
       />
 
-      <a href="https://docs.mimid.app" target="_blank" rel="noreferrer">
-        <Button variant="text">About</Button>
-      </a>
+      <Button onClick={handleAboutButtonClick} variant="text">
+        About
+      </Button>
+      <FooterAlert
+        title={"About"}
+        open={aboutOpen}
+        onClose={handleAboutClose}
+      ></FooterAlert>
     </footer>
   );
 
@@ -68,6 +74,14 @@ export default function Footer() {
   function handlePrivacyClose() {
     localStorage.setItem(PRIVACY_SEEN_LS_KEY, "true");
     setPrivacyOpen(false);
+  }
+
+  function handleAboutButtonClick() {
+    setAboutOpen(true);
+  }
+
+  function handleAboutClose() {
+    setAboutOpen(false);
   }
 
   function handleSettingsButtonClick() {
