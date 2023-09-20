@@ -17,6 +17,9 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+import { THEME_SETTING_NAME } from "./constants";
+import SettingsIntegration from "./SettingsIntegration";
+
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
@@ -46,46 +49,75 @@ import {
   blueGrey,
 } from "@mui/material/colors";
 
-const colorPairs = [
-  ["Red", red],
-  ["Pink", pink],
-  ["Purple", purple],
-  ["Deep Purple", deepPurple],
-  ["Indigo", indigo],
-  ["Blue", blue],
-  ["Light Blue", lightBlue],
-  ["Cyan", cyan],
-  ["Teal", teal],
-  ["Green", green],
-  ["Light Green", lightGreen],
-  ["Lime", lime],
-  ["Yellow", yellow],
-  ["Amber", amber],
-  ["Orange", orange],
-  ["Deep Orange", deepOrange],
-  ["Brown", brown],
-  ["Grey", grey],
-  ["Blue Grey", blueGrey],
-];
+const RED = "Red";
+const PINK = "Pink";
+const PURPLE = "Purple";
+const DEEP_PURPLE = "Deep Purple";
+const INDIGO = "Indigo";
+const BLUE = "Blue";
+const LIGHT_BLUE = "Light Blue";
+const CYAN = "Cyan";
+const TEAL = "Teal";
+const GREEN = "Green";
+const LIGHT_GREEN = "Light Green";
+const LIME = "Lime";
+const YELLOW = "Yellow";
+const AMBER = "Amber";
+const ORANGE = "Orange";
+const DEEP_ORANGE = "Deep Orange";
+const BROWN = "Brown";
+const GREY = "Grey";
+const BLUE_GREY = "Blue Grey";
+
+export const colorMap = new Map();
+colorMap.set(RED, red);
+colorMap.set(PINK, pink);
+colorMap.set(PURPLE, purple);
+colorMap.set(DEEP_PURPLE, deepPurple);
+colorMap.set(INDIGO, indigo);
+colorMap.set(BLUE, blue);
+colorMap.set(LIGHT_BLUE, lightBlue);
+colorMap.set(CYAN, cyan);
+colorMap.set(TEAL, teal);
+colorMap.set(GREEN, green);
+colorMap.set(LIGHT_GREEN, lightGreen);
+colorMap.set(LIME, lime);
+colorMap.set(YELLOW, yellow);
+colorMap.set(AMBER, amber);
+colorMap.set(ORANGE, orange);
+colorMap.set(DEEP_ORANGE, deepOrange);
+colorMap.set(BROWN, brown);
+colorMap.set(GREY, grey);
+colorMap.set(BLUE_GREY, blueGrey);
 
 export default function ThemeSetting() {
-  const [theme, setTheme] = useState(null);
+  const [color, setColor] = useState(
+    SettingsIntegration.getStringSetting(THEME_SETTING_NAME)
+  );
 
   const colorMenuItems = [];
-  for (const [colorString, colorObject] of colorPairs) {
-    colorMenuItems.push(<MenuItem value={colorObject}>{colorString}</MenuItem>);
+  for (const colorString of colorMap.keys()) {
+    colorMenuItems.push(
+      <MenuItem key={colorString} value={colorString}>
+        {colorString}
+      </MenuItem>
+    );
   }
 
   return (
     <FormControl fullWidth>
       <InputLabel>{"Theme"}</InputLabel>
-      <Select label={"Theme"} onChange={handleChange} value={theme}>
+      <Select label={"Theme"} onChange={handleChange} value={color}>
         {colorMenuItems}
       </Select>
     </FormControl>
   );
 
   function handleChange(event) {
-    setTheme(event.target.value);
+    setColor(event.target.value);
+    SettingsIntegration.addUnsavedChange(
+      THEME_SETTING_NAME,
+      event.target.value
+    );
   }
 }

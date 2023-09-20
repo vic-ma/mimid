@@ -25,10 +25,14 @@ import Controls from "./controls/Controls.js";
 import Footer from "./Footer.js";
 import PlayerAPIConnector from "./PlayerAPIConnector.js";
 import SettingsIntegration from "./settings/SettingsIntegration";
+import { colorMap } from "./settings/ThemeSetting";
 
 import { AUTO_PASTE_SETTING_NAME } from "./settings/constants";
 import { PREVIOUS_VIDEO_LS_KEY } from "./constants";
+import { THEME_SETTING_NAME } from "./settings/constants";
 
+import createTheme from "@mui/material/styles/createTheme";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import Paper from "@mui/material/Paper";
 
 import { useState } from "react";
@@ -36,7 +40,6 @@ import { useEffect } from "react";
 import { useRef } from "react";
 
 // TODO: Analytics
-
 export default function App() {
   const clipboardText = useRef("");
 
@@ -54,17 +57,35 @@ export default function App() {
     }, 1000);
   }, []); // eslint-disable-line
 
+  const [primary, setPrimary] = useState(
+    colorMap.get(SettingsIntegration.getStringSetting(THEME_SETTING_NAME))
+  );
   const [errorURLBar, setErrorURLBar] = useState(false);
 
+  SettingsIntegration.addStringSettingListener(
+    THEME_SETTING_NAME,
+    (colorString) => {
+      setPrimary(colorMap.get(colorString));
+    }
+  );
+
+  const theme = createTheme({
+    palette: {
+      primary: primary,
+    },
+  });
+
   return (
-    <Paper className="App">
-      <div className="app-inner">
-        <URLBar onChange={handleChangeURLBar} error={errorURLBar} />
-        <YouTubePlayer />
-        <Controls />
-        <Footer />
-      </div>
-    </Paper>
+    <ThemeProvider theme={theme}>
+      <Paper className="App">
+        <div className="app-inner">
+          <URLBar onChange={handleChangeURLBar} error={errorURLBar} />
+          <YouTubePlayer />
+          <Controls />
+          <Footer />
+        </div>
+      </Paper>
+    </ThemeProvider>
   );
 
   function onClipboardRead(text) {

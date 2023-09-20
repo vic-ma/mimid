@@ -25,25 +25,12 @@ import PlayerAPIConnector from "./PlayerAPIConnector.js";
 import reportWebVitals from "./reportWebVitals";
 import ControlsGridSettingIntegration from "./settings/ControlsGridSettingIntegration";
 
-import createTheme from "@mui/material/styles/createTheme";
-import ThemeProvider from "@mui/material/styles/ThemeProvider";
-import { blue } from "@mui/material/colors";
-
-const theme = createTheme({
-  palette: {
-    primary: blue,
-    //mode: "dark",
-  },
-});
-
 ControlsGridSettingIntegration.initialize();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <App />
   </React.StrictMode>
 );
 
