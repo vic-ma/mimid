@@ -27,11 +27,12 @@ import ControlsGridSettingIntegration from "./settings/ControlsGridSettingIntegr
 
 import createTheme from "@mui/material/styles/createTheme";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
-import { grey } from "@mui/material/colors";
+import { blue } from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
-    mode: "dark",
+    primary: blue,
+    //mode: "dark",
   },
 });
 

@@ -32,6 +32,7 @@ import {
   SKIP_FORWARD_SHORT_SETTING_NAME,
   SKIP_FORWARD_LONG_SETTING_NAME,
 } from "./constants";
+import ThemeSetting from "./ThemeSetting";
 
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -114,6 +115,9 @@ export default function Settings({ open, onClose, onReset }) {
         </ListItem>
         <ListItem className="SettingsListItem">
           <ControlsGridSetting />
+        </ListItem>
+        <ListItem className="SettingsListItem">
+          <ThemeSetting />
         </ListItem>
       </List>
     </Dialog>
