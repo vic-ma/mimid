@@ -29,6 +29,8 @@ import SettingsIntegration from "./settings/SettingsIntegration";
 import { AUTO_PASTE_SETTING_NAME } from "./settings/constants";
 import { PREVIOUS_VIDEO_LS_KEY } from "./constants";
 
+import Paper from "@mui/material/Paper";
+
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
@@ -55,14 +57,14 @@ export default function App() {
   const [errorURLBar, setErrorURLBar] = useState(false);
 
   return (
-    <div className="App">
+    <Paper className="App">
       <div className="app-inner">
         <URLBar onChange={handleChangeURLBar} error={errorURLBar} />
         <YouTubePlayer />
         <Controls />
         <Footer />
       </div>
-    </div>
+    </Paper>
   );
 
   function onClipboardRead(text) {
