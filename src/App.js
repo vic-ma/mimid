@@ -30,7 +30,7 @@ import { colorMap } from "./settings/ThemeSetting";
 import { AUTO_PASTE_SETTING_NAME } from "./settings/constants";
 import { PREVIOUS_VIDEO_LS_KEY } from "./constants";
 import {
-  THEME_COLOR_SETTING_NAME,
+  THEME_SETTING_NAME,
   DARK_MODE_SETTING_NAME,
 } from "./settings/constants";
 
@@ -61,7 +61,7 @@ export default function App() {
   }, []); // eslint-disable-line
 
   const [primary, setPrimary] = useState(
-    colorMap.get(SettingsIntegration.getStringSetting(THEME_COLOR_SETTING_NAME))
+    colorMap.get(SettingsIntegration.getStringSetting(THEME_SETTING_NAME))
   );
   const [dark, setDark] = useState(
     SettingsIntegration.getBooleanSetting(DARK_MODE_SETTING_NAME)
@@ -69,7 +69,7 @@ export default function App() {
   const [errorURLBar, setErrorURLBar] = useState(false);
 
   SettingsIntegration.addStringSettingListener(
-    THEME_COLOR_SETTING_NAME,
+    THEME_SETTING_NAME,
     (colorString) => {
       setPrimary(colorMap.get(colorString));
     }

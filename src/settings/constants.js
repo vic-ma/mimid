@@ -67,9 +67,9 @@ export const CONTROLS_GRID_SETTING_DEFAULT =
   "'P P P P' 'L L S S' 'BL BS FS FL'";
 defaultsMap.set(CONTROLS_GRID_SETTING_NAME, CONTROLS_GRID_SETTING_DEFAULT);
 
-export const THEME_COLOR_SETTING_NAME = "theme-color";
-export const THEME_COLOR_SETTING_DEFAULT = "Black";
-defaultsMap.set(THEME_COLOR_SETTING_NAME, THEME_COLOR_SETTING_DEFAULT);
+export const THEME_SETTING_NAME = "theme-color";
+export const THEME_SETTING_DEFAULT = "Black";
+defaultsMap.set(THEME_SETTING_NAME, THEME_SETTING_DEFAULT);
 
 export const DARK_MODE_SETTING_NAME = "dark-mode";
 export const DARK_MODE_SETTING_DEFAULT = "false";

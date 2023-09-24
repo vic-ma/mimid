@@ -17,7 +17,7 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import { THEME_COLOR_SETTING_NAME, DARK_MODE_SETTING_NAME } from "./constants";
+import { THEME_SETTING_NAME } from "./constants";
 import SettingsIntegration from "./SettingsIntegration";
 
 import MenuItem from "@mui/material/MenuItem";
@@ -67,18 +67,15 @@ colorMap.set("Magenta", { main: "#FF00FF" });
 colorMap.set("Violet", { main: "#EE82EE" });
 
 export default function ThemeSetting() {
-  const [color, setColor] = useState(
-    SettingsIntegration.getStringSetting(THEME_COLOR_SETTING_NAME)
-  );
-  const [mode, setMode] = useState(
-    SettingsIntegration.getStringSetting(DARK_MODE_SETTING_NAME)
+  const [theme, setTheme] = useState(
+    SettingsIntegration.getStringSetting(THEME_SETTING_NAME)
   );
 
-  const colorMenuItems = [];
-  for (const colorString of colorMap.keys()) {
-    colorMenuItems.push(
-      <MenuItem key={colorString} value={colorString}>
-        {colorString}
+  const themeMenuItems = [];
+  for (const colorName of colorMap.keys()) {
+    themeMenuItems.push(
+      <MenuItem key={colorName} value={colorName}>
+        {colorName}
       </MenuItem>
     );
   }
@@ -89,33 +86,17 @@ export default function ThemeSetting() {
         Theme
       </Typography>
       <FormControl fullWidth>
-        <InputLabel>{"Color"}</InputLabel>
-        <Select label={"Color"} onChange={handleColorChange} value={color}>
-          {colorMenuItems}
-        </Select>
-      </FormControl>
-      <FormControl fullWidth>
-        <InputLabel>{"Mode"}</InputLabel>
-        <Select label={"Mode"} onChange={handleModeChange} value={mode}>
-          <MenuItem value={"light"}>{"Light"}</MenuItem>
-          <MenuItem value={"dark"}>{"Dark"}</MenuItem>
+        <Select onChange={handleThemeChange} value={theme}>
+          {themeMenuItems}
         </Select>
       </FormControl>
     </div>
   );
 
-  function handleColorChange(event) {
-    setColor(event.target.value);
+  function handleThemeChange(event) {
+    setTheme(event.target.value);
     SettingsIntegration.addUnsavedChange(
-      THEME_COLOR_SETTING_NAME,
-      event.target.value
-    );
-  }
-
-  function handleModeChange(event) {
-    setMode(event.target.value);
-    SettingsIntegration.addUnsavedChange(
-      DARK_MODE_SETTING_NAME,
+      THEME_SETTING_NAME,
       event.target.value
     );
   }
