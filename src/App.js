@@ -64,7 +64,7 @@ export default function App() {
     colorMap.get(SettingsIntegration.getStringSetting(THEME_COLOR_SETTING_NAME))
   );
   const [dark, setDark] = useState(
-    colorMap.get(SettingsIntegration.getStringSetting(THEME_MODE_SETTING_NAME))
+    SettingsIntegration.getStringSetting(THEME_MODE_SETTING_NAME)
   );
   const [errorURLBar, setErrorURLBar] = useState(false);
 
