@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/musicians-remote/static/css/main.ea78324c.css",
-    "main.js": "/musicians-remote/static/js/main.1ae613dd.js",
-    "static/js/787.976b0f97.chunk.js": "/musicians-remote/static/js/787.976b0f97.chunk.js",
-    "index.html": "/musicians-remote/index.html",
-    "main.ea78324c.css.map": "/musicians-remote/static/css/main.ea78324c.css.map",
-    "main.1ae613dd.js.map": "/musicians-remote/static/js/main.1ae613dd.js.map",
-    "787.976b0f97.chunk.js.map": "/musicians-remote/static/js/787.976b0f97.chunk.js.map"
+    "main.css": "/static/css/main.32b83c69.css",
+    "main.js": "/static/js/main.fcdf31cf.js",
+    "static/js/787.976b0f97.chunk.js": "/static/js/787.976b0f97.chunk.js",
+    "index.html": "/index.html",
+    "main.32b83c69.css.map": "/static/css/main.32b83c69.css.map",
+    "main.fcdf31cf.js.map": "/static/js/main.fcdf31cf.js.map",
+    "787.976b0f97.chunk.js.map": "/static/js/787.976b0f97.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ea78324c.css",
-    "static/js/main.1ae613dd.js"
+    "static/css/main.32b83c69.css",
+    "static/js/main.fcdf31cf.js"
   ]
 }
