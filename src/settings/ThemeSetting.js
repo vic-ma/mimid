@@ -27,68 +27,41 @@ import Select from "@mui/material/Select";
 
 import { useState } from "react";
 
-import {
-  red,
-  pink,
-  purple,
-  deepPurple,
-  indigo,
-  blue,
-  lightBlue,
-  cyan,
-  teal,
-  green,
-  lightGreen,
-  lime,
-  yellow,
-  amber,
-  orange,
-  deepOrange,
-  brown,
-  grey,
-  blueGrey,
-} from "@mui/material/colors";
-
-const RED = "Red";
-const PINK = "Pink";
-const PURPLE = "Purple";
-const DEEP_PURPLE = "Deep Purple";
-const INDIGO = "Indigo";
-const BLUE = "Blue";
-const LIGHT_BLUE = "Light Blue";
-const CYAN = "Cyan";
-const TEAL = "Teal";
-const GREEN = "Green";
-const LIGHT_GREEN = "Light Green";
-const LIME = "Lime";
-const YELLOW = "Yellow";
-const AMBER = "Amber";
-const ORANGE = "Orange";
-const DEEP_ORANGE = "Deep Orange";
-const BROWN = "Brown";
-const GREY = "Grey";
-const BLUE_GREY = "Blue Grey";
-
 export const colorMap = new Map();
-colorMap.set(RED, red);
-colorMap.set(PINK, pink);
-colorMap.set(PURPLE, purple);
-colorMap.set(DEEP_PURPLE, deepPurple);
-colorMap.set(INDIGO, indigo);
-colorMap.set(BLUE, blue);
-colorMap.set(LIGHT_BLUE, lightBlue);
-colorMap.set(CYAN, cyan);
-colorMap.set(TEAL, teal);
-colorMap.set(GREEN, green);
-colorMap.set(LIGHT_GREEN, lightGreen);
-colorMap.set(LIME, lime);
-colorMap.set(YELLOW, yellow);
-colorMap.set(AMBER, amber);
-colorMap.set(ORANGE, orange);
-colorMap.set(DEEP_ORANGE, deepOrange);
-colorMap.set(BROWN, brown);
-colorMap.set(GREY, grey);
-colorMap.set(BLUE_GREY, blueGrey);
+colorMap.set("Black", { main: "#000000" });
+colorMap.set("Jet", { main: "#343434" });
+colorMap.set("White", { main: "#FFFFFF" });
+colorMap.set("Dark Red", { main: "#8B0000" });
+colorMap.set("Red", { main: "#FF0000" });
+colorMap.set("Deep Pink", { main: "#FF1493" });
+colorMap.set("Hot Pink", { main: "#FF69B4" });
+colorMap.set("Pink", { main: "#FFC0CB" });
+colorMap.set("Dark Brown", { main: "#5C4033" });
+colorMap.set("Chocolate", { main: "#D2691E" });
+colorMap.set("Tan", { main: "#D2B48C" });
+colorMap.set("Orange Red", { main: "#FF4500" });
+colorMap.set("Orange", { main: "#FFA500" });
+colorMap.set("Gold", { main: "#FFD700" });
+colorMap.set("Khaki", { main: "#F0E68C" });
+colorMap.set("Yellow", { main: "#FFFF00" });
+colorMap.set("Light Yellow", { main: "#FFFFE0" });
+colorMap.set("Green", { main: "#008000" });
+colorMap.set("Olive", { main: "#808000" });
+colorMap.set("Lime", { main: "#00FF00" });
+colorMap.set("Pale Green", { main: "#98FB98" });
+colorMap.set("Dark Khaki", { main: "#BDB76B" });
+colorMap.set("Teal", { main: "#008080" });
+colorMap.set("Cyan", { main: "#00FFFF" });
+colorMap.set("Light Cyan", { main: "#E0FFFF" });
+colorMap.set("Navy", { main: "#000080" });
+colorMap.set("Azure", { main: "#0080FF" });
+colorMap.set("Deep Sky Blue", { main: "#00BFFF", contrastText: "#FFFFFF" });
+colorMap.set("Light Sky Blue", { main: "#87CEFA", contrastText: "#FFFFFF" });
+colorMap.set("Indigo", { main: "#4B0082" });
+colorMap.set("Purple", { main: "#800080" });
+colorMap.set("Dark Violet", { main: "#9400D3" });
+colorMap.set("Magenta", { main: "#FF00FF" });
+colorMap.set("Violet", { main: "#EE82EE" });
 
 export default function ThemeSetting() {
   const [color, setColor] = useState(
