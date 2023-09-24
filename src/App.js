@@ -29,7 +29,10 @@ import { colorMap } from "./settings/ThemeSetting";
 
 import { AUTO_PASTE_SETTING_NAME } from "./settings/constants";
 import { PREVIOUS_VIDEO_LS_KEY } from "./constants";
-import { THEME_SETTING_NAME } from "./settings/constants";
+import {
+  THEME_COLOR_SETTING_NAME,
+  THEME_MODE_SETTING_NAME,
+} from "./settings/constants";
 
 import createTheme from "@mui/material/styles/createTheme";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
@@ -58,20 +61,29 @@ export default function App() {
   }, []); // eslint-disable-line
 
   const [primary, setPrimary] = useState(
-    colorMap.get(SettingsIntegration.getStringSetting(THEME_SETTING_NAME))
+    colorMap.get(SettingsIntegration.getStringSetting(THEME_COLOR_SETTING_NAME))
+  );
+  const [dark, setDark] = useState(
+    colorMap.get(SettingsIntegration.getStringSetting(THEME_MODE_SETTING_NAME))
   );
   const [errorURLBar, setErrorURLBar] = useState(false);
 
   SettingsIntegration.addStringSettingListener(
-    THEME_SETTING_NAME,
+    THEME_COLOR_SETTING_NAME,
     (colorString) => {
       setPrimary(colorMap.get(colorString));
     }
   );
 
+  SettingsIntegration.addStringSettingListener(
+    THEME_MODE_SETTING_NAME,
+    setDark
+  );
+
   const theme = createTheme({
     palette: {
       primary: primary,
+      mode: dark,
     },
   });
 

@@ -17,15 +17,18 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import { THEME_SETTING_NAME } from "./constants";
+import { THEME_COLOR_SETTING_NAME, THEME_MODE_SETTING_NAME } from "./constants";
 import SettingsIntegration from "./SettingsIntegration";
 
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import Typography from "@mui/material/Typography";
 
 import { useState } from "react";
+
+import "./ThemeSetting.scss";
 
 export const colorMap = new Map();
 colorMap.set("Black", { main: "#000000" });
@@ -65,7 +68,10 @@ colorMap.set("Violet", { main: "#EE82EE" });
 
 export default function ThemeSetting() {
   const [color, setColor] = useState(
-    SettingsIntegration.getStringSetting(THEME_SETTING_NAME)
+    SettingsIntegration.getStringSetting(THEME_COLOR_SETTING_NAME)
+  );
+  const [mode, setMode] = useState(
+    SettingsIntegration.getStringSetting(THEME_MODE_SETTING_NAME)
   );
 
   const colorMenuItems = [];
@@ -78,18 +84,38 @@ export default function ThemeSetting() {
   }
 
   return (
-    <FormControl fullWidth>
-      <InputLabel>{"Theme"}</InputLabel>
-      <Select label={"Theme"} onChange={handleChange} value={color}>
-        {colorMenuItems}
-      </Select>
-    </FormControl>
+    <div className="ThemeSetting">
+      <Typography className="ThemeSettingLabel" variant="h6">
+        Theme
+      </Typography>
+      <FormControl fullWidth>
+        <InputLabel>{"Color"}</InputLabel>
+        <Select label={"Color"} onChange={handleColorChange} value={color}>
+          {colorMenuItems}
+        </Select>
+      </FormControl>
+      <FormControl fullWidth>
+        <InputLabel>{"Mode"}</InputLabel>
+        <Select label={"Mode"} onChange={handleModeChange} value={mode}>
+          <MenuItem value={"light"}>{"Light"}</MenuItem>
+          <MenuItem value={"dark"}>{"Dark"}</MenuItem>
+        </Select>
+      </FormControl>
+    </div>
   );
 
-  function handleChange(event) {
+  function handleColorChange(event) {
     setColor(event.target.value);
     SettingsIntegration.addUnsavedChange(
-      THEME_SETTING_NAME,
+      THEME_COLOR_SETTING_NAME,
+      event.target.value
+    );
+  }
+
+  function handleModeChange(event) {
+    setMode(event.target.value);
+    SettingsIntegration.addUnsavedChange(
+      THEME_MODE_SETTING_NAME,
       event.target.value
     );
   }
