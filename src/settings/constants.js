@@ -71,6 +71,6 @@ export const THEME_COLOR_SETTING_NAME = "theme-color";
 export const THEME_COLOR_SETTING_DEFAULT = "Black";
 defaultsMap.set(THEME_COLOR_SETTING_NAME, THEME_COLOR_SETTING_DEFAULT);
 
-export const THEME_MODE_SETTING_NAME = "theme-mode";
-export const THEME_MODE_SETTING_DEFAULT = "light";
-defaultsMap.set(THEME_MODE_SETTING_NAME, THEME_MODE_SETTING_DEFAULT);
+export const DARK_MODE_SETTING_NAME = "dark-mode";
+export const DARK_MODE_SETTING_DEFAULT = "false";
+defaultsMap.set(DARK_MODE_SETTING_NAME, DARK_MODE_SETTING_DEFAULT);

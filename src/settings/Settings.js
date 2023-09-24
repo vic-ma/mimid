@@ -31,6 +31,7 @@ import {
   SKIP_BACKWARD_SHORT_SETTING_NAME,
   SKIP_FORWARD_SHORT_SETTING_NAME,
   SKIP_FORWARD_LONG_SETTING_NAME,
+  DARK_MODE_SETTING_NAME,
 } from "./constants";
 import ThemeSetting from "./ThemeSetting";
 
@@ -118,6 +119,12 @@ export default function Settings({ open, onClose, onReset }) {
         </ListItem>
         <ListItem className="SettingsListItem">
           <ThemeSetting />
+        </ListItem>
+        <ListItem className="SettingsListItem">
+          <SwitchSetting
+            label="Dark Mode"
+            settingName={DARK_MODE_SETTING_NAME}
+          />
         </ListItem>
       </List>
     </Dialog>

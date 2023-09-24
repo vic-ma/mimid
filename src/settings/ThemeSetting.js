@@ -17,7 +17,7 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import { THEME_COLOR_SETTING_NAME, THEME_MODE_SETTING_NAME } from "./constants";
+import { THEME_COLOR_SETTING_NAME, DARK_MODE_SETTING_NAME } from "./constants";
 import SettingsIntegration from "./SettingsIntegration";
 
 import MenuItem from "@mui/material/MenuItem";
@@ -71,7 +71,7 @@ export default function ThemeSetting() {
     SettingsIntegration.getStringSetting(THEME_COLOR_SETTING_NAME)
   );
   const [mode, setMode] = useState(
-    SettingsIntegration.getStringSetting(THEME_MODE_SETTING_NAME)
+    SettingsIntegration.getStringSetting(DARK_MODE_SETTING_NAME)
   );
 
   const colorMenuItems = [];
@@ -115,7 +115,7 @@ export default function ThemeSetting() {
   function handleModeChange(event) {
     setMode(event.target.value);
     SettingsIntegration.addUnsavedChange(
-      THEME_MODE_SETTING_NAME,
+      DARK_MODE_SETTING_NAME,
       event.target.value
     );
   }

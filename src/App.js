@@ -31,7 +31,7 @@ import { AUTO_PASTE_SETTING_NAME } from "./settings/constants";
 import { PREVIOUS_VIDEO_LS_KEY } from "./constants";
 import {
   THEME_COLOR_SETTING_NAME,
-  THEME_MODE_SETTING_NAME,
+  DARK_MODE_SETTING_NAME,
 } from "./settings/constants";
 
 import createTheme from "@mui/material/styles/createTheme";
@@ -64,7 +64,7 @@ export default function App() {
     colorMap.get(SettingsIntegration.getStringSetting(THEME_COLOR_SETTING_NAME))
   );
   const [dark, setDark] = useState(
-    SettingsIntegration.getStringSetting(THEME_MODE_SETTING_NAME)
+    SettingsIntegration.getBooleanSetting(DARK_MODE_SETTING_NAME)
   );
   const [errorURLBar, setErrorURLBar] = useState(false);
 
@@ -75,15 +75,15 @@ export default function App() {
     }
   );
 
-  SettingsIntegration.addStringSettingListener(
-    THEME_MODE_SETTING_NAME,
+  SettingsIntegration.addBooleanSettingListener(
+    DARK_MODE_SETTING_NAME,
     setDark
   );
 
   const theme = createTheme({
     palette: {
       primary: primary,
-      mode: dark,
+      mode: dark === true ? "dark" : "light",
     },
   });
 
