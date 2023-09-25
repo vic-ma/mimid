@@ -46,7 +46,7 @@ export default function ControlsGridSettingTable({ numRows, numColumns }) {
           <ControlsGridSettingTableSelector
             row={row}
             column={column}
-            controlledGridArea={
+            initialValue={
               unsavedGrid[row][column] === "." ? "" : unsavedGrid[row][column]
             }
             afterChange={afterSelectorChange}

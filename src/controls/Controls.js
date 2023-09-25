@@ -49,8 +49,6 @@ import {
 import { useState } from "react";
 import { useEffect } from "react";
 
-const NUM_BUTTONS = 7;
-
 export default function Controls() {
   useEffect(() => {
     SettingsIntegration.addStringSettingListener(

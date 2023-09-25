@@ -39,14 +39,14 @@ import { useEffect } from "react";
 export default function ControlsGridSettingTableSelector({
   row,
   column,
-  controlledGridArea,
+  initialValue,
   afterChange,
 }) {
   const [gridArea, setGridArea] = useState("");
 
   useEffect(() => {
-    setGridArea(controlledGridArea);
-  }, [controlledGridArea]);
+    setGridArea(initialValue);
+  }, [initialValue]);
 
   return (
     <FormControl fullWidth>
@@ -76,7 +76,6 @@ export default function ControlsGridSettingTableSelector({
       row,
       column
     );
-    setGridArea(event.target.value);
     afterChange();
   }
 }
