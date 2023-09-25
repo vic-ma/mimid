@@ -67,7 +67,7 @@ export default function Controls() {
     gridTemplateAreas.replaceAll("'", "").split(" ")
   );
 
-  let buttons = new Array(NUM_BUTTONS);
+  let buttons = [];
 
   for (const areaName of enabledGridAreas) {
     if (areaName === PLAY_BUTTON_GRID_AREA) {

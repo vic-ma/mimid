@@ -35,9 +35,9 @@ export default function ControlsGridSettingTable({ numRows, numColumns }) {
   const [rerender, setRerender] = useState(false);
   const unsavedGrid = ControlsGridSettingIntegration.generateUnsavedGrid();
 
-  let table = new Array(numRows);
+  let table = [];
   for (let row = 0; row < numRows; row++) {
-    table[row] = new Array(numColumns);
+    table[row] = [];
   }
   for (let row = 0; row < numRows; row++) {
     for (let column = 0; column < numColumns; column++) {

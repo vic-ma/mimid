@@ -69,9 +69,9 @@ const ControlsGridSettingIntegration = {
   },
 
   generateUnsavedGrid: function () {
-    const unsavedGrid = new Array(this.numRows);
+    const unsavedGrid = [];
     for (let row = 0; row < this.numRows; row++) {
-      unsavedGrid[row] = new Array(this.numColumns);
+      unsavedGrid[row] = [];
       for (let column = 0; column < this.numColumns; column++) {
         unsavedGrid[row][column] = ".";
       }
@@ -187,9 +187,9 @@ const ControlsGridSettingIntegration = {
       .match(/'([^']+)'/g)
       .map((str) => str.slice(1, -1));
 
-    const grid = new Array(numRows);
+    const grid = [];
     for (let row = 0; row < numRows; row++) {
-      grid[row] = new Array(numColumns);
+      grid[row] = [];
       const areas = rowsStr[row].split(" ");
       for (let column = 0; column < numColumns; column++) {
         grid[row][column] = areas[column];
