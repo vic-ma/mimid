@@ -54,6 +54,7 @@ export default function Settings({ open, onClose, onReset }) {
       disableRestoreFocus
       open={open}
       TransitionComponent={Transition}
+      scroll="body"
     >
       <SettingsHeader onClose={onClose} onReset={onReset} />
       <List className="SettingsList">
