@@ -43,13 +43,13 @@ const ControlsGridSettingIntegration = {
 
     const [numRows, numColumns] =
       this.getDimensionsFromGridTemplateAreas(gridTemplateAreas);
-    this.numRows = numRows;
-    this.numColumns = numColumns;
+    this.setNumRows(numRows);
+    this.setNumColumns(numColumns);
 
     const defaultGrid = this.convertGridTemplateAreasToGrid(gridTemplateAreas);
     for (let row = 0; row < this.numRows; row++) {
       for (let column = 0; column < this.numColumns; column++) {
-        this.updateGridArea(defaultGrid[row][column], row, column);
+        this.addUnsavedChange(defaultGrid[row][column], row, column);
       }
     }
   },
@@ -69,6 +69,7 @@ const ControlsGridSettingIntegration = {
   },
 
   generateUnsavedGrid: function () {
+    console.log("generate func called");
     const unsavedGrid = [];
     for (let row = 0; row < this.numRows; row++) {
       unsavedGrid[row] = [];
@@ -76,6 +77,7 @@ const ControlsGridSettingIntegration = {
         unsavedGrid[row][column] = ".";
       }
     }
+    console.log(this.unsavedGridData);
     for (const [areaName, [[top, left], [bottom, right]]] of this
       .unsavedGridData) {
       for (let row = top; row <= bottom; row++) {
