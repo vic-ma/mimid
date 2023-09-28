@@ -4,9 +4,9 @@
   "private": true,
   "homepage": "https://mimid.app",
   "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.5",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.11",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@mui/icons-material": "^5.11.11",
+    "@mui/icons-material": "^5.14.11",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "prettier": "2.8.3",
