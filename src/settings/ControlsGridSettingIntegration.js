@@ -69,7 +69,6 @@ const ControlsGridSettingIntegration = {
   },
 
   generateUnsavedGrid: function () {
-    console.log("generate func called");
     const unsavedGrid = [];
     for (let row = 0; row < this.numRows; row++) {
       unsavedGrid[row] = [];
@@ -77,7 +76,6 @@ const ControlsGridSettingIntegration = {
         unsavedGrid[row][column] = ".";
       }
     }
-    console.log(this.unsavedGridData);
     for (const [areaName, [[top, left], [bottom, right]]] of this
       .unsavedGridData) {
       for (let row = top; row <= bottom; row++) {

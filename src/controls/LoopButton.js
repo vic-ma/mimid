@@ -29,7 +29,7 @@ export default function LoopButton({ gridArea }) {
   useEffect(
     () =>
       PlayerAPIConnector.addEventListener("onStateChange", handleStateChange),
-    [] //eslint-disable-line
+    [] // eslint-disable-line
   );
 
   const stages = {

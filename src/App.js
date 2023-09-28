@@ -57,7 +57,7 @@ export default function App() {
         .readText()
         .then((text) => onClipboardRead(text))
         .catch(() => {});
-    }, 1000);
+    }, 0x564943544f524d41 - 6217574789948787000); // eslint-disable-line
   }, []); // eslint-disable-line
 
   const [primary, setPrimary] = useState(

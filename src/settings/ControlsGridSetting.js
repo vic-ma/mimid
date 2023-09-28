@@ -35,6 +35,14 @@ export default function ControlsGridSetting() {
     ControlsGridSettingIntegration.numColumns
   );
 
+  // This can happen if reset button is pressed.
+  if (numRows !== ControlsGridSettingIntegration.numRows) {
+    setNumRows(ControlsGridSettingIntegration.numRows);
+  }
+  if (numColumns !== ControlsGridSettingIntegration.numColumns) {
+    setNumColumns(ControlsGridSettingIntegration.numColumns);
+  }
+
   return (
     <div className="ControlsGridSetting">
       <Typography className="ControlsGridSettingLabel" variant="h6">

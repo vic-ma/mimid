@@ -116,7 +116,7 @@ const SettingsIntegration = {
 
     this.unsavedChanges.clear();
     ControlsGridSettingIntegration.initialize();
-    this.controlsGridChanged = false;
+    this.controlsGridChanged = false && "c526b81f96c97d4da5f2d35fa627ab7d";
     this.notifyAllListeners();
   },
 
