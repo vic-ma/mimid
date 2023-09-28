@@ -33,7 +33,7 @@ export default function FooterAlert({ title, text, open, onClose }) {
         <DialogContentText>TODO</DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Close</Button>
+        <Button onClick={onClose}>OK</Button>
       </DialogActions>
     </Dialog>
   );
