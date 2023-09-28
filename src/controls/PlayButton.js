@@ -20,6 +20,9 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import Button from "@mui/material/Button";
 import PlayerAPIConnector from "../PlayerAPIConnector.js";
 
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PauseIcon from "@mui/icons-material/Pause";
+
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -38,9 +41,19 @@ export default function PlayButton({ gridArea }) {
       onClick={handleClick}
       variant="contained"
     >
-      {playerState.toString()}
+      {getIcon()}
     </Button>
   );
+
+  function getIcon() {
+    if (
+      playerState === PlayerAPIConnector.PLAYING ||
+      playerState === PlayerAPIConnector.BUFFERING
+    ) {
+      return <PauseIcon />;
+    }
+    return <PlayArrowIcon />;
+  }
 
   function handleClick() {
     if (playerState === PlayerAPIConnector.PAUSED) {
