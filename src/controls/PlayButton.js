@@ -45,6 +45,7 @@ export default function PlayButton({ gridArea }) {
     </Button>
   );
 
+  // TODO: Replace if needed.
   function getIcon() {
     if (
       playerState === PlayerAPIConnector.PLAYING ||
