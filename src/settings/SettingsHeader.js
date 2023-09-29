@@ -22,19 +22,22 @@ import "./SettingsHeader.scss";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import Close from "@mui/icons-material/Close";
 
 export default function SettingsHeader({ onClose, onReset }) {
   return (
     <AppBar position="sticky">
       <Toolbar>
-        <Button
+        <IconButton
           className="SettingsHeaderClose"
-          variant="text"
+          size="large"
+          edge="start"
           onClick={onClose}
         >
-          X
-        </Button>
+          <Close />
+        </IconButton>
         <Typography className="SettingsHeaderLabel" variant="h5">
           Settings
         </Typography>
