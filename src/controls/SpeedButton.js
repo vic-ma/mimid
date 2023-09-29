@@ -22,6 +22,8 @@ import PlayerAPIConnector from "../PlayerAPIConnector.js";
 import { SLOW_SPEED_SETTING_NAME } from "../settings/constants.js";
 
 import Button from "@mui/material/Button";
+import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
+import HourglassDisabledIcon from "@mui/icons-material/HourglassDisabled";
 
 import { useState } from "react";
 import { useEffect } from "react";
@@ -49,9 +51,16 @@ export default function SpeedButton({ gridArea }) {
       onClick={handleClick}
       variant="contained"
     >
-      {currentSpeed + "X"}
+      {getIcon()}
     </Button>
   );
+
+  function getIcon() {
+    if (currentSpeed === 1) {
+      return <HourglassEmptyIcon />;
+    }
+    return <HourglassDisabledIcon />;
+  }
 
   function handleClick() {
     const newSpeed = currentSpeed === 1 ? slowSpeed : 1;
