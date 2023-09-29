@@ -34,6 +34,8 @@ import {
   DARK_MODE_SETTING_NAME,
 } from "./settings/constants";
 
+import "@fontsource/outfit";
+
 import createTheme from "@mui/material/styles/createTheme";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import Paper from "@mui/material/Paper";
@@ -84,6 +86,9 @@ export default function App() {
     palette: {
       primary: primary,
       mode: dark === true ? "dark" : "light",
+    },
+    typography: {
+      fontFamily: ["Outfit"],
     },
   });
 

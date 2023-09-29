@@ -52,9 +52,9 @@ export default function SkipButton({ settingName, direction, gridArea }) {
       <text
         x="50%"
         y="-43%"
-        text-anchor="middle"
-        dominant-baseline="central"
-        font-size="200px"
+        textAnchor="middle"
+        dominantBaseline="central"
+        fontSize="200px"
       >
         {skipAmount}
       </text>
