@@ -26,13 +26,13 @@ import Footer from "./Footer.js";
 import PlayerAPIConnector from "./PlayerAPIConnector.js";
 import SettingsIntegration from "./settings/SettingsIntegration";
 import { colorMap } from "./settings/ThemeSetting";
-
 import { AUTO_PASTE_SETTING_NAME } from "./settings/constants";
 import { PREVIOUS_VIDEO_LS_KEY } from "./constants";
 import {
   THEME_SETTING_NAME,
   DARK_MODE_SETTING_NAME,
 } from "./settings/constants";
+import { getVideoIDFromURL, getCurrentVideoID } from "./utils/YouTubeUtils";
 
 import "@fontsource/outfit";
 
@@ -68,7 +68,6 @@ export default function App() {
   const [dark, setDark] = useState(
     SettingsIntegration.getBooleanSetting(DARK_MODE_SETTING_NAME)
   );
-  const [errorURLBar, setErrorURLBar] = useState(false);
 
   SettingsIntegration.addStringSettingListener(
     THEME_SETTING_NAME,
@@ -96,7 +95,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <Paper className="App">
         <div className="app-inner">
-          <URLBar onChange={handleChangeURLBar} error={errorURLBar} />
+          <URLBar />
           <YouTubePlayer />
           <Controls />
           <Footer />
@@ -112,38 +111,8 @@ export default function App() {
     clipboardText.current = text;
     const id = getVideoIDFromURL(text);
     if (id !== null && id !== getCurrentVideoID()) {
-      setErrorURLBar(false);
       PlayerAPIConnector.playerAPI.loadVideoById(id);
       localStorage.setItem(PREVIOUS_VIDEO_LS_KEY, id);
     }
-  }
-
-  function handleChangeURLBar(event) {
-    const url = event.target.value;
-    const id = getVideoIDFromURL(url);
-    if (id !== null) {
-      setErrorURLBar(false);
-      if (id === getCurrentVideoID()) {
-        return;
-      }
-      PlayerAPIConnector.playerAPI.loadVideoById(id);
-      localStorage.setItem(PREVIOUS_VIDEO_LS_KEY, id);
-    } else if (url === "") {
-      setErrorURLBar(false);
-    } else {
-      setErrorURLBar(true);
-    }
-  }
-
-  function getCurrentVideoID() {
-    return getVideoIDFromURL(PlayerAPIConnector.playerAPI.getVideoUrl());
-  }
-
-  // https://stackoverflow.com/a/27728417
-  function getVideoIDFromURL(url) {
-    const regex =
-      /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|&v(?:i)?=))([^#&?]*).*/;
-    const match = url.match(regex);
-    return match !== null ? match[1] : null;
   }
 }

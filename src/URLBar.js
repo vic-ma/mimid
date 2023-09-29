@@ -17,16 +17,42 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
+import PlayerAPIConnector from "./PlayerAPIConnector";
+import { PREVIOUS_VIDEO_LS_KEY } from "./constants";
+import { getVideoIDFromURL, getCurrentVideoID } from "./utils/YouTubeUtils";
+
 import TextField from "@mui/material/TextField";
-export default function URLBar({ onChange, error }) {
+
+import { useState } from "react";
+
+export default function URLBar() {
+  const [error, setError] = useState(false);
+
   return (
     <TextField
       className="URLBar"
       label="YouTube video URL"
       size="small"
       variant="outlined"
-      onChange={onChange}
+      onChange={handleChange}
       error={error}
     />
   );
+
+  function handleChange(event) {
+    const url = event.target.value;
+    const id = getVideoIDFromURL(url);
+    if (id !== null) {
+      setError(false);
+      if (id === getCurrentVideoID()) {
+        return;
+      }
+      PlayerAPIConnector.playerAPI.loadVideoById(id);
+      localStorage.setItem(PREVIOUS_VIDEO_LS_KEY, id);
+    } else if (url === "") {
+      setError(false);
+    } else {
+      setError(true);
+    }
+  }
 }
