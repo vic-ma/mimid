@@ -42,6 +42,10 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
   display: grid;
 }
 
+.controls-icon {
+  fill: currentColor;
+}
+
 @mixin set-breakpoint-spacing($breakpoint, $spacing) {
   @media (min-width: $breakpoint) {
     .controls-grid {
