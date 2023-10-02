@@ -17,7 +17,6 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import { SvgIcon } from "@mui/material";
 import PlayerAPIConnector from "../PlayerAPIConnector.js";
 import SettingsIntegration from "../settings/SettingsIntegration.js";
 
@@ -54,7 +53,7 @@ export default function SkipButton({ settingName, direction, gridArea }) {
         y="-43%"
         textAnchor="middle"
         dominantBaseline="central"
-        fontSize="200px"
+        fontSize="280px"
       >
         {skipAmount}
       </text>
@@ -72,17 +71,16 @@ export default function SkipButton({ settingName, direction, gridArea }) {
     }
 
     return (
-      <SvgIcon className="controls-icon">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24"
-          viewBox="0 -960 960 960"
-          width="24"
-        >
-          {path}
-          {text}
-        </svg>
-      </SvgIcon>
+      <svg
+        className="controls-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        height="48"
+        width="48"
+        viewBox="0 -960 960 960"
+      >
+        {path}
+        {text}
+      </svg>
     );
   }
 

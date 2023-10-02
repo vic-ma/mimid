@@ -20,7 +20,6 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import PlayerAPIConnector from "../PlayerAPIConnector.js";
 
 import Button from "@mui/material/Button";
-import SvgIcon from "@mui/material/SvgIcon";
 
 import { useState } from "react";
 import { useRef } from "react";
@@ -55,8 +54,6 @@ export default function LoopButton({ gridArea }) {
     </Button>
   );
 
-  // <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
-
   function getIcon() {
     let inner;
 
@@ -69,25 +66,24 @@ export default function LoopButton({ gridArea }) {
     }
 
     return (
-      <SvgIcon className="controls-icon">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24"
-          viewBox="0 -960 960 960"
-          width="24"
+      <svg
+        className="controls-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        height="38"
+        width="38"
+        viewBox="0 -960 960 960"
+      >
+        <path d="M280-80 120-240l160-160 56 58-62 62h406v-160h80v240H274l62 62-56 58Zm-80-440v-240h486l-62-62 56-58 160 160-160 160-56-58 62-62H280v160h-80Z" />
+        <text
+          x="50%"
+          y="-50%"
+          textAnchor="middle"
+          dominantBaseline="central"
+          fontSize="250px"
         >
-          <path d="M280-80 120-240l160-160 56 58-62 62h406v-160h80v240H274l62 62-56 58Zm-80-440v-240h486l-62-62 56-58 160 160-160 160-56-58 62-62H280v160h-80Z" />
-          <text
-            x="50%"
-            y="-50%"
-            textAnchor="middle"
-            dominantBaseline="central"
-            fontSize="200px"
-          >
-            {inner}
-          </text>
-        </svg>
-      </SvgIcon>
+          {inner}
+        </text>
+      </svg>
     );
   }
 
