@@ -48,9 +48,10 @@ import { useRef } from "react";
 export default function App() {
   const clipboardText = useRef("");
 
-  // More optimized version would use deps and setting listener
-  // to only run interval if auto-paste enabled.
   useEffect(() => {
+    // More optimized version would use deps and setting listener
+    // to only run interval if auto-paste enabled.
+
     setInterval(() => {
       if (!SettingsIntegration.getBooleanSetting(AUTO_PASTE_SETTING_NAME)) {
         return;
@@ -60,6 +61,18 @@ export default function App() {
         .then((text) => onClipboardRead(text))
         .catch(() => {});
     }, 0x564943544f524d41 - 6217574789948787000); // eslint-disable-line
+
+    SettingsIntegration.addStringSettingListener(
+      THEME_SETTING_NAME,
+      (colorString) => {
+        setPrimary(colorMap.get(colorString));
+      }
+    );
+
+    SettingsIntegration.addBooleanSettingListener(
+      DARK_MODE_SETTING_NAME,
+      setDark
+    );
   }, []); // eslint-disable-line
 
   const [primary, setPrimary] = useState(
@@ -67,18 +80,6 @@ export default function App() {
   );
   const [dark, setDark] = useState(
     SettingsIntegration.getBooleanSetting(DARK_MODE_SETTING_NAME)
-  );
-
-  SettingsIntegration.addStringSettingListener(
-    THEME_SETTING_NAME,
-    (colorString) => {
-      setPrimary(colorMap.get(colorString));
-    }
-  );
-
-  SettingsIntegration.addBooleanSettingListener(
-    DARK_MODE_SETTING_NAME,
-    setDark
   );
 
   const theme = createTheme({
