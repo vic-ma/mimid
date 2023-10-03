@@ -53,7 +53,8 @@ export default function SkipButton({ settingName, direction, gridArea }) {
         y="-43%"
         textAnchor="middle"
         dominantBaseline="central"
-        fontSize="280px"
+        fontSize="280"
+        fontWeight="bold"
       >
         {skipAmount}
       </text>
@@ -74,8 +75,8 @@ export default function SkipButton({ settingName, direction, gridArea }) {
       <svg
         className="controls-icon"
         xmlns="http://www.w3.org/2000/svg"
-        height="48"
-        width="48"
+        height="50"
+        width="50"
         viewBox="0 -960 960 960"
       >
         {path}
