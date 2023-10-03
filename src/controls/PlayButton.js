@@ -43,22 +43,20 @@ export default function PlayButton({ gridArea }) {
   );
 
   function getIcon() {
+    let path;
     if (
       playerState === PlayerAPIConnector.PLAYING ||
       playerState === PlayerAPIConnector.BUFFERING
     ) {
-      return (
-        <svg
-          className="controls-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          height="40"
-          width="40"
-          viewBox="0 -960 960 960"
-        >
-          <path d="M560-200v-560h160v560H560Zm-320 0v-560h160v560H240Z" />
-        </svg>
+      path = (
+        <path d="M553.478-187.804v-584.392h188.334v584.392H553.478Zm-335.29 0v-584.392h188.334v584.392H218.188Z" />
+      );
+    } else {
+      path = (
+        <path d="M313.304-189.804v-584.392L772.515-482 313.304-189.804Z" />
       );
     }
+
     return (
       <svg
         className="controls-icon"
@@ -67,7 +65,7 @@ export default function PlayButton({ gridArea }) {
         width="40"
         viewBox="0 -960 960 960"
       >
-        <path d="M320-200v-560l440 280-440 280Z" />
+        {path}
       </svg>
     );
   }
