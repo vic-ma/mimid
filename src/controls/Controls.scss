@@ -23,6 +23,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 .Controls {
   flex-grow: 1;
+  overflow: auto;
 }
 
 .controls-outer-div {
