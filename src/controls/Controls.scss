@@ -29,9 +29,8 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 .controls-outer-div {
   position: relative;
 
-  // TODO: Fix
   // Cells in default layout on mobile become squares
-  padding-top: math.percentage(math.div(3.4, 4.6));
+  padding-top: math.percentage(math.div(17, 23));
 }
 
 .controls-grid {
