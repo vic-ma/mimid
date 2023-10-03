@@ -20,9 +20,6 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import Button from "@mui/material/Button";
 import PlayerAPIConnector from "../PlayerAPIConnector.js";
 
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import PauseIcon from "@mui/icons-material/Pause";
-
 import { useState } from "react";
 import { useEffect } from "react";
 

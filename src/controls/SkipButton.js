@@ -39,7 +39,7 @@ export default function SkipButton({ settingName, direction, gridArea }) {
   return (
     <Button
       style={{ gridArea: gridArea }}
-      onClick={onClick}
+      onClick={handleClick}
       variant="contained"
     >
       {getIcon()}
@@ -84,7 +84,7 @@ export default function SkipButton({ settingName, direction, gridArea }) {
     );
   }
 
-  function onClick() {
+  function handleClick() {
     const currentTime = PlayerAPIConnector.playerAPI.getCurrentTime();
     PlayerAPIConnector.playerAPI.seekTo(
       currentTime + getSkipAmount() * direction,

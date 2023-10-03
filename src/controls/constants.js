@@ -27,5 +27,3 @@ export const SKIP_FORWARD_LONG_BUTTON_GRID_AREA = "FL";
 
 export const SKIP_BACKWARD_DIRECTION = -1;
 export const SKIP_FORWARD_DIRECTION = 1;
-
-export const ICON_SIZE = "48";

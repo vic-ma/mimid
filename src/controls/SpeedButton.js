@@ -70,6 +70,7 @@ export default function SpeedButton({ gridArea }) {
     }
     return (
       <svg
+        className="controls-icon"
         xmlns="http://www.w3.org/2000/svg"
         height="48"
         width="48"
