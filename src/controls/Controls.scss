@@ -44,6 +44,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 .controls-icon {
   fill: currentColor;
+  flex-shrink: 0;
 }
 
 @mixin set-breakpoint-spacing($breakpoint, $spacing) {
