@@ -27,14 +27,7 @@ import Slider from "@mui/material/Slider";
 import { useState } from "react";
 
 // TODO: add seconds, etc.
-export default function SliderSetting({
-  label,
-  settingName,
-  min,
-  max,
-  step,
-  marks = true,
-}) {
+export default function SliderSetting({ label, settingName, min, max, step }) {
   const [value, setValue] = useState(
     SettingsIntegration.getFloatSetting(settingName)
   );
@@ -51,7 +44,7 @@ export default function SliderSetting({
         min={min}
         max={max}
         step={step}
-        marks={marks}
+        marks={true}
         valueLabelDisplay="auto"
       />
     </div>
