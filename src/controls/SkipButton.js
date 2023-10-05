@@ -91,6 +91,7 @@ export default function SkipButton({ settingName, direction, gridArea }) {
       currentTime + getSkipAmount() * direction,
       true
     );
+    PlayerAPIConnector.playerAPI.playVideo();
   }
 
   function getSkipAmount() {
