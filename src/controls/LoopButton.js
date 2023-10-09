@@ -62,7 +62,7 @@ export default function LoopButton({ gridArea }) {
     } else if (nextStage === stages.SET_END) {
       inner = "B";
     } else {
-      inner = "X";
+      inner = "✖";
     }
 
     return (
