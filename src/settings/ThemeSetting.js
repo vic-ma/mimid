@@ -30,7 +30,6 @@ import { useState } from "react";
 import "./ThemeSetting.scss";
 
 export const colorMap = new Map();
-colorMap.set("Mimid Blue", { main: "#0065DE" });
 colorMap.set("Black", { main: "#000000" });
 colorMap.set("Jet", { main: "#343434" });
 colorMap.set("White", { main: "#FFFFFF" });
