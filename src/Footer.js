@@ -26,6 +26,7 @@ import SettingsIntegration from "./settings/SettingsIntegration.js";
 import FooterAlert from "./FooterAlert";
 
 import Button from "@mui/material/Button";
+import DialogContentText from "@mui/material/DialogContentText";
 
 import { useState } from "react";
 
@@ -47,7 +48,9 @@ export default function Footer() {
         title={"Privacy"}
         open={privacyOpen}
         onClose={handlePrivacyClose}
-      ></FooterAlert>
+      >
+        <DialogContentText>TODO</DialogContentText>
+      </FooterAlert>
 
       <SettingsButton onClick={handleSettingsButtonClick} />
       <Settings
@@ -59,11 +62,22 @@ export default function Footer() {
       <Button onClick={handleAboutButtonClick} variant="text">
         About
       </Button>
-      <FooterAlert
-        title={"About"}
-        open={aboutOpen}
-        onClose={handleAboutClose}
-      ></FooterAlert>
+      <FooterAlert title={"About"} open={aboutOpen} onClose={handleAboutClose}>
+        <DialogContentText>TODO</DialogContentText>
+        <br />
+        <iframe
+          id="kofiframe"
+          src="https://ko-fi.com/mimid/?hidefeed=true&widget=true&embed=true&preview=true"
+          style={{
+            border: "none",
+            width: "100%",
+            padding: "4px",
+            background: "#f9f9f9",
+          }}
+          height="615px"
+          title="mimid"
+        ></iframe>
+      </FooterAlert>
     </footer>
   );
 
