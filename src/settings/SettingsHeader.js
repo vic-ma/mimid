@@ -35,6 +35,7 @@ export default function SettingsHeader({ onClose, onReset }) {
           size="large"
           edge="start"
           onClick={onClose}
+          aria-label="close"
         >
           <Close />
         </IconButton>

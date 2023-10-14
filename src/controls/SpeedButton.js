@@ -49,10 +49,18 @@ export default function SpeedButton({ gridArea }) {
       style={{ gridArea: gridArea }}
       onClick={handleClick}
       variant="contained"
+      aria-label={getAriaLabel()}
     >
       {getIcon()}
     </Button>
   );
+
+  function getAriaLabel() {
+    if (currentSpeed === 1) {
+      return "enable slow speed";
+    }
+    return "disable slow speed";
+  }
 
   function getIcon() {
     let path;

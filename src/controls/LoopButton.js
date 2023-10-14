@@ -49,10 +49,21 @@ export default function LoopButton({ gridArea }) {
       style={{ gridArea: gridArea }}
       onClick={handleClick}
       variant="contained"
+      aria-label={getAriaLabel()}
     >
       {getIcon()}
     </Button>
   );
+
+  function getAriaLabel() {
+    if (nextStage === stages.SET_START) {
+      return "set loop start";
+    } else if (nextStage === stages.SET_END) {
+      return "set loop end";
+    } else {
+      return "clear loop";
+    }
+  }
 
   function getIcon() {
     let inner;

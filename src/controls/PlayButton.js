@@ -37,17 +37,19 @@ export default function PlayButton({ gridArea }) {
       style={{ gridArea: gridArea }}
       onClick={handleClick}
       variant="contained"
+      aria-label={getAriaLabel()}
     >
       {getIcon()}
     </Button>
   );
 
+  function getAriaLabel() {
+    return isPlaying() ? "pause" : "play";
+  }
+
   function getIcon() {
     let path;
-    if (
-      playerState === PlayerAPIConnector.PLAYING ||
-      playerState === PlayerAPIConnector.BUFFERING
-    ) {
+    if (isPlaying()) {
       path = (
         <path d="M553.478-187.804v-584.392h188.334v584.392H553.478Zm-335.29 0v-584.392h188.334v584.392H218.188Z" />
       );
@@ -67,6 +69,13 @@ export default function PlayButton({ gridArea }) {
       >
         {path}
       </svg>
+    );
+  }
+
+  function isPlaying() {
+    return (
+      playerState === PlayerAPIConnector.PLAYING ||
+      playerState === PlayerAPIConnector.BUFFERING
     );
   }
 

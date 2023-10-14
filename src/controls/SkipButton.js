@@ -41,10 +41,21 @@ export default function SkipButton({ settingName, direction, gridArea }) {
       style={{ gridArea: gridArea }}
       onClick={handleClick}
       variant="contained"
+      aria-label={getAriaLabel()}
     >
       {getIcon()}
     </Button>
   );
+
+  function getAriaLabel() {
+    let label = "skip ";
+    if (direction > 0) {
+      label += "forward ";
+    } else {
+      label += "backward ";
+    }
+    return label + skipAmount + " seconds";
+  }
 
   function getIcon() {
     const text = (
