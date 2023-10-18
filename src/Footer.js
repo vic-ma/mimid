@@ -25,6 +25,8 @@ import SettingsIntegration from "./settings/SettingsIntegration.js";
 
 import FooterAlert from "./FooterAlert";
 
+import KofiImage from "./kofi.png";
+
 import Button from "@mui/material/Button";
 import DialogContentText from "@mui/material/DialogContentText";
 
@@ -69,7 +71,7 @@ export default function Footer() {
           <img
             height="36"
             style={{ border: "0px", height: "36px" }}
-            src="https://storage.ko-fi.com/cdn/kofi1.png?v=3"
+            src={KofiImage}
             border="0"
             alt="Buy Me a Coffee at ko-fi.com"
           />
