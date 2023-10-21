@@ -61,10 +61,10 @@ export default function SkipButton({ settingName, direction, gridArea }) {
     const text = (
       <text
         x="50%"
-        y="-42%"
+        y="-42.5%"
         textAnchor="middle"
         dominantBaseline="central"
-        fontSize="280"
+        fontSize={skipAmount.toString().length > 1 ? "240" : "280"}
         fontWeight="bold"
       >
         {skipAmount}

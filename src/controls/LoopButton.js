@@ -90,7 +90,7 @@ export default function LoopButton({ gridArea }) {
           y="-50%"
           textAnchor="middle"
           dominantBaseline="central"
-          fontSize="250"
+          fontSize="240"
           fontWeight="bold"
         >
           {inner}
