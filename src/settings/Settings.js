@@ -31,6 +31,7 @@ import {
   SKIP_BACKWARD_SHORT_SETTING_NAME,
   SKIP_FORWARD_SHORT_SETTING_NAME,
   SKIP_FORWARD_LONG_SETTING_NAME,
+  CONTROLS_OFFSET_SETTING_NAME,
   DARK_MODE_SETTING_NAME,
 } from "./constants";
 import ThemeSetting from "./ThemeSetting";
@@ -113,6 +114,16 @@ export default function Settings({ open, onClose, onReset }) {
             min={0.5}
             max={10}
             step={0.5}
+          />
+        </ListItem>
+        <ListItem className="SettingsListItem">
+          <SliderSetting
+            label="Controls Offset"
+            settingName={CONTROLS_OFFSET_SETTING_NAME}
+            min={0}
+            max={100}
+            step={1}
+            mark={false}
           />
         </ListItem>
         <ListItem className="SettingsListItem">

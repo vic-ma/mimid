@@ -43,6 +43,7 @@ import {
   SKIP_BACKWARD_SHORT_SETTING_NAME,
   SKIP_FORWARD_SHORT_SETTING_NAME,
   SKIP_FORWARD_LONG_SETTING_NAME,
+  CONTROLS_OFFSET_SETTING_NAME,
   CONTROLS_GRID_SETTING_NAME,
 } from "../settings/constants";
 
@@ -51,11 +52,20 @@ import { useEffect } from "react";
 
 export default function Controls() {
   useEffect(() => {
+    SettingsIntegration.addFloatSettingListener(
+      CONTROLS_OFFSET_SETTING_NAME,
+      setControlsOffset
+    );
+
     SettingsIntegration.addStringSettingListener(
       CONTROLS_GRID_SETTING_NAME,
       setGridTemplateAreas
     );
   }, []);
+
+  const [controlsOffset, setControlsOffset] = useState(
+    SettingsIntegration.getStringSetting(CONTROLS_OFFSET_SETTING_NAME)
+  );
 
   const [gridTemplateAreas, setGridTemplateAreas] = useState(
     SettingsIntegration.getStringSetting(CONTROLS_GRID_SETTING_NAME)
@@ -142,6 +152,7 @@ export default function Controls() {
         <div
           className="controls-grid"
           style={{
+            paddingTop: controlsOffset + "vh",
             gridTemplateAreas: gridTemplateAreas,
             gridTemplateRows: gridTemplateRows,
             gridTemplateColumns: gridTemplateColumns,

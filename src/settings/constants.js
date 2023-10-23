@@ -62,6 +62,10 @@ defaultsMap.set(
   SKIP_FORWARD_LONG_SETTING_DEFAULT
 );
 
+export const CONTROLS_OFFSET_SETTING_NAME = "controls-offset";
+export const CONTROLS_OFFSET_SETTING_DEFAULT = "0";
+defaultsMap.set(CONTROLS_OFFSET_SETTING_NAME, CONTROLS_OFFSET_SETTING_DEFAULT);
+
 export const CONTROLS_GRID_SETTING_NAME = "controls-grid-template-areas";
 export const CONTROLS_GRID_SETTING_DEFAULT =
   "'P P P P' 'L L S S' 'BL BS FS FL'";
