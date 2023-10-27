@@ -2,7 +2,7 @@
   "name": "Mimid",
   "icons": [
     {
-      "src": "maskable_icon.png",
+      "src": "icon512.png",
       "type": "image/png",
       "sizes": "512x512"
     },
