@@ -78,6 +78,7 @@ export default function Settings({ open, onClose, onReset }) {
             min={0.25}
             max={0.95}
             step={0.05}
+            valueLabelFormat={speedSettingValueLabelFormat}
           />
         </ListItem>
         <ListItem className="SettingsListItem">
@@ -87,6 +88,7 @@ export default function Settings({ open, onClose, onReset }) {
             min={0.5}
             max={10}
             step={0.5}
+            valueLabelFormat={skipSettingValueLabelFormat}
           />
         </ListItem>
         <ListItem className="SettingsListItem">
@@ -96,6 +98,7 @@ export default function Settings({ open, onClose, onReset }) {
             min={0.5}
             max={10}
             step={0.5}
+            valueLabelFormat={skipSettingValueLabelFormat}
           />
         </ListItem>
         <ListItem className="SettingsListItem">
@@ -105,6 +108,7 @@ export default function Settings({ open, onClose, onReset }) {
             min={0.5}
             max={10}
             step={0.5}
+            valueLabelFormat={skipSettingValueLabelFormat}
           />
         </ListItem>
         <ListItem className="SettingsListItem">
@@ -114,6 +118,7 @@ export default function Settings({ open, onClose, onReset }) {
             min={0.5}
             max={10}
             step={0.5}
+            valueLabelFormat={skipSettingValueLabelFormat}
           />
         </ListItem>
         <ListItem className="SettingsListItem">
@@ -121,9 +126,9 @@ export default function Settings({ open, onClose, onReset }) {
             label="Controls Offset"
             settingName={CONTROLS_OFFSET_SETTING_NAME}
             min={0}
-            max={100}
+            max={20}
             step={1}
-            mark={false}
+            valueLabelFormat={offsetSettingValueLabelFormat}
           />
         </ListItem>
         <ListItem className="SettingsListItem">
@@ -141,4 +146,16 @@ export default function Settings({ open, onClose, onReset }) {
       </List>
     </Dialog>
   );
+
+  function skipSettingValueLabelFormat(value) {
+    return `${value} s`;
+  }
+
+  function speedSettingValueLabelFormat(value) {
+    return `${value}x`;
+  }
+
+  function offsetSettingValueLabelFormat(value) {
+    return `${value} vh`;
+  }
 }

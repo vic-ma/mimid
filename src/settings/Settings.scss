@@ -31,7 +31,8 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 @mixin set-breakpoint-spacing($breakpoint, $spacing) {
   @media (min-width: $breakpoint) {
     .SettingsList {
-      margin: $spacing !important;
+      margin-left: $spacing * 1.5 !important;
+      margin-right: $spacing * 1.5 !important;
     }
   }
 }

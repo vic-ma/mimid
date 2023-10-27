@@ -33,6 +33,7 @@ export default function SliderSetting({
   max,
   step,
   mark = true,
+  valueLabelFormat = (value) => value,
 }) {
   const [value, setValue] = useState(
     SettingsIntegration.getFloatSetting(settingName)
@@ -52,6 +53,7 @@ export default function SliderSetting({
         step={step}
         marks={mark}
         valueLabelDisplay="auto"
+        valueLabelFormat={valueLabelFormat}
       />
     </div>
   );
