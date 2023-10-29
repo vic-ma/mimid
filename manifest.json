@@ -2,7 +2,7 @@
   "name": "Mimid",
   "icons": [
     {
-      "src": "icon512.png",
+      "src": "original_icon.png",
       "type": "image/png",
       "sizes": "512x512"
     },
