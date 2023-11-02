@@ -109,11 +109,14 @@ export default function LoopButton({ gridArea }) {
         maybeSwapStartAndEnd();
         intervalID.current = setInterval(() => {
           const currentTime = PlayerAPIConnector.playerAPI.getCurrentTime();
+          // Start time needs a small offset to avoid infinite triggers,
+          // because after it seeks, currentTime is imprecise.
           if (
-            currentTime < startTime.current ||
+            currentTime < startTime.current - 0.1 ||
             currentTime > endTime.current
           ) {
             PlayerAPIConnector.playerAPI.seekTo(startTime.current, true);
+            pauseAfterLoop();
           }
         }, PlayerAPIConnector.STANDARD_DELAY);
         break;
@@ -152,5 +155,9 @@ export default function LoopButton({ gridArea }) {
       deleteLoop();
       setNextStage(stages.SET_START);
     }
+  }
+  function pauseAfterLoop() {
+    PlayerAPIConnector.playerAPI.pauseVideo();
+    setTimeout(() => PlayerAPIConnector.playerAPI.playVideo(), 1000);
   }
 }
