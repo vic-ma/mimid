@@ -34,6 +34,10 @@ export const SLOW_SPEED_SETTING_NAME = "slow-speed";
 export const SLOW_SPEED_SETTING_DEFAULT = "0.5";
 defaultsMap.set(SLOW_SPEED_SETTING_NAME, SLOW_SPEED_SETTING_DEFAULT);
 
+export const LOOP_DELAY_SETTING_NAME = "loop-delay";
+export const LOOP_DELAY_SETTING_DEFAULT = "0";
+defaultsMap.set(LOOP_DELAY_SETTING_NAME, LOOP_DELAY_SETTING_DEFAULT);
+
 export const SKIP_BACKWARD_LONG_SETTING_NAME = "skip-backward-long";
 export const SKIP_BACKWARD_LONG_SETTING_DEFAULT = "5";
 defaultsMap.set(

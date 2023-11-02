@@ -18,6 +18,8 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import PlayerAPIConnector from "../PlayerAPIConnector.js";
+import SettingsIntegration from "../settings/SettingsIntegration.js";
+import { LOOP_DELAY_SETTING_NAME } from "../settings/constants.js";
 
 import Button from "@mui/material/Button";
 
@@ -27,9 +29,19 @@ import { useEffect } from "react";
 
 export default function LoopButton({ gridArea }) {
   useEffect(
-    () =>
-      PlayerAPIConnector.addEventListener("onStateChange", handleStateChange),
+    () => {
+      SettingsIntegration.addFloatSettingListener(
+        LOOP_DELAY_SETTING_NAME,
+        setLoopDelay
+      );
+
+      PlayerAPIConnector.addEventListener("onStateChange", handleStateChange);
+    },
     [] // eslint-disable-line
+  );
+
+  const [loopDelay, setLoopDelay] = useState(
+    SettingsIntegration.getFloatSetting(LOOP_DELAY_SETTING_NAME)
   );
 
   const stages = {
@@ -116,7 +128,9 @@ export default function LoopButton({ gridArea }) {
             currentTime > endTime.current
           ) {
             PlayerAPIConnector.playerAPI.seekTo(startTime.current, true);
-            pauseAfterLoop();
+            if (loopDelay > 0) {
+              pauseAfterLoop();
+            }
           }
         }, PlayerAPIConnector.STANDARD_DELAY);
         break;
@@ -156,8 +170,12 @@ export default function LoopButton({ gridArea }) {
       setNextStage(stages.SET_START);
     }
   }
+
   function pauseAfterLoop() {
     PlayerAPIConnector.playerAPI.pauseVideo();
-    setTimeout(() => PlayerAPIConnector.playerAPI.playVideo(), 1000);
+    setTimeout(
+      () => PlayerAPIConnector.playerAPI.playVideo(), // Has to be wrapped in arrow function for some reason.
+      loopDelay * 1000
+    );
   }
 }

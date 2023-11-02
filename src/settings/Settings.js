@@ -27,6 +27,7 @@ import {
   AUTO_PASTE_SETTING_NAME,
   SCALE_SKIPS_SETTING_NAME,
   SLOW_SPEED_SETTING_NAME,
+  LOOP_DELAY_SETTING_NAME,
   SKIP_BACKWARD_LONG_SETTING_NAME,
   SKIP_BACKWARD_SHORT_SETTING_NAME,
   SKIP_FORWARD_SHORT_SETTING_NAME,
@@ -83,12 +84,22 @@ export default function Settings({ open, onClose, onReset }) {
         </ListItem>
         <ListItem className="SettingsListItem">
           <SliderSetting
+            label="Delay Between Loops"
+            settingName={LOOP_DELAY_SETTING_NAME}
+            min={0}
+            max={10}
+            step={0.5}
+            valueLabelFormat={secondsValueLabelFormat}
+          />
+        </ListItem>
+        <ListItem className="SettingsListItem">
+          <SliderSetting
             label="Skip Backward Long"
             settingName={SKIP_BACKWARD_LONG_SETTING_NAME}
             min={0.5}
             max={10}
             step={0.5}
-            valueLabelFormat={skipSettingValueLabelFormat}
+            valueLabelFormat={secondsValueLabelFormat}
           />
         </ListItem>
         <ListItem className="SettingsListItem">
@@ -98,7 +109,7 @@ export default function Settings({ open, onClose, onReset }) {
             min={0.5}
             max={10}
             step={0.5}
-            valueLabelFormat={skipSettingValueLabelFormat}
+            valueLabelFormat={secondsValueLabelFormat}
           />
         </ListItem>
         <ListItem className="SettingsListItem">
@@ -108,7 +119,7 @@ export default function Settings({ open, onClose, onReset }) {
             min={0.5}
             max={10}
             step={0.5}
-            valueLabelFormat={skipSettingValueLabelFormat}
+            valueLabelFormat={secondsValueLabelFormat}
           />
         </ListItem>
         <ListItem className="SettingsListItem">
@@ -118,7 +129,7 @@ export default function Settings({ open, onClose, onReset }) {
             min={0.5}
             max={10}
             step={0.5}
-            valueLabelFormat={skipSettingValueLabelFormat}
+            valueLabelFormat={secondsValueLabelFormat}
           />
         </ListItem>
         <ListItem className="SettingsListItem">
@@ -147,7 +158,7 @@ export default function Settings({ open, onClose, onReset }) {
     </Dialog>
   );
 
-  function skipSettingValueLabelFormat(value) {
+  function secondsValueLabelFormat(value) {
     return `${value} s`;
   }
 
