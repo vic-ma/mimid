@@ -26,6 +26,7 @@ import ControlsGridSetting from "./ControlsGridSetting";
 import {
   AUTO_PASTE_SETTING_NAME,
   SCALE_SKIPS_SETTING_NAME,
+  AUTO_PAUSE_SETTING_NAME,
   SLOW_SPEED_SETTING_NAME,
   LOOP_DELAY_SETTING_NAME,
   SKIP_BACKWARD_LONG_SETTING_NAME,
@@ -70,6 +71,12 @@ export default function Settings({ open, onClose, onReset }) {
           <SwitchSetting
             label="Scale Skips by Speed"
             settingName={SCALE_SKIPS_SETTING_NAME}
+          />
+        </ListItem>
+        <ListItem className="SettingsListItem">
+          <SwitchSetting
+            label="Skip Back Auto-Pause"
+            settingName={AUTO_PAUSE_SETTING_NAME}
           />
         </ListItem>
         <ListItem className="SettingsListItem">

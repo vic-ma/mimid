@@ -30,6 +30,10 @@ export const SCALE_SKIPS_SETTING_NAME = "scale-skips";
 export const SCALE_SKIPS_SETTING_DEFAULT = "true";
 defaultsMap.set(SCALE_SKIPS_SETTING_NAME, SCALE_SKIPS_SETTING_DEFAULT);
 
+export const AUTO_PAUSE_SETTING_NAME = "auto-pause";
+export const AUTO_PAUSE_SETTING_DEFAULT = "false";
+defaultsMap.set(AUTO_PAUSE_SETTING_NAME, AUTO_PAUSE_SETTING_DEFAULT);
+
 export const SLOW_SPEED_SETTING_NAME = "slow-speed";
 export const SLOW_SPEED_SETTING_DEFAULT = "0.5";
 defaultsMap.set(SLOW_SPEED_SETTING_NAME, SLOW_SPEED_SETTING_DEFAULT);

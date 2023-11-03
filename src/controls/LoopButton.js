@@ -122,7 +122,7 @@ export default function LoopButton({ gridArea }) {
         maybeSwapStartAndEnd();
         intervalID.current = setInterval(() => {
           const currentTime = PlayerAPIConnector.playerAPI.getCurrentTime();
-          // Start time needs a small offset to avoid infinite triggers,
+          // Start time needs a small margin of error to avoid infinite triggers,
           // because after it seeks, currentTime is imprecise.
           if (
             currentTime < startTime.current - 0.1 ||
@@ -181,7 +181,7 @@ export default function LoopButton({ gridArea }) {
           startTime.current - PlayerAPIConnector.playerAPI.getCurrentTime()
         ) < 0.1
       ) {
-        PlayerAPIConnector.playerAPI.playVideo(); // Has to be wrapped in arrow function for some reason.
+        PlayerAPIConnector.playerAPI.playVideo();
       }
     }, loopDelay * 1000);
     PlayerAPIConnector.addEventListener("onStateChange", () => {});

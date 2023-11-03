@@ -20,24 +20,34 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import PlayerAPIConnector from "../PlayerAPIConnector.js";
 import SettingsIntegration from "../settings/SettingsIntegration.js";
 
-import { SCALE_SKIPS_SETTING_NAME } from "../settings/constants.js";
+import {
+  SCALE_SKIPS_SETTING_NAME,
+  AUTO_PAUSE_SETTING_NAME,
+} from "../settings/constants.js";
 
 import Button from "@mui/material/Button";
 
 import { useState } from "react";
-import { useRef } from "react";
 import { useEffect } from "react";
 
 export default function SkipButton({ settingName, direction, gridArea }) {
   useEffect(() => {
     SettingsIntegration.addFloatSettingListener(settingName, setSkipAmount);
+    if (direction < 0) {
+      SettingsIntegration.addBooleanSettingListener(
+        AUTO_PAUSE_SETTING_NAME,
+        setAutoPause
+      );
+    }
   }, []); // eslint-disable-line
 
   const [skipAmount, setSkipAmount] = useState(
     SettingsIntegration.getFloatSetting(settingName)
   );
 
-  const timeoutID = useRef(null);
+  const [autoPause, setAutoPause] = useState(
+    SettingsIntegration.getBooleanSetting(AUTO_PAUSE_SETTING_NAME)
+  );
 
   return (
     <Button
@@ -106,12 +116,14 @@ export default function SkipButton({ settingName, direction, gridArea }) {
       true
     );
 
-    if (direction < 0) {
-      clearTimeout(timeoutID.current);
-      timeoutID.current = setTimeout(
+    if (direction < 0 && autoPause) {
+      clearTimeout(window.timeoutID);
+      window.timeoutID = setTimeout(
         () => PlayerAPIConnector.playerAPI.pauseVideo(),
         getSkipAmount() * 1000
       );
+    } else if (autoPause) {
+      clearTimeout(window.timeoutID);
     }
 
     PlayerAPIConnector.playerAPI.playVideo();
