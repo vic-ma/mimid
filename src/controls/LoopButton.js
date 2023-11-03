@@ -55,6 +55,7 @@ export default function LoopButton({ gridArea }) {
   const startTime = useRef(null);
   const endTime = useRef(null);
   const intervalID = useRef(null);
+  const timeoutID = useRef(null);
 
   return (
     <Button
@@ -128,7 +129,7 @@ export default function LoopButton({ gridArea }) {
             currentTime > endTime.current
           ) {
             PlayerAPIConnector.playerAPI.seekTo(startTime.current, true);
-            if (loopDelay > 0) {
+            if (currentTime > endTime.current && loopDelay > 0) {
               pauseAfterLoop();
             }
           }
@@ -173,9 +174,16 @@ export default function LoopButton({ gridArea }) {
 
   function pauseAfterLoop() {
     PlayerAPIConnector.playerAPI.pauseVideo();
-    setTimeout(
-      () => PlayerAPIConnector.playerAPI.playVideo(), // Has to be wrapped in arrow function for some reason.
-      loopDelay * 1000
-    );
+    clearTimeout(timeoutID.current);
+    timeoutID.current = setTimeout(() => {
+      if (
+        Math.abs(
+          startTime.current - PlayerAPIConnector.playerAPI.getCurrentTime()
+        ) < 0.1
+      ) {
+        PlayerAPIConnector.playerAPI.playVideo(); // Has to be wrapped in arrow function for some reason.
+      }
+    }, loopDelay * 1000);
+    PlayerAPIConnector.addEventListener("onStateChange", () => {});
   }
 }
