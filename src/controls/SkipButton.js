@@ -25,6 +25,7 @@ import { SCALE_SKIPS_SETTING_NAME } from "../settings/constants.js";
 import Button from "@mui/material/Button";
 
 import { useState } from "react";
+import { useRef } from "react";
 import { useEffect } from "react";
 
 export default function SkipButton({ settingName, direction, gridArea }) {
@@ -35,6 +36,8 @@ export default function SkipButton({ settingName, direction, gridArea }) {
   const [skipAmount, setSkipAmount] = useState(
     SettingsIntegration.getFloatSetting(settingName)
   );
+
+  const timeoutID = useRef(null);
 
   return (
     <Button
@@ -97,11 +100,20 @@ export default function SkipButton({ settingName, direction, gridArea }) {
   }
 
   function handleClick() {
-    const currentTime = PlayerAPIConnector.playerAPI.getCurrentTime();
+    const timeOfSkip = PlayerAPIConnector.playerAPI.getCurrentTime();
     PlayerAPIConnector.playerAPI.seekTo(
-      currentTime + getSkipAmount() * direction,
+      timeOfSkip + getSkipAmount() * direction,
       true
     );
+
+    if (direction < 0) {
+      clearTimeout(timeoutID.current);
+      timeoutID.current = setTimeout(
+        () => PlayerAPIConnector.playerAPI.pauseVideo(),
+        getSkipAmount() * 1000
+      );
+    }
+
     PlayerAPIConnector.playerAPI.playVideo();
   }
 
