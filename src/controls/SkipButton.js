@@ -33,12 +33,10 @@ import { useEffect } from "react";
 export default function SkipButton({ settingName, direction, gridArea }) {
   useEffect(() => {
     SettingsIntegration.addFloatSettingListener(settingName, setSkipAmount);
-    if (direction < 0) {
-      SettingsIntegration.addBooleanSettingListener(
-        AUTO_PAUSE_SETTING_NAME,
-        setAutoPause
-      );
-    }
+    SettingsIntegration.addBooleanSettingListener(
+      AUTO_PAUSE_SETTING_NAME,
+      setAutoPause
+    );
   }, []); // eslint-disable-line
 
   const [skipAmount, setSkipAmount] = useState(
@@ -119,13 +117,12 @@ export default function SkipButton({ settingName, direction, gridArea }) {
     if (direction < 0 && autoPause) {
       clearTimeout(window.timeoutID);
       window.timeoutID = setTimeout(
-        () => PlayerAPIConnector.playerAPI.pauseVideo(),
+        () => PlayerAPIConnector.playerAPI.pauseVideo(), // Needs to be wrapped in arrow function for some reason
         getSkipAmount() * 1000
       );
     } else if (autoPause) {
       clearTimeout(window.timeoutID);
     }
-
     PlayerAPIConnector.playerAPI.playVideo();
   }
 
