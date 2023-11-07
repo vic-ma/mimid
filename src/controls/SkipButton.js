@@ -118,12 +118,23 @@ export default function SkipButton({ settingName, direction, gridArea }) {
       clearTimeout(window.timeoutID);
       window.timeoutID = setTimeout(
         () => PlayerAPIConnector.playerAPI.pauseVideo(), // Needs to be wrapped in arrow function for some reason
-        getSkipAmount() * 1000
+        getAutoPauseDuration()
       );
     } else if (autoPause) {
       clearTimeout(window.timeoutID);
     }
     PlayerAPIConnector.playerAPI.playVideo();
+  }
+
+  function getAutoPauseDuration() {
+    const playbackRate = PlayerAPIConnector.playerAPI.getPlaybackRate();
+    if (
+      playbackRate === 1 ||
+      SettingsIntegration.getBooleanSetting(SCALE_SKIPS_SETTING_NAME)
+    ) {
+      return skipAmount * 1000;
+    }
+    return (skipAmount / playbackRate) * 1000;
   }
 
   function getSkipAmount() {
