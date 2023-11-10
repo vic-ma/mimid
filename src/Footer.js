@@ -23,12 +23,13 @@ import SettingsButton from "./settings/SettingsButton.js";
 import Settings from "./settings/Settings.js";
 import SettingsIntegration from "./settings/SettingsIntegration.js";
 
-import FooterAlert from "./FooterAlert";
+import FooterDialog from "./FooterDialog";
 
 import KofiImage from "./kofi.png";
 
 import Button from "@mui/material/Button";
 import DialogContentText from "@mui/material/DialogContentText";
+import Typography from "@mui/material/Typography";
 
 import { useState } from "react";
 
@@ -46,13 +47,69 @@ export default function Footer() {
       <Button onClick={handlePrivacyButtonClick} variant="text">
         Privacy
       </Button>
-      <FooterAlert
-        title={"Privacy"}
+      <FooterDialog
+        title={"Privacy Policy"}
         open={privacyOpen}
         onClose={handlePrivacyClose}
       >
-        <DialogContentText>TODO</DialogContentText>
-      </FooterAlert>
+        <DialogContentText>
+          <Typography variant="h6">Mimid</Typography>
+          Mimid does not collect any data. However, Mimid uses third-party
+          services that do collect data. These are detailed below.
+          <br />
+          <br />
+          <Typography variant="h6">YouTube</Typography>
+          Mimid contains an embedded YouTube player, and Mimid uses YouTube API
+          Services to control this player. By using Mimid, you agree to be bound
+          by the{" "}
+          <a
+            href="https://www.youtube.com/t/terms"
+            target="_blank"
+            rel="noreferrer"
+          >
+            YouTube Terms of Service
+          </a>
+          .
+          <br />
+          <br />
+          YouTube collects data and uses cookies in accordance with the{" "}
+          <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Google Privacy Policy
+          </a>
+          .
+          <br />
+          <br />
+          <Typography variant="h6">Plausible</Typography>
+          Analytics Mimid uses Plausible Analytics to collect anonymized web
+          analytics data. Plausible Analytics collects data in accordance with
+          the{" "}
+          <a
+            href="https://plausible.io/data-policy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Plausible Data Policy
+          </a>
+          .
+          <br />
+          <br />
+          <Typography variant="h6">GitHub</Typography>
+          Pages Mimid is hosted by GitHub Pages. GitHub Pages collects data in
+          accordance with the{" "}
+          <a
+            href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub Privacy Statement
+          </a>
+          .
+        </DialogContentText>
+      </FooterDialog>
 
       <SettingsButton onClick={handleSettingsButtonClick} />
       <Settings
@@ -64,19 +121,30 @@ export default function Footer() {
       <Button onClick={handleAboutButtonClick} variant="text">
         About
       </Button>
-      <FooterAlert title={"About"} open={aboutOpen} onClose={handleAboutClose}>
-        <DialogContentText>TODO</DialogContentText>
-        <br />
-        <a href="https://ko-fi.com/T6T8Q4BKC" target="_blank" rel="noreferrer">
-          <img
-            height="36"
-            style={{ border: "0px", height: "36px" }}
-            src={KofiImage}
-            border="0"
-            alt="Buy Me a Coffee at ko-fi.com"
-          />
-        </a>
-      </FooterAlert>
+      <FooterDialog title={"About"} open={aboutOpen} onClose={handleAboutClose}>
+        <DialogContentText>
+          Mimid is a music player designed for learning songs by ear.
+          <br />
+          <br />
+          <a href="https://docs.mimid.app" target="_blank" rel="noreferrer">
+            Documentation
+          </a>
+          <br />
+          <br />
+          <a
+            href="https://github.com/vic-ma/mimid"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Source Code
+          </a>
+          <br />
+          <br />
+          <a href="https://ko-fi.com/mimid" target="_blank" rel="noreferrer">
+            Support Mimid
+          </a>
+        </DialogContentText>
+      </FooterDialog>
     </footer>
   );
 

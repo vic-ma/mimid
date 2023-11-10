@@ -24,7 +24,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function FooterAlert({ title, open, onClose, children }) {
+export default function FooterDialog({ title, open, onClose, children }) {
   return (
     <Dialog open={open}>
       <DialogTitle>{title}</DialogTitle>
