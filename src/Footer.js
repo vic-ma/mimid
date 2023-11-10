@@ -55,7 +55,7 @@ export default function Footer() {
         <DialogContentText>
           <Typography variant="h6">Mimid</Typography>
           Mimid does not collect any data. However, Mimid uses third-party
-          services that do collect data. These are detailed below.
+          services that do collect data.
           <br />
           <br />
           <Typography variant="h6">YouTube</Typography>
@@ -83,10 +83,9 @@ export default function Footer() {
           .
           <br />
           <br />
-          <Typography variant="h6">Plausible</Typography>
-          Analytics Mimid uses Plausible Analytics to collect anonymized web
-          analytics data. Plausible Analytics collects data in accordance with
-          the{" "}
+          <Typography variant="h6">Plausible Analytics</Typography>
+          Mimid uses Plausible Analytics to collect anonymized web analytics
+          data. Plausible Analytics collects data in accordance with the{" "}
           <a
             href="https://plausible.io/data-policy"
             target="_blank"
@@ -97,8 +96,8 @@ export default function Footer() {
           .
           <br />
           <br />
-          <Typography variant="h6">GitHub</Typography>
-          Pages Mimid is hosted by GitHub Pages. GitHub Pages collects data in
+          <Typography variant="h6">GitHub Pages</Typography>
+          Mimid is hosted by GitHub Pages. GitHub Pages collects data in
           accordance with the{" "}
           <a
             href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
