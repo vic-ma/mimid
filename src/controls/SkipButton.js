@@ -127,14 +127,20 @@ export default function SkipButton({ settingName, direction, gridArea }) {
   }
 
   function getAutoPauseDuration() {
+    let ERROR_CORRECTION = 125; // By default, the player pauses a bit too early
+    if (/android/i.test(navigator.userAgent)) {
+      ERROR_CORRECTION = 450;
+    } else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+      ERROR_CORRECTION = 540;
+    }
     const playbackRate = PlayerAPIConnector.playerAPI.getPlaybackRate();
     if (
       playbackRate === 1 ||
       SettingsIntegration.getBooleanSetting(SCALE_SKIPS_SETTING_NAME)
     ) {
-      return skipAmount * 1000;
+      return skipAmount * 1000 + ERROR_CORRECTION;
     }
-    return (skipAmount / playbackRate) * 1000;
+    return (skipAmount / playbackRate) * 1000 + ERROR_CORRECTION;
   }
 
   function getSkipAmount() {
