@@ -91,6 +91,7 @@ export default function SpeedButton({ gridArea }) {
     const newSpeed = currentSpeed === 1 ? slowSpeed : 1;
     PlayerAPIConnector.playerAPI.setPlaybackRate(newSpeed);
     setCurrentSpeed(newSpeed);
+    PlayerAPIConnector.playerAPI.playVideo();
   }
 
   function handlePlaybackRateChange(event) {
