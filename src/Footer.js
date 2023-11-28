@@ -25,8 +25,6 @@ import SettingsIntegration from "./settings/SettingsIntegration.js";
 
 import FooterDialog from "./FooterDialog";
 
-import KofiImage from "./kofi.png";
-
 import Button from "@mui/material/Button";
 import DialogContentText from "@mui/material/DialogContentText";
 import Typography from "@mui/material/Typography";
@@ -135,7 +133,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            Source Code
+            GitHub
           </a>
           <br />
           <br />
