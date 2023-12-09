@@ -120,7 +120,8 @@ export default function Footer() {
       </Button>
       <FooterDialog title={"About"} open={aboutOpen} onClose={handleAboutClose}>
         <DialogContentText>
-          Mimid is a music player designed for learning songs by ear.
+          Mimid is a music player designed for learning songs by ear. Mimid is
+          free to use, ad-free, and free and open source.
           <br />
           <br />
           <a href="https://docs.mimid.app" target="_blank" rel="noreferrer">
