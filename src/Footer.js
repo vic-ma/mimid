@@ -50,13 +50,14 @@ export default function Footer() {
         open={privacyOpen}
         onClose={handlePrivacyClose}
       >
+        <Typography variant="h6">Mimid</Typography>
         <DialogContentText>
-          <Typography variant="h6">Mimid</Typography>
           Mimid does not collect any data. However, Mimid uses third-party
           services that do collect data.
-          <br />
-          <br />
-          <Typography variant="h6">YouTube</Typography>
+        </DialogContentText>
+        <br />
+        <Typography variant="h6">YouTube</Typography>
+        <DialogContentText>
           Mimid contains an embedded YouTube player, and Mimid uses YouTube API
           Services to control this player. By using Mimid, you agree to be bound
           by the{" "}
@@ -79,9 +80,10 @@ export default function Footer() {
             Google Privacy Policy
           </a>
           .
-          <br />
-          <br />
-          <Typography variant="h6">Plausible Analytics</Typography>
+        </DialogContentText>
+        <br />
+        <Typography variant="h6">Plausible Analytics</Typography>
+        <DialogContentText>
           Mimid uses Plausible Analytics to collect anonymized web analytics
           data. Plausible Analytics collects data in accordance with the{" "}
           <a
@@ -92,9 +94,10 @@ export default function Footer() {
             Plausible Data Policy
           </a>
           .
-          <br />
-          <br />
-          <Typography variant="h6">GitHub Pages</Typography>
+        </DialogContentText>
+        <br />
+        <Typography variant="h6">GitHub Pages</Typography>
+        <DialogContentText>
           Mimid is hosted by GitHub Pages. GitHub Pages collects data in
           accordance with the{" "}
           <a
