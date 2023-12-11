@@ -26,7 +26,6 @@ import SettingsIntegration from "./settings/SettingsIntegration.js";
 import FooterDialog from "./FooterDialog";
 
 import Button from "@mui/material/Button";
-import DialogContentText from "@mui/material/DialogContentText";
 import Typography from "@mui/material/Typography";
 
 import { useState } from "react";
@@ -50,14 +49,16 @@ export default function Footer() {
         open={privacyOpen}
         onClose={handlePrivacyClose}
       >
-        <Typography variant="h6">Mimid</Typography>
-        <DialogContentText>
+        <Typography variant="body1">
+          <b>Mimid</b>
+          <br />
           Mimid does not collect any data. However, Mimid uses third-party
           services that do collect data.
-        </DialogContentText>
+        </Typography>
         <br />
-        <Typography variant="h6">YouTube</Typography>
-        <DialogContentText>
+        <Typography variant="body1">
+          <b>YouTube</b>
+          <br />
           Mimid contains an embedded YouTube player, and Mimid uses YouTube API
           Services to control this player. By using Mimid, you agree to be bound
           by the{" "}
@@ -80,10 +81,11 @@ export default function Footer() {
             Google Privacy Policy
           </a>
           .
-        </DialogContentText>
+        </Typography>
         <br />
-        <Typography variant="h6">Plausible Analytics</Typography>
-        <DialogContentText>
+        <Typography variant="body1">
+          <b>Plausible Analytics</b>
+          <br />
           Mimid uses Plausible Analytics to collect anonymized web analytics
           data. Plausible Analytics collects data in accordance with the{" "}
           <a
@@ -94,10 +96,11 @@ export default function Footer() {
             Plausible Data Policy
           </a>
           .
-        </DialogContentText>
+        </Typography>
         <br />
-        <Typography variant="h6">GitHub Pages</Typography>
-        <DialogContentText>
+        <Typography variant="body1">
+          <b>GitHub</b>
+          <br />
           Mimid is hosted by GitHub Pages. GitHub Pages collects data in
           accordance with the{" "}
           <a
@@ -108,7 +111,7 @@ export default function Footer() {
             GitHub Privacy Statement
           </a>
           .
-        </DialogContentText>
+        </Typography>
       </FooterDialog>
 
       <SettingsButton onClick={handleSettingsButtonClick} />
@@ -122,7 +125,7 @@ export default function Footer() {
         About
       </Button>
       <FooterDialog title={"About"} open={aboutOpen} onClose={handleAboutClose}>
-        <DialogContentText>
+        <Typography variant="body1">
           Mimid is a music player designed for learning songs by ear. Mimid is
           free to use, ad-free, and free and open source.
           <br />
@@ -144,7 +147,7 @@ export default function Footer() {
           <a href="https://ko-fi.com/mimid" target="_blank" rel="noreferrer">
             Support Mimid
           </a>
-        </DialogContentText>
+        </Typography>
       </FooterDialog>
     </footer>
   );
