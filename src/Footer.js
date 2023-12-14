@@ -179,7 +179,7 @@ export default function Footer() {
   }
 
   // Ideally, it doesn't close, and instead every setting
-  // resets their states by gettting their setting.
+  // resets their states by getting their setting.
   function handleSettingsReset() {
     SettingsIntegration.reset();
     setSettingsOpen(false);
