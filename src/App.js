@@ -97,8 +97,10 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <Paper className="App">
         <div className="app-inner">
-          <URLBar />
-          <HistoryButton />
+          <div className="app-header">
+            <URLBar className="URLBar" />
+            <HistoryButton />
+          </div>
           <YouTubePlayer />
           <Controls />
           <Footer />

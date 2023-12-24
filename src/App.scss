@@ -27,6 +27,14 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
   border-radius: 0 !important;
 }
 
+.app-header {
+  display: flex;
+}
+
+.URLBar {
+  flex-grow: 1;
+}
+
 .app-inner {
   display: flex;
   flex-direction: column;
