@@ -74,7 +74,7 @@ export default function App() {
       setDark
     );
 
-    History.startEventListener();
+    History.startRecording();
   }, []); // eslint-disable-line
 
   const [primary, setPrimary] = useState(

@@ -22,9 +22,11 @@ import PlayerAPIConnector from "./PlayerAPIConnector";
 const DELIMITER = "`";
 
 const History = {
-  startEventListener: function () {
+  startRecording: function () {
     PlayerAPIConnector.addEventListener("onStateChange", (event) => {
+      console.log(event.data);
       if (event.data === PlayerAPIConnector.UNSTARTED) {
+        console.log("TRYING");
         this.tryAddCurrentVideo();
       }
     });
@@ -32,11 +34,13 @@ const History = {
 
   tryAddCurrentVideo: function () {
     const intervalId = setInterval(() => {
+      console.log("interval");
       const videoData = PlayerAPIConnector.playerAPI.getVideoData();
       if (videoData) {
         this.addCurrentVideo();
         this.notifyListeners();
         clearInterval(intervalId);
+        console.log("clearing");
       }
     }, 1000);
   },
@@ -61,13 +65,12 @@ const History = {
       const index = historyArray.indexOf(entry);
       if (index !== -1) {
         historyArray.splice(index, 1);
-        localStorage.setItem(
-          "history",
-          entry + DELIMITER + historyArray.join(DELIMITER)
-        );
-      } else {
-        localStorage.setItem("history", entry + DELIMITER + history);
       }
+      historyArray.unshift(entry);
+      if (historyArray.length > 100) {
+        historyArray.pop();
+      }
+      localStorage.setItem("history", historyArray.join(DELIMITER));
     }
   },
 
