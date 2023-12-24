@@ -28,18 +28,19 @@ export default function URLBar() {
   return (
     <Autocomplete
       className="URLBar"
-      label="Video URL"
       size="small"
       options={History.getAutoCompleteOptions()}
       renderInput={(params) => <TextField {...params} label="Video" />}
       onInputChange={handleInputChange}
       onChange={handleChange}
       isOptionEqualToValue={(option, value) => option.id === value.id}
+      freeSolo
     />
   );
 
-  function handleInputChange(event) {
-    const url = event.target.value;
+  function handleInputChange(event, newInputValue) {
+    const url = newInputValue;
+    console.log(url);
     const id = getVideoIDFromURL(url);
     if (id !== null) {
       if (id === getCurrentVideoID()) {
