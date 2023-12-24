@@ -20,6 +20,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import "./App.scss";
 
 import URLBar from "./URLBar.js";
+import HistoryButton from "./HistoryButton.js";
 import YouTubePlayer from "./YouTubePlayer.js";
 import Controls from "./controls/Controls.js";
 import Footer from "./Footer.js";
@@ -97,6 +98,7 @@ export default function App() {
       <Paper className="App">
         <div className="app-inner">
           <URLBar />
+          <HistoryButton />
           <YouTubePlayer />
           <Controls />
           <Footer />
