@@ -26,6 +26,7 @@ import Controls from "./controls/Controls.js";
 import Footer from "./Footer.js";
 import PlayerAPIConnector from "./PlayerAPIConnector.js";
 import SettingsIntegration from "./settings/SettingsIntegration";
+import History from "./History.js";
 import { colorMap } from "./settings/ThemeSetting";
 import { AUTO_PASTE_SETTING_NAME } from "./settings/constants";
 import {
@@ -73,6 +74,8 @@ export default function App() {
       DARK_MODE_SETTING_NAME,
       setDark
     );
+
+    History.startEventListener();
   }, []); // eslint-disable-line
 
   const [primary, setPrimary] = useState(
@@ -115,7 +118,7 @@ export default function App() {
     clipboardText.current = text;
     const id = getVideoIDFromURL(text);
     if (id !== null && id !== getCurrentVideoID()) {
-      PlayerAPIConnector.loadVideoById(id);
+      PlayerAPIConnector.playerAPI.loadVideoById(id);
     }
   }
 }

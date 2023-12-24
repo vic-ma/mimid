@@ -19,7 +19,6 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 
 import PlayerAPIConnector from "./PlayerAPIConnector";
 import { getVideoIDFromURL, getCurrentVideoID } from "./utils/YouTubeUtils";
-import { addCurrentVideo } from "./utils/HistoryUtils";
 
 import TextField from "@mui/material/TextField";
 
@@ -47,7 +46,7 @@ export default function URLBar() {
       if (id === getCurrentVideoID()) {
         return;
       }
-      PlayerAPIConnector.loadVideoById(id);
+      PlayerAPIConnector.playerAPI.loadVideoById(id);
     } else if (url === "") {
       setError(false);
     } else {

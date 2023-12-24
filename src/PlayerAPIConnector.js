@@ -18,7 +18,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import { PREVIOUS_VIDEO_LS_KEY, DEFAULT_VIDEO_ID } from "./constants";
-import { addCurrentVideo } from "./utils/HistoryUtils";
+import { addCurrentVideo } from "./History";
 
 /* Trying to create a YT.Player on an iframe without a YouTube src will make
  * that iframe unable to be controlled with the YouTube API forever, even if
@@ -62,12 +62,6 @@ const PlayerAPIConnector = {
         clearInterval(intervalID);
       }
     }, this.STANDARD_DELAY);
-  },
-
-  loadVideoById: function (id) {
-    this.playerAPI.loadVideoById(id);
-    localStorage.setItem(PREVIOUS_VIDEO_LS_KEY, id);
-    addCurrentVideo();
   },
 };
 
