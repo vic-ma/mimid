@@ -35,14 +35,14 @@ export default function URLBar() {
       onChange={handleChange}
       isOptionEqualToValue={(option, value) => option.id === value.id}
       freeSolo
+      disableClearable
     />
   );
 
   function handleInputChange(event, newInputValue) {
     const url = newInputValue;
-    console.log(url);
     const id = getVideoIDFromURL(url);
-    if (id !== null) {
+    if (id != null) {
       if (id === getCurrentVideoID()) {
         return;
       }

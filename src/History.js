@@ -47,6 +47,10 @@ const History = {
     const title = videoData.title;
     const entry = videoID + " " + title;
 
+    if (title == null) {
+      return;
+    }
+
     const history = localStorage.getItem("history");
 
     if (!history) {

@@ -21,7 +21,6 @@ import PlayerAPIConnector from "../PlayerAPIConnector";
 
 // https://stackoverflow.com/a/27728417
 export function getVideoIDFromURL(url) {
-  //console.log("MATCHING URL: " + url);
   const regex =
     /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|&v(?:i)?=))([^#&?]*).*/;
   const match = url.match(regex);
