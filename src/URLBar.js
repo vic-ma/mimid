@@ -44,7 +44,6 @@ export default function URLBar() {
       onInputChange={handleInputChange}
       onChange={handleChange}
       isOptionEqualToValue={(option, value) => option.id === value.id}
-      freeSolo
       disableClearable
     />
   );
@@ -57,10 +56,12 @@ export default function URLBar() {
         return;
       }
       PlayerAPIConnector.playerAPI.loadVideoById(id);
+      History.addCurrentVideo();
     }
   }
 
   function handleChange(event, value) {
     PlayerAPIConnector.playerAPI.loadVideoById(value.id);
+    History.addCurrentVideo();
   }
 }

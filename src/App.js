@@ -73,8 +73,6 @@ export default function App() {
       DARK_MODE_SETTING_NAME,
       setDark
     );
-
-    History.startRecording();
   }, []); // eslint-disable-line
 
   const [primary, setPrimary] = useState(
@@ -117,6 +115,7 @@ export default function App() {
     const id = getVideoIDFromURL(text);
     if (id !== null && id !== getCurrentVideoID()) {
       PlayerAPIConnector.playerAPI.loadVideoById(id);
+      History.addCurrentVideo();
     }
   }
 }

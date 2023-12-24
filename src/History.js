@@ -23,32 +23,19 @@ const DELIMITER = "`";
 const HISTORY_LIMIT = 100;
 
 const History = {
-  startRecording: function () {
-    PlayerAPIConnector.addEventListener("onStateChange", (event) => {
-      console.log(event.data);
-      if (event.data === PlayerAPIConnector.UNSTARTED) {
-        console.log("TRYING");
-        this.tryAddCurrentVideo();
-      }
-    });
-  },
-
-  tryAddCurrentVideo: function () {
+  addCurrentVideo: function () {
     const intervalId = setInterval(() => {
-      console.log("interval");
+      // WARNING: This method does not appear to be officially supported.
       const videoData = PlayerAPIConnector.playerAPI.getVideoData();
       if (videoData) {
-        this.addCurrentVideo();
+        this.addVideo(videoData);
         this.notifyListeners();
         clearInterval(intervalId);
-        console.log("clearing");
       }
     }, 1000);
   },
 
-  addCurrentVideo: function () {
-    // WARNING: This method does not appear to be officially supported.
-    const videoData = PlayerAPIConnector.playerAPI.getVideoData();
+  addVideo: function (videoData) {
     const videoID = videoData.video_id;
     const title = videoData.title;
     const entry = videoID + " " + title;
