@@ -46,7 +46,6 @@ export default function HistoryButton() {
   );
 
   function handleHistoryButtonClick() {
-    console.log(PlayerAPIConnector.playerAPI.getVideoData().title);
     setHistoryOpen(true);
   }
 

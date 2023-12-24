@@ -23,9 +23,7 @@ const DELIMITER = "`";
 
 const History = {
   startEventListener: function () {
-    console.log("start listener");
     PlayerAPIConnector.addEventListener("onStateChange", (event) => {
-      console.log(event.data);
       if (event.data === PlayerAPIConnector.UNSTARTED) {
         this.tryAddCurrentVideo();
       }
@@ -48,7 +46,6 @@ const History = {
     const videoID = videoData.video_id;
     const title = videoData.title;
     const entry = videoID + " " + title;
-    console.log(entry);
 
     const history = localStorage.getItem("history");
 
@@ -75,6 +72,22 @@ const History = {
       return null;
     } else {
       return history.split(DELIMITER)[0].split(" ")[0];
+    }
+  },
+
+  getAutoCompleteOptions: function () {
+    const history = localStorage.getItem("history");
+    if (!history) {
+      return [];
+    } else {
+      const historyArray = history.split(DELIMITER);
+      const options = [];
+      for (const entry of historyArray) {
+        const videoID = entry.split(" ")[0];
+        const title = entry.split(" ").slice(1).join(" ");
+        options.push({ label: title, id: videoID });
+      }
+      return options;
     }
   },
 };
