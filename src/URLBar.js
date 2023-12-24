@@ -44,11 +44,22 @@ export default function URLBar() {
       onInputChange={handleInputChange}
       onChange={handleChange}
       isOptionEqualToValue={(option, value) => option.id === value.id}
+      freeSolo
       disableClearable
+      fullWidth
     />
   );
 
+  // User enters URL manually
   function handleInputChange(event, newInputValue) {
+    if (newInputValue === "CLEAR_HISTORY") {
+      localStorage.removeItem("history");
+      setRerender(!rerender);
+    } else if (newInputValue === "CLEAR_COOKIES") {
+      localStorage.clear();
+      setRerender(!rerender);
+    }
+
     const url = newInputValue;
     const id = getVideoIDFromURL(url);
     if (id != null) {
@@ -60,7 +71,9 @@ export default function URLBar() {
     }
   }
 
+  // User selects from dropdown or presses enter
   function handleChange(event, value) {
+    console.log(value);
     PlayerAPIConnector.playerAPI.loadVideoById(value.id);
     History.addCurrentVideo();
   }
