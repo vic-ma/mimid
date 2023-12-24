@@ -20,6 +20,7 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import PlayerAPIConnector from "./PlayerAPIConnector";
 
 const DELIMITER = "`";
+const HISTORY_LIMIT = 100;
 
 const History = {
   startRecording: function () {
@@ -52,10 +53,9 @@ const History = {
     const title = videoData.title;
     const entry = videoID + " " + title;
 
-    if (title == null) {
+    if (title == null || title === "") {
       return;
     }
-
     const history = localStorage.getItem("history");
 
     if (!history) {
@@ -67,7 +67,7 @@ const History = {
         historyArray.splice(index, 1);
       }
       historyArray.unshift(entry);
-      if (historyArray.length > 100) {
+      if (historyArray.length > HISTORY_LIMIT) {
         historyArray.pop();
       }
       localStorage.setItem("history", historyArray.join(DELIMITER));
