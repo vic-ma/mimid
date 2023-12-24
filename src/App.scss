@@ -32,7 +32,11 @@ header {
 }
 
 .URLBar {
-  flex-grow: 1;
+  flex: 1 1 0;
+}
+
+.HistoryBar {
+  flex: 1 1 0;
 }
 
 .app-inner {

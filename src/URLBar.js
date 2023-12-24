@@ -18,8 +18,10 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
 import PlayerAPIConnector from "./PlayerAPIConnector";
+import History from "./History";
 import { getVideoIDFromURL, getCurrentVideoID } from "./utils/YouTubeUtils";
 
+import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
 import { useState } from "react";
