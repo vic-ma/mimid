@@ -68,6 +68,15 @@ const History = {
       }
     }
   },
+
+  getLastVideoID: function () {
+    const history = localStorage.getItem("history");
+    if (!history) {
+      return null;
+    } else {
+      return history.split(DELIMITER)[0].split(" ")[0];
+    }
+  },
 };
 
 export default History;

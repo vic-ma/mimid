@@ -17,5 +17,4 @@ You should have received a copy of the GNU Affero General Public License along
 with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 */
 
-export const PREVIOUS_VIDEO_LS_KEY = "previous-video";
 export const DEFAULT_VIDEO_ID = "Q7jhLV22VUk"; // TODO
