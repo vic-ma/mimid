@@ -62,18 +62,17 @@ export default function URLBar() {
 
     const url = newInputValue;
     const id = getVideoIDFromURL(url);
-    if (id != null) {
-      if (id === getCurrentVideoID()) {
-        return;
-      }
-      PlayerAPIConnector.playerAPI.loadVideoById(id);
-      History.addCurrentVideo();
+    if (id == null || id === getCurrentVideoID()) {
+      return;
     }
+    PlayerAPIConnector.playerAPI.loadVideoById(id);
+    History.addCurrentVideo();
   }
+}
 
-  // User selects from dropdown or presses enter
-  function handleChange(event, value) {
-    console.log(value);
+// User selects from dropdown or presses enter
+function handleChange(event, value) {
+  if (value.id != null) {
     PlayerAPIConnector.playerAPI.loadVideoById(value.id);
     History.addCurrentVideo();
   }
