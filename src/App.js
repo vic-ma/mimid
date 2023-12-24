@@ -20,7 +20,6 @@ with Musician's Remote. If not, see <https://www.gnu.org/licenses/>.
 import "./App.scss";
 
 import URLBar from "./URLBar.js";
-import HistoryBar from "./HistoryBar.js";
 import YouTubePlayer from "./YouTubePlayer.js";
 import Controls from "./controls/Controls.js";
 import Footer from "./Footer.js";

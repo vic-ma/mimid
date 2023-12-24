@@ -24,35 +24,32 @@ import { getVideoIDFromURL, getCurrentVideoID } from "./utils/YouTubeUtils";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
-import { useState } from "react";
-
 export default function URLBar() {
-  const [error, setError] = useState(false);
-
   return (
-    <TextField
+    <Autocomplete
       className="URLBar"
-      label="YouTube video URL"
+      label="Video URL"
       size="small"
-      variant="outlined"
+      options={History.getAutoCompleteOptions()}
+      renderInput={(params) => <TextField {...params} label="Video" />}
+      onInputChange={handleInputChange}
       onChange={handleChange}
-      error={error}
+      isOptionEqualToValue={(option, value) => option.id === value.id}
     />
   );
 
-  function handleChange(event) {
+  function handleInputChange(event) {
     const url = event.target.value;
     const id = getVideoIDFromURL(url);
     if (id !== null) {
-      setError(false);
       if (id === getCurrentVideoID()) {
         return;
       }
       PlayerAPIConnector.playerAPI.loadVideoById(id);
-    } else if (url === "") {
-      setError(false);
-    } else {
-      setError(true);
     }
+  }
+
+  function handleChange(event, value) {
+    PlayerAPIConnector.playerAPI.loadVideoById(value.id);
   }
 }
