@@ -28,7 +28,6 @@ import PlayerAPIConnector from "./PlayerAPIConnector.js";
 import SettingsIntegration from "./settings/SettingsIntegration";
 import { colorMap } from "./settings/ThemeSetting";
 import { AUTO_PASTE_SETTING_NAME } from "./settings/constants";
-import { PREVIOUS_VIDEO_LS_KEY } from "./constants";
 import {
   THEME_SETTING_NAME,
   DARK_MODE_SETTING_NAME,
@@ -97,10 +96,10 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <Paper className="App">
         <div className="app-inner">
-          <div className="app-header">
+          <header>
             <URLBar className="URLBar" />
             <HistoryButton />
-          </div>
+          </header>
           <YouTubePlayer />
           <Controls />
           <Footer />
@@ -116,8 +115,7 @@ export default function App() {
     clipboardText.current = text;
     const id = getVideoIDFromURL(text);
     if (id !== null && id !== getCurrentVideoID()) {
-      PlayerAPIConnector.playerAPI.loadVideoById(id);
-      localStorage.setItem(PREVIOUS_VIDEO_LS_KEY, id);
+      PlayerAPIConnector.loadVideoById(id);
     }
   }
 }

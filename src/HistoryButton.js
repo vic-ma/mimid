@@ -21,6 +21,7 @@ import History from "./History";
 
 import IconButton from "@mui/material/IconButton";
 import { useState } from "react";
+import PlayerAPIConnector from "./PlayerAPIConnector";
 
 export default function HistoryButton() {
   const [historyOpen, setHistoryOpen] = useState(false);
@@ -42,6 +43,7 @@ export default function HistoryButton() {
   );
 
   function handleHistoryButtonClick() {
+    console.log(PlayerAPIConnector.playerAPI.getVideoData());
     setHistoryOpen(true);
   }
 
