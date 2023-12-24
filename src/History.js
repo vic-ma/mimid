@@ -35,6 +35,7 @@ const History = {
       const videoData = PlayerAPIConnector.playerAPI.getVideoData();
       if (videoData) {
         this.addCurrentVideo();
+        this.notifyListeners();
         clearInterval(intervalId);
       }
     }, 1000);
@@ -93,6 +94,14 @@ const History = {
       }
       return options;
     }
+  },
+
+  addHistoryChangeListener: function (handler) {
+    window.addEventListener("history", () => handler());
+  },
+
+  notifyListeners: function () {
+    window.dispatchEvent(new Event("history"));
   },
 };
 

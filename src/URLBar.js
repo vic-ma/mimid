@@ -24,7 +24,17 @@ import { getVideoIDFromURL, getCurrentVideoID } from "./utils/YouTubeUtils";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
+import { useEffect, useState } from "react";
+
 export default function URLBar() {
+  useEffect(() => {
+    History.addHistoryChangeListener(() =>
+      setRerender((currentState) => !currentState)
+    );
+  }, []); // eslint-disable-line
+
+  const [rerender, setRerender] = useState(0);
+
   return (
     <Autocomplete
       className="URLBar"
