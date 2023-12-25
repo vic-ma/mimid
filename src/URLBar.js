@@ -72,7 +72,7 @@ export default function URLBar() {
 
 // User selects from dropdown or presses enter
 function handleChange(event, value) {
-  if (value.id != null) {
+  if (value.id != null && value.id !== getCurrentVideoID()) {
     PlayerAPIConnector.playerAPI.loadVideoById(value.id);
     History.addCurrentVideo();
   }
