@@ -70,7 +70,7 @@ const History = {
     }
   },
 
-  getAutoCompleteOptions: function () {
+  getAutocompleteOptions: function () {
     const history = localStorage.getItem("history");
     if (!history) {
       return [];

@@ -39,7 +39,7 @@ export default function URLBar() {
     <Autocomplete
       className="URLBar"
       size="small"
-      options={History.getAutoCompleteOptions()}
+      options={History.getAutocompleteOptions()}
       renderInput={(params) => <TextField {...params} label="Video" />}
       onInputChange={handleInputChange}
       onChange={handleChange}
