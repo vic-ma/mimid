@@ -47,6 +47,9 @@ export default function URLBar() {
       freeSolo
       disableClearable
       fullWidth
+      autoComplete
+      autoHighlight
+      blurOnSelect
     />
   );
 
@@ -55,9 +58,11 @@ export default function URLBar() {
     if (newInputValue === "CLEAR_HISTORY") {
       localStorage.removeItem("history");
       setRerender(!rerender);
+      return;
     } else if (newInputValue === "CLEAR_COOKIES") {
       localStorage.clear();
       setRerender(!rerender);
+      return;
     }
 
     const url = newInputValue;
