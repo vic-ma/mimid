@@ -41,6 +41,7 @@ const PlayerAPIConnector = {
         this.playerAPI = new window.YT.Player(playerElementID, {
           videoId: History.getLastVideoID() || DEFAULT_VIDEO_ID,
         });
+        History.addCurrentVideo();
 
         this.UNSTARTED = window.YT.PlayerState.UNSTARTED;
         this.ENDED = window.YT.PlayerState.ENDED;
