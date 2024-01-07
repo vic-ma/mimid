@@ -139,13 +139,25 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            GitHub
+            Source Code
+          </a>
+          <br />
+          <br />
+          <a
+            href="https://plausible.io/mimid.app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Analytics
           </a>
           <br />
           <br />
           <a href="https://ko-fi.com/mimid" target="_blank" rel="noreferrer">
             Support Mimid
           </a>
+          <br />
+          <br />
+          <script async src="https://plausible.io/js/embed.host.js"></script>
         </Typography>
       </FooterDialog>
     </footer>
