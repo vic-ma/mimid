@@ -26,12 +26,12 @@ const History = {
     const intervalId = setInterval(() => {
       let videoData;
 
-      // WARNING: This method does not appear to be officially supported.
-      // Occasionally raises function not found error in local development.
+      // WARNING: getVideoData() does not appear to be officially supported.
+      // Need this try-catch block in case this interval runs before the API is ready.
       try {
         videoData = PlayerAPIConnector.playerAPI.getVideoData();
       } catch (error) {
-        console.error(error);
+        // eslint-disable-next-line
       }
 
       if (videoData) {
