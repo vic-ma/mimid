@@ -24,8 +24,16 @@ const HISTORY_LIMIT = 100;
 const History = {
   addCurrentVideo: function () {
     const intervalId = setInterval(() => {
+      let videoData;
+
       // WARNING: This method does not appear to be officially supported.
-      const videoData = PlayerAPIConnector.playerAPI.getVideoData();
+      // Occasionally raises function not found error in local development.
+      try {
+        videoData = PlayerAPIConnector.playerAPI.getVideoData();
+      } catch (error) {
+        console.error(error);
+      }
+
       if (videoData) {
         this.addVideo(videoData);
         this.notifyListeners();
