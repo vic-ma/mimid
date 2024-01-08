@@ -16,4 +16,4 @@ You should have received a copy of the GNU Affero General Public License along
 with Mimid. If not, see <https://www.gnu.org/licenses/>.
 */
 
-export const DEFAULT_VIDEO_ID = "Q7jhLV22VUk"; // TODO
+export const DEFAULT_VIDEO_ID = "B58srczP10Y";

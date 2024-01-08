@@ -43,7 +43,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 
-// TODO: Analytics + docs analytics
 export default function App() {
   const clipboardText = useRef("");
 
