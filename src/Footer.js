@@ -143,15 +143,6 @@ export default function Footer() {
           </a>
           <br />
           <br />
-          <a
-            href="https://plausible.io/mimid.app"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Analytics
-          </a>
-          <br />
-          <br />
           <a href="https://ko-fi.com/mimid" target="_blank" rel="noreferrer">
             Support Mimid
           </a>
