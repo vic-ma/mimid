@@ -83,16 +83,16 @@ export default function Footer() {
         </Typography>
         <br />
         <Typography variant="body1">
-          <b>Plausible Analytics</b>
+          <b>Google Analytics</b>
           <br />
-          Mimid uses Plausible Analytics to collect anonymized web analytics
-          data. Plausible Analytics collects data in accordance with the{" "}
+          Mimid uses Google Analytics to collect web analytics data. To learn
+          how Google Analytics collects data and uses cookies, see{" "}
           <a
-            href="https://plausible.io/data-policy"
+            href="https://policies.google.com/technologies/partner-sites"
             target="_blank"
             rel="noreferrer"
           >
-            Plausible Data Policy
+            How Google uses information from sites or apps that use our services
           </a>
           .
         </Typography>
