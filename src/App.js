@@ -33,7 +33,7 @@ import {
 } from "./settings/constants";
 import { getVideoIDFromURL, getCurrentVideoID } from "./utils/YouTubeUtils";
 
-import "@fontsource/outfit";
+import "@fontsource/poppins/500.css";
 
 import createTheme from "@mui/material/styles/createTheme";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
@@ -86,7 +86,7 @@ export default function App() {
       mode: dark === true ? "dark" : "light",
     },
     typography: {
-      fontFamily: ["Outfit"],
+      fontFamily: ["Poppins"],
     },
   });
 
